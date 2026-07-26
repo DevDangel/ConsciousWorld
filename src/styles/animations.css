@@ -1,0 +1,130 @@
+/* ============================================
+   ConsciousWorld — Global Animations
+   ============================================ */
+
+/* Pulse glow for contamination points */
+@keyframes pulseRed {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(255, 45, 85, 0.4), 0 0 24px rgba(255, 45, 85, 0.15);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(255, 45, 85, 0.6), 0 0 48px rgba(255, 45, 85, 0.25);
+    transform: scale(1.05);
+  }
+}
+
+/* Pulse glow for life points */
+@keyframes pulseCyan {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(0, 212, 255, 0.4), 0 0 24px rgba(0, 212, 255, 0.15);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(0, 212, 255, 0.6), 0 0 48px rgba(0, 212, 255, 0.25);
+    transform: scale(1.05);
+  }
+}
+
+/* Breathing effect for the globe idle state */
+@keyframes breathe {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* Slide in from left */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Slide in from right */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Fade in up */
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Fade in */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Scale in */
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Shimmer loading effect */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Rotating glow ring */
+@keyframes rotateGlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Counter number animation */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Subtle float */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Ripple effect for map clicks */
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Gradient flow for borders */
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

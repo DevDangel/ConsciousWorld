@@ -1,0 +1,102 @@
+.mapContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-map);
+}
+
+.mapOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(10, 10, 15, 0.3) 100%);
+}
+
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  z-index: var(--z-tooltip);
+  transform: translate(-50%, -120%);
+}
+
+.tooltipContent {
+  background: var(--glass-bg-solid);
+  backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  box-shadow: var(--shadow-lg);
+  white-space: nowrap;
+}
+
+.tooltipName {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tooltipValue {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+  font-family: var(--font-mono);
+}
+
+.tooltipArrow {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid var(--glass-bg-solid);
+  margin: 0 auto;
+}
+
+.loadingOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--bg-base);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  gap: var(--space-lg);
+}
+
+.loadingSpinner {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 3px solid var(--bg-surface);
+  border-top-color: var(--cyan-vital);
+  animation: rotateGlow 1s linear infinite;
+}
+
+.loadingText {
+  font-size: 14px;
+  color: var(--text-secondary);
+  letter-spacing: 0.5px;
+}
+
+.loadingTitle {
+  font-size: 24px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #ff2d55, #00d4ff, #00ff87);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+

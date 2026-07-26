@@ -1,0 +1,21 @@
+.glassCard {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-md);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.glassCard:hover {
+  background: var(--glass-bg-solid);
+  box-shadow: var(--shadow-lg);
+}
+
+.glassCardCompact {
+  composes: glassCard;
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+}

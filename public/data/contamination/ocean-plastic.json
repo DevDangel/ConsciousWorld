@@ -1,0 +1,17 @@
+[
+  { "name": "Gran Mancha de Basura del Pacífico", "lat": 30.0, "lng": -145.0, "tons": 80000, "area_km2": 1600000, "description": "La mayor acumulación de plásticos oceánicos, el doble del tamaño de Texas" },
+  { "name": "Mancha del Atlántico Norte", "lat": 32.0, "lng": -45.0, "tons": 21000, "area_km2": 450000, "description": "Giro subtropical del Atlántico Norte acumula millones de fragmentos" },
+  { "name": "Mancha del Índico", "lat": -15.0, "lng": 75.0, "tons": 18000, "area_km2": 380000, "description": "Concentración creciente en el giro del Océano Índico" },
+  { "name": "Mancha del Pacífico Sur", "lat": -30.0, "lng": -120.0, "tons": 12000, "area_km2": 250000, "description": "Zona de convergencia subtropical del Pacífico Sur" },
+  { "name": "Mancha del Atlántico Sur", "lat": -30.0, "lng": -15.0, "tons": 9000, "area_km2": 200000, "description": "Giro subtropical del Atlántico Sur" },
+  { "name": "Delta del Río Ganges", "lat": 22.0, "lng": 90.0, "tons": 5500, "area_km2": 15000, "description": "Uno de los mayores vertidos de plástico fluvial al océano" },
+  { "name": "Desembocadura del Yangtze", "lat": 31.0, "lng": 122.0, "tons": 4800, "area_km2": 12000, "description": "El río más contaminante del mundo por volumen de plásticos" },
+  { "name": "Mar Mediterráneo", "lat": 36.0, "lng": 18.0, "tons": 3400, "area_km2": 50000, "description": "Mar semicerrado con alta concentración de microplásticos" },
+  { "name": "Mar del Sur de China", "lat": 12.0, "lng": 115.0, "tons": 3200, "area_km2": 40000, "description": "Recibe residuos de múltiples ríos asiáticos" },
+  { "name": "Golfo de Guinea", "lat": 3.0, "lng": 2.0, "tons": 2800, "area_km2": 35000, "description": "Zona de acumulación por corrientes costeras africanas" },
+  { "name": "Desembocadura del Mekong", "lat": 10.0, "lng": 107.0, "tons": 2200, "area_km2": 8000, "description": "Delta altamente contaminado en el sudeste asiático" },
+  { "name": "Costa de Indonesia", "lat": -6.0, "lng": 110.0, "tons": 3500, "area_km2": 25000, "description": "Segundo país con más plástico vertido al mar" },
+  { "name": "Costa de Filipinas", "lat": 12.0, "lng": 123.0, "tons": 2700, "area_km2": 20000, "description": "Tercer país con más plástico vertido al mar" },
+  { "name": "Mar de Barents (Ártico)", "lat": 74.0, "lng": 36.0, "tons": 1200, "area_km2": 80000, "description": "Los microplásticos llegan incluso al Ártico por corrientes oceánicas" },
+  { "name": "Costa Oeste de África", "lat": -10.0, "lng": 10.0, "tons": 1800, "area_km2": 30000, "description": "Corrientes traen residuos de Europa y África" }
+]
