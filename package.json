@@ -7,20 +7,15 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "data:refresh": "node scripts/fetch-data.mjs"
   },
   "dependencies": {
-    "@deck.gl/aggregation-layers": "^9.3.7",
-    "@deck.gl/core": "^9.3.7",
-    "@deck.gl/geo-layers": "^9.3.7",
-    "@deck.gl/layers": "^9.3.7",
-    "@deck.gl/react": "^9.3.7",
     "framer-motion": "^12.42.2",
     "lucide-react": "^1.27.0",
     "maplibre-gl": "^6.0.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "react-map-gl": "^8.1.1",
     "recharts": "^3.10.1"
   },
   "devDependencies": {

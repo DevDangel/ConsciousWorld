@@ -24,7 +24,7 @@ import {
   Bug,
 } from 'lucide-react';
 
-export const ICONS = {
+const ICONS = {
   // Layer Icons
   factory: Factory,
   wind: Wind,

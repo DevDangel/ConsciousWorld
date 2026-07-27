@@ -3,7 +3,7 @@ import { MODES } from '../../data/constants';
 import styles from './TopBar.module.css';
 import Icon from '../UI/Icons';
 
-export default function TopBar({ mode, onModeChange, data, onSearchSelect }) {
+export default function TopBar({ mode, onModeChange, data, onSearchSelect, live }) {
   const [query, setQuery] = useState('');
   const [showResults, setShowResults] = useState(false);
   const searchRef = useRef(null);
@@ -24,36 +24,24 @@ export default function TopBar({ mode, onModeChange, data, onSearchSelect }) {
     if (!data) return [];
     const items = [];
 
-    if (data.co2) {
-      data.co2.forEach(d => {
-        items.push({ name: d.name, type: 'Emisiones CO₂', icon: 'factory', lat: d.lat, lng: d.lng, data: d, mode: MODES.CONTAMINATION });
+    data.co2?.forEach(d => {
+      items.push({ name: d.name, kind: 'co2', type: 'Emisiones CO₂', icon: 'factory', lat: d.lat, lng: d.lng, data: d, mode: MODES.CONTAMINATION });
+    });
+    data.airQuality?.forEach(d => {
+      items.push({ name: d.name, kind: 'air', type: 'Calidad del Aire', icon: 'wind', lat: d.lat, lng: d.lng, data: d, mode: MODES.CONTAMINATION });
+      d.cities?.forEach(c => {
+        items.push({ name: c.name, kind: 'city', type: `Ciudad — ${d.name}`, icon: 'city', lat: c.lat, lng: c.lng, data: c, mode: MODES.CONTAMINATION });
       });
-    }
-    if (data.airQuality) {
-      data.airQuality.forEach(d => {
-        items.push({ name: d.name, type: 'Calidad del Aire', icon: 'wind', lat: d.lat, lng: d.lng, data: d, mode: MODES.CONTAMINATION });
-        if (d.cities) {
-          d.cities.forEach(c => {
-            items.push({ name: c.name, type: `Ciudad — ${d.name}`, icon: 'city', lat: c.lat, lng: c.lng, data: c, mode: MODES.CONTAMINATION });
-          });
-        }
-      });
-    }
-    if (data.oceanPlastic) {
-      data.oceanPlastic.forEach(d => {
-        items.push({ name: d.name, type: 'Plástico Oceánico', icon: 'waves', lat: d.lat, lng: d.lng, data: d, mode: MODES.CONTAMINATION });
-      });
-    }
-    if (data.rivers) {
-      data.rivers.forEach(d => {
-        items.push({ name: d.name, type: 'Río/Fuente Hídrica', icon: 'droplets', lat: d.lat, lng: d.lng, data: d, mode: MODES.LIFE });
-      });
-    }
-    if (data.protectedAreas) {
-      data.protectedAreas.forEach(d => {
-        items.push({ name: d.name, type: d.type, icon: d.icon || 'leaf', lat: d.lat, lng: d.lng, data: d, mode: MODES.LIFE });
-      });
-    }
+    });
+    data.oceanPlastic?.forEach(d => {
+      items.push({ name: d.name, kind: 'plastic', type: 'Plástico Oceánico', icon: 'waves', lat: d.lat, lng: d.lng, data: d, mode: MODES.CONTAMINATION });
+    });
+    data.rivers?.forEach(d => {
+      items.push({ name: d.name, kind: 'river', type: 'Río/Fuente Hídrica', icon: 'droplets', lat: d.lat, lng: d.lng, data: d, mode: MODES.LIFE });
+    });
+    data.protectedAreas?.forEach(d => {
+      items.push({ name: d.name, kind: 'protectedArea', type: d.type, icon: d.icon || 'leaf', lat: d.lat, lng: d.lng, data: d, mode: MODES.LIFE });
+    });
 
     return items;
   }, [data]);
@@ -141,12 +129,17 @@ export default function TopBar({ mode, onModeChange, data, onSearchSelect }) {
           )}
         </div>
 
-        <div className={styles.statsTag}>
+        <div
+          className={styles.statsTag}
+          title={live
+            ? 'PM2.5 en vivo (Open-Meteo). El resto de indicadores son de 2023.'
+            : 'Sin conexión con Open-Meteo: todos los indicadores son la línea base de 2023.'}
+        >
           <span
             className={styles.statsTagDot}
             style={{ background: isContamination ? 'var(--red-primary)' : 'var(--cyan-vital)' }}
           />
-          Datos 2023
+          {live ? 'PM2.5 en vivo' : 'Datos 2023'}
         </div>
       </div>
     </header>

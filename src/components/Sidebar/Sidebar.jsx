@@ -5,6 +5,10 @@ import {
   CONTAMINATION_LAYER_CONFIG,
   LIFE_LAYER_CONFIG,
   GLOBAL_STATS,
+  CHOROPLETH,
+  NO_DATA_COLOR,
+  CONTAMINATION_LAYERS,
+  LIFE_LAYERS,
 } from '../../data/constants';
 import AnimatedCounter from '../UI/AnimatedCounter';
 import Icon from '../UI/Icons';
@@ -15,6 +19,14 @@ export default function Sidebar({ mode, activeLayers, onToggleLayer }) {
   const isContamination = mode === MODES.CONTAMINATION;
   const layers = isContamination ? CONTAMINATION_LAYER_CONFIG : LIFE_LAYER_CONFIG;
   const stats = isContamination ? GLOBAL_STATS.contamination : GLOBAL_STATS.life;
+  // The legend follows whichever surface layer is actually painted, not the
+  // mode — otherwise it explains a choropleth the user has switched off.
+  const choroplethOn = activeLayers.includes(
+    isContamination ? CONTAMINATION_LAYERS.CO2_EMISSIONS : LIFE_LAYERS.PROTECTED_COVERAGE
+  );
+  const scale = choroplethOn
+    ? (isContamination ? CHOROPLETH.co2 : CHOROPLETH.coverage)
+    : null;
 
   return (
     <>
@@ -47,11 +59,11 @@ export default function Sidebar({ mode, activeLayers, onToggleLayer }) {
                 )}
               </h2>
               <div className={styles.layerList}>
-                {layers.map((layer) => {
+                {layers.map((layer, i) => {
                   const isActive = activeLayers.includes(layer.id);
                   const itemClass = isActive
                     ? (isContamination ? styles.layerItemActiveRed : styles.layerItemActiveCyan)
-                    : styles.layerItem;
+                    : (isContamination ? styles.layerItemIdleRed : styles.layerItemIdleCyan);
                   const toggleClass = isActive
                     ? (isContamination ? styles.layerToggleOnRed : styles.layerToggleOnCyan)
                     : styles.layerToggle;
@@ -61,6 +73,9 @@ export default function Sidebar({ mode, activeLayers, onToggleLayer }) {
                     <div
                       key={layer.id}
                       className={itemClass}
+                      // Staggered so the toggles breathe in sequence instead of
+                      // flashing in unison.
+                      style={isActive ? undefined : { animationDelay: `${i * 320}ms` }}
                       onClick={() => onToggleLayer(layer.id)}
                     >
                       <span className={styles.layerIcon}><Icon name={layer.icon} size={20} /></span>
@@ -86,7 +101,6 @@ export default function Sidebar({ mode, activeLayers, onToggleLayer }) {
               </h2>
               <div className={styles.globalStats}>
                 {stats.map((stat, i) => {
-                  const trendNum = parseFloat(stat.trend);
                   const isPositiveTrend = stat.trend.startsWith('+');
                   // For contamination, positive trend is bad (red). For life, positive is good (green).
                   const trendClass = isContamination
@@ -111,26 +125,48 @@ export default function Sidebar({ mode, activeLayers, onToggleLayer }) {
               </div>
             </div>
 
-            {/* Legend */}
+            {/* Legend — driven by the same stops the map paints with.
+                Stops are spaced evenly by index rather than by value: the CO₂
+                scale is logarithmic, so a linear gradient would squash every
+                colour but the last into the leftmost pixels. */}
             <div className={styles.legend}>
-              <span className={styles.legendTitle}>
-                {isContamination ? 'Intensidad de Contaminación' : 'Intensidad de Vida'}
-              </span>
-              <div className={isContamination ? styles.legendScaleRed : styles.legendScaleCyan} />
-              <div className={styles.legendLabels}>
-                <span>{isContamination ? 'Bajo' : 'Menor'}</span>
-                <span>{isContamination ? 'Medio' : 'Media'}</span>
-                <span>{isContamination ? 'Crítico' : 'Mayor'}</span>
-              </div>
+              {scale && (
+                <div>
+                  <span className={styles.legendTitle}>{scale.unit}</span>
+                  <div
+                    className={styles.legendScale}
+                    style={{
+                      background: `linear-gradient(90deg, ${scale.stops
+                        .map(([, color], i) => `${color} ${(i / (scale.stops.length - 1)) * 100}%`)
+                        .join(', ')})`,
+                    }}
+                  />
+                  <div className={styles.legendLabels}>
+                    {scale.stops.map(([value], i) => (
+                      <span key={i}>{value.toLocaleString('es-ES')}</span>
+                    ))}
+                  </div>
+                  <div className={styles.legendNoData}>
+                    <span className={styles.legendNoDataSwatch} style={{ background: NO_DATA_COLOR }} />
+                    Sin datos en la fuente
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Footer */}
             <div className={styles.footer}>
               <p className={styles.footerText}>
-                Datos: Our World in Data, WHO, UNEP
+                CO₂ y territorio protegido: Banco Mundial (API abierta)
                 <br />
-                Última actualización: 2023
+                PM2.5 en vivo: Open-Meteo · Ríos y áreas: UNEP
               </p>
+
+              <div className={styles.creditDivider} />
+              <div className={styles.credit}>
+                <span className={styles.creditLabel}>Developing by</span>
+                <span className={styles.creditName}>DevAngel</span>
+              </div>
             </div>
           </motion.aside>
         )}

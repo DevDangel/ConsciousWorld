@@ -1,7 +1,26 @@
-import { useState, useCallback, useMemo, useRef, useEffect } from 'react';
+import {
+  useState,
+  useCallback,
+  useMemo,
+  useRef,
+  useEffect,
+  forwardRef,
+  useImperativeHandle,
+} from 'react';
 import * as maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { MODES, CONTAMINATION_LAYERS, LIFE_LAYERS } from '../../data/constants';
+import {
+  MODES,
+  CONTAMINATION_LAYERS,
+  LIFE_LAYERS,
+  CHOROPLETH,
+  choroplethExpression,
+  NO_DATA_COLOR,
+  FOG,
+  fogColor,
+  fogRadius,
+  fogWeight,
+} from '../../data/constants';
 import styles from './MapView.module.css';
 
 // CyberDark Map Style
@@ -17,7 +36,7 @@ const DARK_STYLE = {
         'https://c.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png',
       ],
       tileSize: 256,
-      attribution: '© CARTO',
+      attribution: '© <a href="https://carto.com/attributions">CARTO</a> · © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
       maxzoom: 18,
     },
   },
@@ -25,14 +44,14 @@ const DARK_STYLE = {
     {
       id: 'background',
       type: 'background',
-      paint: { 'background-color': '#0f172a' }, 
+      paint: { 'background-color': '#0f172a' },
     },
     {
       id: 'carto-dark-layer',
       type: 'raster',
       source: 'carto-dark',
       paint: {
-        'raster-brightness-max': 1, 
+        'raster-brightness-max': 1,
         'raster-saturation': -0.3,
         'raster-contrast': 0.1,
       },
@@ -47,83 +66,187 @@ const INITIAL_VIEW = {
   minZoom: 1,
 };
 
-export default function MapView({ mode, activeLayers, data, onItemClick }) {
+// Bottom-to-top paint order. Every insertion is anchored against this list so
+// the choropleth can never end up on top of the markers, whatever order the
+// layers happen to be toggled in.
+const LAYER_ORDER = [
+  'countries-nodata',
+  'countries-fill',
+  'countries-line',
+  'air-fog',
+  'plastic-fog',
+  'protected-fog',
+  'lake-fog',
+  'river-glow',
+  'river-line',
+  'air-core',
+  'plastic-core',
+  'river-core',
+  'protected-core',
+];
+
+// Layers that respond to hover / click, highest priority first.
+const INTERACTIVE = [
+  'air-core', 'plastic-core', 'river-core', 'protected-core', 'river-line',
+  'countries-fill',
+];
+
+function addLayerOrdered(map, layer) {
+  const idx = LAYER_ORDER.indexOf(layer.id);
+  const before = LAYER_ORDER.slice(idx + 1).find(id => map.getLayer(id));
+  map.addLayer(layer, before);
+}
+
+/**
+ * Turn a rendered feature into the shape the tooltip and the stats panel both
+ * consume, so hovering and clicking can never describe the same thing
+ * differently.
+ */
+function describeFeature(feature, mode) {
+  const p = feature.properties;
+  const layerId = feature.layer.id;
+  const parse = (key, fallback) => {
+    try { return JSON.parse(p[key]); } catch { return fallback; }
+  };
+
+  switch (layerId) {
+    case 'air-core':
+      return {
+        name: p.name,
+        kind: p.kind === 'city' ? 'city' : 'air',
+        type: p.kind === 'city' ? `Ciudad — ${p.parentCountry}` : 'Calidad del Aire',
+        icon: p.kind === 'city' ? 'city' : 'wind',
+        mode: MODES.CONTAMINATION,
+        metric: { label: 'PM2.5', value: `${Number(p.pm25).toFixed(1)} μg/m³`, color: '#00d4ff' },
+        data: parse('_raw', p),
+      };
+    case 'plastic-core':
+      return {
+        name: p.name,
+        kind: 'plastic',
+        type: 'Plástico Oceánico',
+        icon: 'waves',
+        mode: MODES.CONTAMINATION,
+        metric: { label: 'Plástico', value: `${Number(p.tons).toLocaleString('es-ES')} ton`, color: '#da70d6' },
+        data: parse('_raw', p),
+      };
+    case 'river-core':
+    case 'river-line':
+      return {
+        name: p.name,
+        kind: 'river',
+        type: 'Río/Fuente Hídrica',
+        icon: 'droplets',
+        mode: MODES.LIFE,
+        metric: p.length_km > 0
+          ? { label: 'Longitud', value: `${Number(p.length_km).toLocaleString('es-ES')} km`, color: '#00ffff' }
+          : null,
+        data: parse('_raw', p),
+      };
+    case 'protected-core':
+      return {
+        name: p.name,
+        kind: 'protectedArea',
+        type: p.areaType || 'Área Protegida',
+        icon: p.icon || 'leaf',
+        mode: MODES.LIFE,
+        metric: { label: 'Biodiversidad', value: `${p.biodiversity_index}/10`, color: '#00ff87' },
+        data: parse('_raw', p),
+      };
+    case 'countries-fill':
+      return mode === MODES.CONTAMINATION
+        ? {
+          name: p.name,
+          kind: 'co2',
+          type: 'Emisiones CO₂',
+          icon: 'factory',
+          mode: MODES.CONTAMINATION,
+          metric: { label: 'CO₂', value: `${Number(p.co2).toLocaleString('es-ES')} Mt`, color: '#ff4d4d' },
+          data: parse('_co2', null),
+        }
+        : {
+          name: p.name,
+          kind: 'coverage',
+          type: 'Territorio Protegido',
+          icon: 'map',
+          mode: MODES.LIFE,
+          metric: { label: 'Protegido', value: `${p.coverage}%`, color: '#00ff87' },
+          data: parse('_coverage', null),
+        };
+    default:
+      return null;
+  }
+}
+
+function MapView({ mode, activeLayers, data, onItemClick }, ref) {
   const mapContainer = useRef(null);
   const mapRef = useRef(null);
   const [mapLoaded, setMapLoaded] = useState(false);
-  const [hoveredItem, setHoveredItem] = useState(null);
-  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
-  const sourcesAdded = useRef(new Set());
+  const [hovered, setHovered] = useState(null);
+  const sourceData = useRef(new Map());
 
   const isContamination = mode === MODES.CONTAMINATION;
 
+  // Expose camera control to the parent instead of hanging a mutable static
+  // method off the component function.
+  useImperativeHandle(ref, () => ({
+    flyTo(lng, lat, zoom = 5) {
+      mapRef.current?.flyTo({ center: [lng, lat], zoom, duration: 1500 });
+    },
+  }), []);
+
   // ——— Initialize MapLibre ———
   useEffect(() => {
-    if (mapRef.current) return;
-
+    const sources = sourceData.current;
     const map = new maplibregl.Map({
       container: mapContainer.current,
       style: DARK_STYLE,
       ...INITIAL_VIEW,
-      attributionControl: false,
+      attributionControl: { compact: true },
     });
 
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'bottom-right');
+    map.on('error', e => console.error('[maplibre]', e.error?.message || e));
 
     const handleLoad = () => {
       mapRef.current = map;
+      // Debug handle: lets you inspect layers/sources from the console with
+      // __map.getStyle(). Dev only, never shipped.
+      if (import.meta.env.DEV) window.__map = map;
       setMapLoaded(true);
     };
-
-    if (map.loaded()) {
-      handleLoad();
-    } else {
-      map.on('load', handleLoad);
-    }
+    map.on('load', handleLoad);
 
     return () => {
-      map.remove();
+      // Force the layer effect to re-run against the next map instance;
+      // without this, a StrictMode remount leaves mapLoaded stuck at true
+      // while mapRef points at a fresh, empty map.
+      setMapLoaded(false);
       mapRef.current = null;
-      sourcesAdded.current.clear();
+      sources.clear();
+      map.remove();
     };
   }, []);
 
-  // ——— Parse GeoJSON (Pre-calculating glow sizes to avoid WebGL crashes) ———
-  const co2GeoJSON = useMemo(() => {
-    if (!data?.co2) return null;
-    return {
-      type: 'FeatureCollection',
-      features: data.co2.map(d => {
-        const r = Math.max(8, Math.sqrt(d.co2_total_mt) * 0.6);
-        return {
-          type: 'Feature',
-          geometry: { type: 'Point', coordinates: [d.lng, d.lat] },
-          properties: { ...d, radius: r, glowRadius: r * 3, _raw: JSON.stringify(d) },
-        };
-      }),
-    };
-  }, [data?.co2]);
-
+  // ——— GeoJSON builders ———
+  // No precomputed radii any more: the fog reads the raw measurement and the
+  // anchor dots are a fixed size.
   const airQualityGeoJSON = useMemo(() => {
     if (!data?.airQuality) return null;
     const features = [];
     data.airQuality.forEach(d => {
-      const r = Math.max(6, d.pm25 * 0.3);
       features.push({
         type: 'Feature',
         geometry: { type: 'Point', coordinates: [d.lng, d.lat] },
-        properties: { ...d, radius: r, glowRadius: r * 3, type: 'country', _raw: JSON.stringify(d) },
+        properties: { ...d, cities: undefined, kind: 'country', _raw: JSON.stringify(d) },
       });
-      if (d.cities) {
-        d.cities.forEach(c => {
-          const cr = Math.max(4, c.pm25 * 0.15);
-          features.push({
-            type: 'Feature',
-            geometry: { type: 'Point', coordinates: [c.lng, c.lat] },
-            properties: { ...c, radius: cr, glowRadius: cr * 3, type: 'city', parentCountry: d.name, _raw: JSON.stringify(c) },
-          });
+      d.cities?.forEach(c => {
+        features.push({
+          type: 'Feature',
+          geometry: { type: 'Point', coordinates: [c.lng, c.lat] },
+          properties: { ...c, kind: 'city', parentCountry: d.name, _raw: JSON.stringify(c) },
         });
-      }
+      });
     });
     return { type: 'FeatureCollection', features };
   }, [data?.airQuality]);
@@ -132,254 +255,299 @@ export default function MapView({ mode, activeLayers, data, onItemClick }) {
     if (!data?.oceanPlastic) return null;
     return {
       type: 'FeatureCollection',
-      features: data.oceanPlastic.map(d => {
-        const r = Math.max(10, Math.sqrt(d.tons) * 0.15);
-        return {
-          type: 'Feature',
-          geometry: { type: 'Point', coordinates: [d.lng, d.lat] },
-          properties: { ...d, radius: r, glowRadius: r * 4, _raw: JSON.stringify(d) },
-        };
-      }),
+      features: data.oceanPlastic.map(d => ({
+        type: 'Feature',
+        geometry: { type: 'Point', coordinates: [d.lng, d.lat] },
+        properties: { ...d, _raw: JSON.stringify(d) },
+      })),
     };
   }, [data?.oceanPlastic]);
 
-  const riversGeoJSON = useMemo(() => {
+  // Only the water bodies with no centerline in Natural Earth: Baikal and the
+  // Great Lakes are lakes, so they cannot be drawn as a course.
+  const lakesGeoJSON = useMemo(() => {
     if (!data?.rivers) return null;
+    const drawn = new Set(
+      (data.riverCourses?.features ?? []).map(f => f.properties.name)
+    );
+    const lakes = data.rivers.filter(d => !drawn.has(d.name));
+    const maxSide = Math.sqrt(Math.max(...lakes.map(d => d.basin_km2), 1));
     return {
       type: 'FeatureCollection',
-      features: data.rivers.map(d => {
-        const r = d.length_km > 0 ? Math.max(6, Math.sqrt(d.length_km) * 0.2) : 10;
-        return {
-          type: 'Feature',
-          geometry: { type: 'Point', coordinates: [d.lng, d.lat] },
-          properties: { ...d, radius: r, glowRadius: r * 2, _raw: JSON.stringify(d) },
-        };
-      }),
+      features: lakes.map(d => ({
+        type: 'Feature',
+        geometry: { type: 'Point', coordinates: [d.lng, d.lat] },
+        properties: {
+          ...d,
+          countries: undefined,
+          fogSize: +(Math.sqrt(d.basin_km2) / maxSide).toFixed(3),
+          _raw: JSON.stringify(d),
+        },
+      })),
     };
-  }, [data?.rivers]);
+  }, [data?.rivers, data?.riverCourses]);
 
   const protectedAreasGeoJSON = useMemo(() => {
     if (!data?.protectedAreas) return null;
+    // Square-rooted so the Amazon does not flatten every other reserve to a dot.
+    const maxSide = Math.sqrt(Math.max(...data.protectedAreas.map(d => d.area_km2)));
     return {
       type: 'FeatureCollection',
-      features: data.protectedAreas.map(d => {
-        const r = Math.max(8, Math.sqrt(d.area_km2) * 0.012);
-        return {
-          type: 'Feature',
-          geometry: { type: 'Point', coordinates: [d.lng, d.lat] },
-          properties: { ...d, radius: r, glowRadius: r * 2, statusColor: d.status === 'Protegido' ? '#00ff87' : '#ff6b35', _raw: JSON.stringify(d) },
-        };
-      }),
+      features: data.protectedAreas.map(d => ({
+        type: 'Feature',
+        geometry: { type: 'Point', coordinates: [d.lng, d.lat] },
+        properties: {
+          ...d,
+          areaType: d.type,
+          fogSize: +(Math.sqrt(d.area_km2) / maxSide).toFixed(3),
+          statusColor: d.status === 'Protegido' ? '#00ff87' : '#ff6b35',
+          _raw: JSON.stringify(d),
+        },
+      })),
     };
   }, [data?.protectedAreas]);
 
-  const addSourceAndLayers = useCallback((sourceId, geojson, layerConfigs) => {
-    const map = mapRef.current;
-    if (!map || !geojson) return;
-    layerConfigs.forEach(l => { if (map.getLayer(l.id)) map.removeLayer(l.id); });
-    if (map.getSource(sourceId)) map.removeSource(sourceId);
-    map.addSource(sourceId, { type: 'geojson', data: geojson });
-    layerConfigs.forEach(l => map.addLayer(l));
-    sourcesAdded.current.add(sourceId);
-  }, []);
-
-  const removeSourceAndLayers = useCallback((sourceId, layerIds) => {
+  /**
+   * Add or update a source and its layers. The source is reused via setData
+   * when the payload is unchanged, so toggling a mode no longer re-uploads
+   * every polygon to the worker.
+   */
+  const syncLayers = useCallback((sourceId, geojson, visible, layerConfigs) => {
     const map = mapRef.current;
     if (!map) return;
-    layerIds.forEach(id => { if (map.getLayer(id)) map.removeLayer(id); });
-    if (map.getSource(sourceId)) map.removeSource(sourceId);
-    sourcesAdded.current.delete(sourceId);
+    const ids = layerConfigs.map(l => l.id);
+
+    if (!visible || !geojson) {
+      ids.forEach(id => { if (map.getLayer(id)) map.removeLayer(id); });
+      if (map.getSource(sourceId)) map.removeSource(sourceId);
+      sourceData.current.delete(sourceId);
+      return;
+    }
+
+    const existing = map.getSource(sourceId);
+    if (!existing) {
+      map.addSource(sourceId, { type: 'geojson', data: geojson });
+    } else if (sourceData.current.get(sourceId) !== geojson) {
+      existing.setData(geojson);
+    }
+    sourceData.current.set(sourceId, geojson);
+
+    layerConfigs.forEach(l => {
+      if (map.getLayer(l.id)) map.removeLayer(l.id);
+      addLayerOrdered(map, l);
+    });
   }, []);
 
-  // ——— Layers Sync ———
+  /** The gas cloud. This is the whole visual — nothing is drawn on top of it. */
+  const fogLayer = (id, source, spec) => ({
+    id, type: 'heatmap', source,
+    paint: {
+      'heatmap-weight': fogWeight(spec),
+      'heatmap-intensity': spec.intensity,
+      'heatmap-radius': fogRadius(spec),
+      'heatmap-color': fogColor(spec),
+      'heatmap-opacity': 1,
+    },
+  });
+
+  /**
+   * Invisible click target under the cursor. A heatmap layer cannot be
+   * queried, so each point still needs a circle to hit — but it is fully
+   * transparent: the cloud is the only thing anyone sees.
+   */
+  const hitLayer = (id, source, radius = 14) => ({
+    id, type: 'circle', source,
+    paint: { 'circle-radius': radius, 'circle-color': '#000000', 'circle-opacity': 0 },
+  });
+
+  /**
+   * The actual river course, from Natural Earth centerlines. Two passes: a
+   * wide blurred stroke underneath for the glow, a crisp thin one on top.
+   */
+  const courseLayers = (source) => [
+    {
+      id: 'river-glow', type: 'line', source,
+      layout: { 'line-cap': 'round', 'line-join': 'round' },
+      paint: {
+        'line-color': '#00d4ff',
+        'line-opacity': 0.35,
+        'line-blur': 4,
+        'line-width': ['interpolate', ['linear'], ['zoom'], 1, 3.5, 5, 9, 9, 20],
+      },
+    },
+    {
+      id: 'river-line', type: 'line', source,
+      layout: { 'line-cap': 'round', 'line-join': 'round' },
+      paint: {
+        'line-color': '#7ce9ff',
+        'line-opacity': 0.95,
+        'line-width': ['interpolate', ['linear'], ['zoom'], 1, 0.9, 5, 2.2, 9, 5],
+      },
+    },
+  ];
+
+  // ——— Layer sync ———
   useEffect(() => {
     if (!mapLoaded || !mapRef.current) return;
 
-    // CO2 (Red Magma Glow)
-    const showCO2 = isContamination && activeLayers.includes(CONTAMINATION_LAYERS.CO2_EMISSIONS);
-    if (showCO2 && co2GeoJSON) {
-      addSourceAndLayers('co2-source', co2GeoJSON, [
-        {
-          id: 'co2-glow', type: 'circle', source: 'co2-source',
-          paint: {
-            'circle-radius': ['get', 'glowRadius'],
-            'circle-color': '#ff2d55', 'circle-opacity': 0.3, 'circle-blur': 1
-          }
+    // CHOROPLETH — CO2 per country (contamination) or protected share (life).
+    // CO2 lives here rather than as circles, which is what stops it being
+    // buried under the air-quality markers sitting on the same centroid.
+    const scale = isContamination ? CHOROPLETH.co2 : CHOROPLETH.coverage;
+    const showChoropleth = activeLayers.includes(
+      isContamination ? CONTAMINATION_LAYERS.CO2_EMISSIONS : LIFE_LAYERS.PROTECTED_COVERAGE
+    );
+    syncLayers('countries-source', data?.countries, showChoropleth, [
+      {
+        // Countries the source has no figure for. Without this they stay black
+        // and read as "clean" instead of "not measured".
+        id: 'countries-nodata', type: 'fill', source: 'countries-source',
+        filter: ['!', ['has', scale.property]],
+        paint: { 'fill-color': NO_DATA_COLOR, 'fill-opacity': 0.45 },
+      },
+      {
+        id: 'countries-fill', type: 'fill', source: 'countries-source',
+        filter: ['has', scale.property],
+        paint: {
+          'fill-color': choroplethExpression(scale),
+          'fill-opacity': isContamination ? 0.55 : 0.5,
         },
-        {
-          id: 'co2-core', type: 'circle', source: 'co2-source',
-          paint: {
-            'circle-radius': ['get', 'radius'],
-            'circle-color': '#ffffff', 'circle-opacity': 0.9,
-            'circle-stroke-width': 2, 'circle-stroke-color': '#ff2d55'
-          }
-        }
-      ]);
-    } else {
-      removeSourceAndLayers('co2-source', ['co2-glow', 'co2-core']);
-    }
-
-    // AIR QUALITY (Cyan Glow)
-    const showAir = isContamination && activeLayers.includes(CONTAMINATION_LAYERS.AIR_QUALITY);
-    if (showAir && airQualityGeoJSON) {
-      addSourceAndLayers('air-source', airQualityGeoJSON, [
-        {
-          id: 'air-glow', type: 'circle', source: 'air-source',
-          paint: {
-            'circle-radius': ['get', 'glowRadius'],
-            'circle-color': '#00d4ff', 'circle-opacity': 0.4, 'circle-blur': 1
-          }
+      },
+      {
+        id: 'countries-line', type: 'line', source: 'countries-source',
+        filter: ['has', scale.property],
+        paint: {
+          'line-color': choroplethExpression(scale),
+          'line-width': 0.8,
+          'line-opacity': 0.9,
         },
-        {
-          id: 'air-core', type: 'circle', source: 'air-source',
-          paint: {
-            'circle-radius': ['get', 'radius'],
-            'circle-color': '#ffffff', 'circle-opacity': 1,
-            'circle-stroke-width': 2, 'circle-stroke-color': '#00d4ff'
-          }
-        }
-      ]);
-    } else {
-      removeSourceAndLayers('air-source', ['air-glow', 'air-core']);
-    }
+      },
+    ]);
 
-    // PLASTIC (Purple Glow)
-    const showPlastic = isContamination && activeLayers.includes(CONTAMINATION_LAYERS.OCEAN_PLASTIC);
-    if (showPlastic && oceanPlasticGeoJSON) {
-      addSourceAndLayers('plastic-source', oceanPlasticGeoJSON, [
-        {
-          id: 'plastic-glow', type: 'circle', source: 'plastic-source',
-          paint: {
-            'circle-radius': ['get', 'glowRadius'],
-            'circle-color': '#da70d6', 'circle-opacity': 0.3, 'circle-blur': 1
-          }
-        },
-        {
-          id: 'plastic-core', type: 'circle', source: 'plastic-source',
-          paint: {
-            'circle-radius': ['get', 'radius'],
-            'circle-color': '#ffffff', 'circle-opacity': 0.8,
-            'circle-stroke-width': 2, 'circle-stroke-color': '#da70d6'
-          }
-        }
-      ]);
-    } else {
-      removeSourceAndLayers('plastic-source', ['plastic-glow', 'plastic-core']);
-    }
+    // AIR — warm haze. Cyan read as "cool and clean", the opposite of what a
+    // PM2.5 reading means.
+    syncLayers(
+      'air-source', airQualityGeoJSON,
+      isContamination && activeLayers.includes(CONTAMINATION_LAYERS.AIR_QUALITY),
+      [
+        fogLayer('air-fog', 'air-source', FOG.air),
+        hitLayer('air-core', 'air-source'),
+      ]
+    );
 
-    // RIVERS (Cyan Lines/Dots)
+    // PLASTIC — violet haze, kept distinct from the air fog because it is a
+    // different phenomenon living out at sea.
+    syncLayers(
+      'plastic-source', oceanPlasticGeoJSON,
+      isContamination && activeLayers.includes(CONTAMINATION_LAYERS.OCEAN_PLASTIC),
+      [
+        fogLayer('plastic-fog', 'plastic-source', FOG.plastic),
+        hitLayer('plastic-core', 'plastic-source'),
+      ]
+    );
+
+    // Rivers and protected areas are not emissions, so they get no fog — just
+    // clean hollow markers.
     const showRivers = !isContamination && activeLayers.includes(LIFE_LAYERS.RIVERS);
-    if (showRivers && riversGeoJSON) {
-      addSourceAndLayers('river-source', riversGeoJSON, [
-        {
-          id: 'river-glow', type: 'circle', source: 'river-source',
-          paint: {
-            'circle-radius': ['get', 'glowRadius'],
-            'circle-color': '#00ffff', 'circle-opacity': 0.3, 'circle-blur': 1
-          }
-        },
-        {
-          id: 'river-core', type: 'circle', source: 'river-source',
-          paint: {
-            'circle-radius': ['get', 'radius'],
-            'circle-color': '#ffffff', 'circle-opacity': 1,
-            'circle-stroke-width': 2, 'circle-stroke-color': '#00ffff'
-          }
-        }
-      ]);
-    } else {
-      removeSourceAndLayers('river-source', ['river-glow', 'river-core']);
-    }
 
-    // PROTECTED (Emerald Glow)
-    const showProtected = !isContamination && activeLayers.includes(LIFE_LAYERS.PROTECTED_AREAS);
-    if (showProtected && protectedAreasGeoJSON) {
-      addSourceAndLayers('protected-source', protectedAreasGeoJSON, [
-        {
-          id: 'protected-glow', type: 'circle', source: 'protected-source',
-          paint: {
-            'circle-radius': ['get', 'glowRadius'],
-            'circle-color': ['get', 'statusColor'], 'circle-opacity': 0.3, 'circle-blur': 1
-          }
-        },
-        {
-          id: 'protected-core', type: 'circle', source: 'protected-source',
-          paint: {
-            'circle-radius': ['get', 'radius'],
-            'circle-color': '#ffffff', 'circle-opacity': 0.9,
-            'circle-stroke-width': 2, 'circle-stroke-color': ['get', 'statusColor']
-          }
-        }
-      ]);
-    } else {
-      removeSourceAndLayers('protected-source', ['protected-glow', 'protected-core']);
-    }
+    syncLayers('course-source', data?.riverCourses, showRivers, courseLayers('course-source'));
 
-  }, [mapLoaded, mode, activeLayers, isContamination, co2GeoJSON, airQualityGeoJSON, oceanPlasticGeoJSON, riversGeoJSON, protectedAreasGeoJSON, addSourceAndLayers, removeSourceAndLayers]);
+    // Baikal and the Great Lakes have no centerline — they are lakes. They keep
+    // a ring marker so they do not vanish from the map.
+    syncLayers('river-source', lakesGeoJSON, showRivers, [
+      fogLayer('lake-fog', 'river-source', FOG.lake),
+      hitLayer('river-core', 'river-source'),
+    ]);
+
+    syncLayers(
+      'protected-source', protectedAreasGeoJSON,
+      !isContamination && activeLayers.includes(LIFE_LAYERS.PROTECTED_AREAS),
+      [
+        fogLayer('protected-fog', 'protected-source', FOG.protected),
+        hitLayer('protected-core', 'protected-source'),
+      ]
+    );
+  }, [
+    mapLoaded, activeLayers, isContamination, data?.countries,
+    airQualityGeoJSON, oceanPlasticGeoJSON, lakesGeoJSON, protectedAreasGeoJSON,
+    data?.riverCourses,
+    syncLayers,
+  ]);
 
   // ——— Interactions ———
   useEffect(() => {
     if (!mapLoaded || !mapRef.current) return;
     const map = mapRef.current;
-    const interactiveLayers = ['co2-core', 'air-core', 'plastic-core', 'river-core', 'protected-core'];
+    const live = () => INTERACTIVE.filter(id => map.getLayer(id));
 
     function onClick(e) {
-      const features = map.queryRenderedFeatures(e.point, { layers: interactiveLayers.filter(id => map.getLayer(id)) });
-      if (!features || features.length === 0) return onItemClick(null);
+      const features = map.queryRenderedFeatures(e.point, { layers: live() });
+      if (!features.length) return onItemClick(null);
 
-      const f = features[0];
-      const p = f.properties;
-      const l = f.layer.id;
-      
-      let iType = '', iIcon = '', iMode = mode;
-      if (l === 'co2-core') { iType = 'Emisiones CO₂'; iIcon = 'factory'; }
-      else if (l === 'air-core') { iType = p.type === 'city' ? `Ciudad — ${p.parentCountry}` : 'Calidad del Aire'; iIcon = 'wind'; }
-      else if (l === 'plastic-core') { iType = 'Plástico Oceánico'; iIcon = 'waves'; }
-      else if (l === 'river-core') { iType = 'Río/Fuente Hídrica'; iIcon = 'droplets'; iMode = MODES.LIFE; }
-      else if (l === 'protected-core') { iType = p.type || 'Área Protegida'; iIcon = p.icon || 'leaf'; iMode = MODES.LIFE; }
+      const described = describeFeature(features[0], mode);
+      if (!described?.data) return onItemClick(null);
 
-      let parsed = {};
-      try { parsed = JSON.parse(p._raw); } catch { parsed = { ...p }; }
+      const [lng, lat] = features[0].geometry.type === 'Point'
+        ? features[0].geometry.coordinates
+        : [e.lngLat.lng, e.lngLat.lat];
 
-      onItemClick({ name: p.name, type: iType, icon: iIcon, mode: iMode, lat: e.lngLat.lat, lng: e.lngLat.lng, data: parsed });
-      map.flyTo({ center: [e.lngLat.lng, e.lngLat.lat], zoom: 5, duration: 1500 });
+      onItemClick({ ...described, lat, lng });
+      map.flyTo({ center: [lng, lat], zoom: 5, duration: 1500 });
+    }
+
+    // Hover state is written at most once per frame; the raw mousemove stream
+    // would otherwise re-render this component on every pixel of travel.
+    let frame = null;
+    let pending = null;
+
+    function flush() {
+      frame = null;
+      const e = pending;
+      pending = null;
+      if (!e) return;
+      const features = map.queryRenderedFeatures(e.point, { layers: live() });
+      const described = features.length ? describeFeature(features[0], mode) : null;
+      map.getCanvas().style.cursor = described ? 'pointer' : 'grab';
+      setHovered(described ? { ...described, x: e.point.x, y: e.point.y } : null);
     }
 
     function onMouseMove(e) {
-      const features = map.queryRenderedFeatures(e.point, { layers: interactiveLayers.filter(id => map.getLayer(id)) });
-      setCursorPos({ x: e.point.x, y: e.point.y });
-      if (features.length > 0) {
-        map.getCanvas().style.cursor = 'pointer';
-        setHoveredItem(features[0].properties);
-      } else {
-        map.getCanvas().style.cursor = 'grab';
-        setHoveredItem(null);
-      }
+      pending = e;
+      frame ??= requestAnimationFrame(flush);
+    }
+
+    function onMouseOut() {
+      setHovered(null);
     }
 
     map.on('click', onClick);
     map.on('mousemove', onMouseMove);
-    return () => { map.off('click', onClick); map.off('mousemove', onMouseMove); };
+    map.on('mouseout', onMouseOut);
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      map.off('click', onClick);
+      map.off('mousemove', onMouseMove);
+      map.off('mouseout', onMouseOut);
+    };
   }, [mapLoaded, mode, onItemClick]);
-
-  useEffect(() => {
-    if (mapRef.current) MapView.flyTo = (lng, lat, zoom = 5) => mapRef.current?.flyTo({ center: [lng, lat], zoom, duration: 1500 });
-  }, [mapLoaded]);
 
   return (
     <div className={styles.mapContainer}>
       <div ref={mapContainer} style={{ width: '100%', height: '100%' }} />
-      <div className={styles.mapOverlay} style={{ boxShadow: 'inset 0 0 150px rgba(0, 0, 0, 0.9), inset 0 0 50px rgba(2, 6, 23, 0.8)' }} />
-      
-      {hoveredItem && (
-        <div className={styles.tooltip} style={{ left: cursorPos.x, top: cursorPos.y }}>
+      <div
+        className={styles.mapOverlay}
+        style={{ boxShadow: 'inset 0 0 150px rgba(0, 0, 0, 0.9), inset 0 0 50px rgba(2, 6, 23, 0.8)' }}
+      />
+
+      {hovered && (
+        <div className={styles.tooltip} style={{ left: hovered.x, top: hovered.y }}>
           <div className={styles.tooltipContent}>
-            <div className={styles.tooltipName}>{hoveredItem.name}</div>
-            {hoveredItem.co2_total_mt && <div className={styles.tooltipValue} style={{ color: '#ff4d4d' }}>{hoveredItem.co2_total_mt} Mt CO₂</div>}
-            {hoveredItem.pm25 && !hoveredItem.co2_total_mt && <div className={styles.tooltipValue} style={{ color: '#00d4ff' }}>PM2.5: {hoveredItem.pm25} μg/m³</div>}
-            {hoveredItem.tons && <div className={styles.tooltipValue} style={{ color: '#da70d6' }}>{Number(hoveredItem.tons).toLocaleString('es-ES')} ton</div>}
-            {hoveredItem.length_km > 0 && <div className={styles.tooltipValue} style={{ color: '#00ffff' }}>{Number(hoveredItem.length_km).toLocaleString('es-ES')} km</div>}
-            {hoveredItem.biodiversity_index && !hoveredItem.length_km && <div className={styles.tooltipValue} style={{ color: '#00ff87' }}>Biodiversidad: {hoveredItem.biodiversity_index}/10</div>}
+            <div className={styles.tooltipName}>{hovered.name}</div>
+            {hovered.metric && (
+              <div className={styles.tooltipValue} style={{ color: hovered.metric.color }}>
+                {hovered.metric.label}: {hovered.metric.value}
+              </div>
+            )}
           </div>
           <div className={styles.tooltipArrow} />
         </div>
@@ -388,4 +556,4 @@ export default function MapView({ mode, activeLayers, data, onItemClick }) {
   );
 }
 
-MapView.flyTo = () => {};
+export default forwardRef(MapView);

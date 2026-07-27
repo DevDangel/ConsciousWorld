@@ -1,17 +1,27 @@
 import { motion } from 'framer-motion';
-import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
-import { MODES } from '../../data/constants';
-import { formatCO2, formatArea, getAirQualityLabel, getConservationStatus } from '../../utils/formatters';
+import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { formatArea, getAirQualityLabel, getConservationStatus } from '../../utils/formatters';
 import AnimatedCounter from '../UI/AnimatedCounter';
 import Icon from '../UI/Icons';
 import styles from './StatsPanel.module.css';
 
-export default function StatsPanel({ mode, selectedItem, onClose }) {
-  if (!selectedItem) return null;
+// Dispatch on an explicit discriminator rather than on the display label, so
+// renaming a heading in the UI can never silently change which panel renders.
+const RENDERERS = {
+  co2: renderCO2Detail,
+  air: renderAirQualityDetail,
+  city: renderCityDetail,
+  plastic: renderOceanPlasticDetail,
+  river: renderRiverDetail,
+  protectedArea: renderProtectedAreaDetail,
+  coverage: renderCoverageDetail,
+};
 
-  const isContamination = mode === MODES.CONTAMINATION;
+export default function StatsPanel({ selectedItem, onClose }) {
+  if (!selectedItem?.data) return null;
+
   const item = selectedItem.data;
-  const itemType = selectedItem.type;
+  const render = RENDERERS[selectedItem.kind];
 
   return (
     <motion.div
@@ -27,31 +37,15 @@ export default function StatsPanel({ mode, selectedItem, onClose }) {
           <span className={styles.headerIcon}><Icon name={selectedItem.icon} size={24} /></span>
           <div className={styles.headerText}>
             <h2 className={styles.headerTitle}>{selectedItem.name || item.name}</h2>
-            <span className={styles.headerSubtitle}>{itemType}</span>
+            <span className={styles.headerSubtitle}>{selectedItem.type}</span>
           </div>
         </div>
-        <button className={styles.closeBtn} onClick={onClose}>✕</button>
+        <button className={styles.closeBtn} onClick={onClose} aria-label="Cerrar panel">✕</button>
       </div>
 
       {/* Content */}
       <div className={styles.content}>
-        {/* CO2 Emissions detail */}
-        {itemType === 'Emisiones CO₂' && renderCO2Detail(item, styles)}
-
-        {/* Air Quality detail */}
-        {itemType === 'Calidad del Aire' && renderAirQualityDetail(item, styles)}
-
-        {/* Ocean Plastic detail */}
-        {itemType === 'Plástico Oceánico' && renderOceanPlasticDetail(item, styles)}
-
-        {/* River detail */}
-        {itemType === 'Río/Fuente Hídrica' && renderRiverDetail(item, styles)}
-
-        {/* Protected Area detail */}
-        {selectedItem.mode === MODES.LIFE && itemType !== 'Río/Fuente Hídrica' && renderProtectedAreaDetail(item, styles)}
-
-        {/* City detail (from air quality search) */}
-        {itemType?.startsWith('Ciudad') && renderCityDetail(item, styles)}
+        {render ? render(item, styles) : null}
       </div>
     </motion.div>
   );
@@ -194,7 +188,7 @@ function renderAirQualityDetail(item, s) {
         <div className={s.chartSection}>
           <h3 className={s.chartTitle}><Icon name="city" size={16} style={{ marginRight: '8px' }} /> Ciudades principales</h3>
           <div className={s.citiesList}>
-            {item.cities
+            {[...item.cities]
               .sort((a, b) => b.pm25 - a.pm25)
               .map((city, i) => {
                 const cityStatus = getAirQualityLabel(
@@ -325,6 +319,71 @@ function renderProtectedAreaDetail(item, s) {
 
       <div className={s.descriptionCyan}>
         {item.description}
+      </div>
+    </>
+  );
+}
+
+// Global target from the Kunming-Montreal Global Biodiversity Framework
+// (Target 3): 30% of land and sea protected by 2030.
+const GBF_TARGET_PCT = 30;
+
+function renderCoverageDetail(item, s) {
+  const pct = item.protected_pct;
+  const share = Math.min(pct / GBF_TARGET_PCT, 1) * 100;
+  const meetsTarget = pct >= GBF_TARGET_PCT;
+
+  return (
+    <>
+      <div className={s.highlightCyan}>
+        <div>
+          <div className={s.highlightValueCyan}>
+            <AnimatedCounter value={pct} suffix="%" />
+          </div>
+          <div className={s.highlightLabel}>Superficie terrestre protegida</div>
+        </div>
+        <div>
+          <span
+            className={s.statusBadge}
+            style={{
+              background: meetsTarget ? '#00ff8720' : '#ff6b3520',
+              color: meetsTarget ? '#00ff87' : '#ff6b35',
+            }}
+          >
+            ● {meetsTarget ? 'Meta cumplida' : 'Bajo la meta'}
+          </span>
+        </div>
+      </div>
+
+      <div className={s.chartSection}>
+        <h3 className={s.chartTitle}>
+          <Icon name="leaf" size={16} style={{ marginRight: '8px' }} /> Avance hacia la meta 30x30
+        </h3>
+        <div className={s.sectorRow}>
+          <div className={s.sectorHeader}>
+            <span className={s.sectorName}>{pct}% de {GBF_TARGET_PCT}%</span>
+            <span className={s.sectorPercent}>{share.toFixed(0)}%</span>
+          </div>
+          <div className={s.sectorBar}>
+            <div
+              className={s.sectorFill}
+              style={{
+                width: `${share}%`,
+                background: meetsTarget
+                  ? 'linear-gradient(90deg, #00d4ff, #00ff87)'
+                  : 'linear-gradient(90deg, #0088ff, #00d4ff)',
+              }}
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className={s.descriptionCyan}>
+        El Marco Global de Biodiversidad de Kunming-Montreal fija en <strong>30%</strong> la
+        superficie terrestre y marina protegida para 2030.
+        <br /><br />
+        <em>Valor aproximado (Banco Mundial / Protected Planet, ~2018-2022). Contrastar con
+        la fuente oficial antes de citarlo.</em>
       </div>
     </>
   );

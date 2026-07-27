@@ -166,7 +166,29 @@ img {
 }
 
 /* MapLibre overrides */
+
+/* CARTO's basemap terms require the attribution to stay visible. Style it
+   down to fit the dark UI instead of hiding it. */
+.maplibregl-ctrl-attrib {
+  background: rgba(10, 10, 15, 0.6) !important;
+  backdrop-filter: blur(6px);
+  border-radius: var(--radius-sm) !important;
+  font-size: 10px !important;
+}
+
 .maplibregl-ctrl-attrib,
+.maplibregl-ctrl-attrib a {
+  color: var(--text-tertiary) !important;
+}
+
+.maplibregl-ctrl-attrib a:hover {
+  color: var(--text-secondary) !important;
+}
+
+.maplibregl-ctrl-attrib-button {
+  filter: invert(1) opacity(0.45);
+}
+
 .maplibregl-ctrl-logo {
   display: none !important;
 }

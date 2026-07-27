@@ -1,33 +1,35 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { MODES, CONTAMINATION_LAYERS, LIFE_LAYERS } from './data/constants';
+import { MODES } from './data/constants';
 import { useMapData } from './hooks/useMapData';
 import TopBar from './components/TopBar/TopBar';
 import Sidebar from './components/Sidebar/Sidebar';
 import MapView from './components/Map/MapView';
 import StatsPanel from './components/Stats/StatsPanel';
+import IntroModal from './components/Intro/IntroModal';
 import Icon from './components/UI/Icons';
 import styles from './App.module.css';
 
+// Every mode opens on a bare black planet. Nothing is drawn until the user
+// switches a layer on; the idle toggles pulse to say they are waiting.
+const DEFAULT_LAYERS = {
+  [MODES.CONTAMINATION]: [],
+  [MODES.LIFE]: [],
+};
+
 export default function App() {
   const [mode, setMode] = useState(MODES.CONTAMINATION);
-  const [activeLayers, setActiveLayers] = useState([
-    CONTAMINATION_LAYERS.CO2_EMISSIONS,
-    CONTAMINATION_LAYERS.AIR_QUALITY,
-  ]);
+  const [activeLayers, setActiveLayers] = useState(DEFAULT_LAYERS[MODES.CONTAMINATION]);
   const [selectedItem, setSelectedItem] = useState(null);
-  const { data, loading, error } = useMapData();
+  const [introAccepted, setIntroAccepted] = useState(false);
+  const { data, loading, error, live, retry } = useMapData();
+  const mapRef = useRef(null);
 
   // ——— Mode change ———
   const handleModeChange = useCallback((newMode) => {
     setMode(newMode);
     setSelectedItem(null);
-    // Set default layers for each mode
-    if (newMode === MODES.CONTAMINATION) {
-      setActiveLayers([CONTAMINATION_LAYERS.CO2_EMISSIONS, CONTAMINATION_LAYERS.AIR_QUALITY]);
-    } else {
-      setActiveLayers([LIFE_LAYERS.RIVERS, LIFE_LAYERS.PROTECTED_AREAS]);
-    }
+    setActiveLayers(DEFAULT_LAYERS[newMode]);
   }, []);
 
   // ——— Layer toggle ———
@@ -44,20 +46,15 @@ export default function App() {
     setSelectedItem(item);
     if (item?.mode && item.mode !== mode) {
       setMode(item.mode);
-      if (item.mode === MODES.CONTAMINATION) {
-        setActiveLayers([CONTAMINATION_LAYERS.CO2_EMISSIONS, CONTAMINATION_LAYERS.AIR_QUALITY, CONTAMINATION_LAYERS.OCEAN_PLASTIC]);
-      } else {
-        setActiveLayers([LIFE_LAYERS.RIVERS, LIFE_LAYERS.PROTECTED_AREAS]);
-      }
+      setActiveLayers(DEFAULT_LAYERS[item.mode]);
     }
   }, [mode]);
 
   // ——— Search select ———
   const handleSearchSelect = useCallback((item) => {
     handleItemClick(item);
-    // Fly to the location
-    if (item?.lat && item?.lng) {
-      MapView.flyTo(item.lng, item.lat, 5);
+    if (item?.lat != null && item?.lng != null) {
+      mapRef.current?.flyTo(item.lng, item.lat, 5);
     }
   }, [handleItemClick]);
 
@@ -79,15 +76,36 @@ export default function App() {
     );
   }
 
+  // ——— Error state ———
+  if (error) {
+    return (
+      <div className={styles.loading}>
+        <div className={styles.loadingContent}>
+          <div className={styles.errorIcon}>
+            <Icon name="alert" size={56} />
+          </div>
+          <div className={styles.errorTitle}>No se pudieron cargar los datos</div>
+          <div className={styles.errorMessage}>{error}</div>
+          <button className={styles.retryBtn} onClick={retry}>Reintentar</button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.app}>
+      {/* Manifesto — sits between the loading screen and the map */}
+      <AnimatePresence>
+        {!introAccepted && <IntroModal onAccept={() => setIntroAccepted(true)} />}
+      </AnimatePresence>
+
       {/* Map (fullscreen base) */}
       <MapView
+        ref={mapRef}
         mode={mode}
         activeLayers={activeLayers}
         data={data}
         onItemClick={handleItemClick}
-        selectedItem={selectedItem}
       />
 
       {/* Top Bar */}
@@ -96,6 +114,7 @@ export default function App() {
         onModeChange={handleModeChange}
         data={data}
         onSearchSelect={handleSearchSelect}
+        live={live}
       />
 
       {/* Left Sidebar */}
@@ -109,7 +128,6 @@ export default function App() {
       <AnimatePresence>
         {selectedItem && (
           <StatsPanel
-            mode={mode}
             selectedItem={selectedItem}
             onClose={() => setSelectedItem(null)}
           />

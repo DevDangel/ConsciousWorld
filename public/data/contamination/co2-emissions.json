@@ -1,27 +1,6905 @@
-[
-  { "country": "CHN", "name": "China", "lat": 35.86, "lng": 104.19, "co2_total_mt": 11472, "co2_per_capita": 8.13, "sector": { "energy": 52, "industry": 28, "transport": 10, "buildings": 5, "other": 5 }, "trend": [9800, 10000, 10200, 10500, 10800, 11000, 11100, 11200, 11350, 11472], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] },
-  { "country": "USA", "name": "Estados Unidos", "lat": 37.09, "lng": -95.71, "co2_total_mt": 4853, "co2_per_capita": 14.44, "sector": { "energy": 38, "transport": 28, "industry": 16, "buildings": 12, "other": 6 }, "trend": [5400, 5300, 5200, 5100, 5000, 4900, 4700, 4800, 4850, 4853], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] },
-  { "country": "IND", "name": "India", "lat": 20.59, "lng": 78.96, "co2_total_mt": 2693, "co2_per_capita": 1.91, "sector": { "energy": 44, "industry": 26, "transport": 13, "buildings": 9, "other": 8 }, "trend": [2100, 2200, 2350, 2450, 2550, 2600, 2500, 2600, 2650, 2693], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] },
-  { "country": "RUS", "name": "Rusia", "lat": 61.52, "lng": 105.31, "co2_total_mt": 1756, "co2_per_capita": 12.07, "sector": { "energy": 50, "industry": 20, "transport": 14, "buildings": 10, "other": 6 }, "trend": [1700, 1710, 1720, 1730, 1740, 1750, 1600, 1700, 1740, 1756], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] },
-  { "country": "JPN", "name": "Japón", "lat": 36.20, "lng": 138.25, "co2_total_mt": 1067, "co2_per_capita": 8.57, "sector": { "energy": 42, "industry": 25, "transport": 17, "buildings": 11, "other": 5 }, "trend": [1250, 1220, 1200, 1180, 1150, 1120, 1050, 1060, 1065, 1067], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] },
-  { "country": "IRN", "name": "Irán", "lat": 32.42, "lng": 53.68, "co2_total_mt": 749, "co2_per_capita": 8.83, "sector": { "energy": 46, "industry": 22, "transport": 18, "buildings": 8, "other": 6 }, "trend": [620, 640, 660, 680, 700, 720, 700, 730, 740, 749], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] },
-  { "country": "DEU", "name": "Alemania", "lat": 51.16, "lng": 10.45, "co2_total_mt": 674, "co2_per_capita": 8.09, "sector": { "energy": 36, "industry": 21, "transport": 20, "buildings": 15, "other": 8 }, "trend": [800, 790, 780, 760, 740, 700, 640, 660, 670, 674], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] },
-  { "country": "SAU", "name": "Arabia Saudita", "lat": 23.88, "lng": 45.07, "co2_total_mt": 672, "co2_per_capita": 18.73, "sector": { "energy": 55, "industry": 18, "transport": 15, "buildings": 8, "other": 4 }, "trend": [580, 590, 610, 630, 640, 650, 620, 650, 665, 672], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] },
-  { "country": "KOR", "name": "Corea del Sur", "lat": 35.90, "lng": 127.76, "co2_total_mt": 616, "co2_per_capita": 11.89, "sector": { "energy": 40, "industry": 26, "transport": 16, "buildings": 12, "other": 6 }, "trend": [580, 590, 600, 610, 620, 620, 580, 600, 610, 616], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] },
-  { "country": "IDN", "name": "Indonesia", "lat": -0.78, "lng": 113.92, "co2_total_mt": 619, "co2_per_capita": 2.25, "sector": { "energy": 47, "industry": 23, "transport": 17, "buildings": 6, "other": 7 }, "trend": [480, 500, 520, 540, 560, 580, 550, 580, 600, 619], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] },
-  { "country": "CAN", "name": "Canadá", "lat": 56.13, "lng": -106.34, "co2_total_mt": 565, "co2_per_capita": 14.30, "sector": { "energy": 44, "industry": 19, "transport": 23, "buildings": 8, "other": 6 }, "trend": [570, 575, 580, 572, 568, 560, 520, 540, 555, 565], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] },
-  { "country": "MEX", "name": "México", "lat": 23.63, "lng": -102.55, "co2_total_mt": 477, "co2_per_capita": 3.58, "sector": { "energy": 40, "industry": 20, "transport": 25, "buildings": 8, "other": 7 }, "trend": [470, 475, 480, 485, 482, 480, 440, 460, 470, 477], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] },
-  { "country": "BRA", "name": "Brasil", "lat": -14.23, "lng": -51.92, "co2_total_mt": 457, "co2_per_capita": 2.11, "sector": { "energy": 30, "industry": 22, "transport": 32, "buildings": 6, "other": 10 }, "trend": [500, 490, 480, 470, 460, 450, 420, 440, 450, 457], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] },
-  { "country": "AUS", "name": "Australia", "lat": -25.27, "lng": 133.77, "co2_total_mt": 392, "co2_per_capita": 14.98, "sector": { "energy": 50, "industry": 18, "transport": 18, "buildings": 8, "other": 6 }, "trend": [400, 405, 408, 410, 405, 400, 380, 385, 390, 392], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] },
-  { "country": "GBR", "name": "Reino Unido", "lat": 55.37, "lng": -3.43, "co2_total_mt": 338, "co2_per_capita": 4.98, "sector": { "energy": 32, "industry": 18, "transport": 27, "buildings": 16, "other": 7 }, "trend": [420, 400, 380, 370, 360, 345, 310, 325, 335, 338], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] },
-  { "country": "TUR", "name": "Turquía", "lat": 38.96, "lng": 35.24, "co2_total_mt": 428, "co2_per_capita": 4.98, "sector": { "energy": 42, "industry": 24, "transport": 18, "buildings": 10, "other": 6 }, "trend": [350, 360, 370, 390, 400, 410, 390, 410, 420, 428], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] },
-  { "country": "FRA", "name": "Francia", "lat": 46.22, "lng": 2.21, "co2_total_mt": 306, "co2_per_capita": 4.52, "sector": { "energy": 25, "industry": 20, "transport": 30, "buildings": 18, "other": 7 }, "trend": [340, 335, 330, 325, 320, 315, 280, 295, 300, 306], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] },
-  { "country": "POL", "name": "Polonia", "lat": 51.91, "lng": 19.14, "co2_total_mt": 324, "co2_per_capita": 8.57, "sector": { "energy": 48, "industry": 22, "transport": 16, "buildings": 10, "other": 4 }, "trend": [310, 315, 318, 320, 325, 322, 300, 310, 320, 324], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] },
-  { "country": "THA", "name": "Tailandia", "lat": 15.87, "lng": 100.99, "co2_total_mt": 278, "co2_per_capita": 3.93, "sector": { "energy": 38, "industry": 28, "transport": 22, "buildings": 7, "other": 5 }, "trend": [260, 265, 268, 270, 272, 275, 255, 265, 273, 278], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] },
-  { "country": "EGY", "name": "Egipto", "lat": 26.82, "lng": 30.80, "co2_total_mt": 250, "co2_per_capita": 2.33, "sector": { "energy": 42, "industry": 25, "transport": 19, "buildings": 8, "other": 6 }, "trend": [210, 215, 220, 228, 235, 240, 230, 240, 245, 250], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] },
-  { "country": "COL", "name": "Colombia", "lat": 4.57, "lng": -74.29, "co2_total_mt": 92, "co2_per_capita": 1.76, "sector": { "energy": 32, "industry": 20, "transport": 30, "buildings": 8, "other": 10 }, "trend": [85, 87, 88, 90, 91, 92, 80, 85, 89, 92], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] },
-  { "country": "ARG", "name": "Argentina", "lat": -38.41, "lng": -63.61, "co2_total_mt": 171, "co2_per_capita": 3.68, "sector": { "energy": 38, "industry": 18, "transport": 28, "buildings": 8, "other": 8 }, "trend": [190, 188, 185, 183, 180, 178, 160, 165, 168, 171], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] },
-  { "country": "NGA", "name": "Nigeria", "lat": 9.08, "lng": 8.67, "co2_total_mt": 130, "co2_per_capita": 0.59, "sector": { "energy": 50, "industry": 15, "transport": 22, "buildings": 5, "other": 8 }, "trend": [90, 95, 100, 105, 110, 115, 110, 120, 125, 130], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] },
-  { "country": "MYS", "name": "Malasia", "lat": 4.21, "lng": 101.97, "co2_total_mt": 258, "co2_per_capita": 7.60, "sector": { "energy": 45, "industry": 22, "transport": 20, "buildings": 7, "other": 6 }, "trend": [230, 235, 240, 245, 248, 252, 238, 248, 255, 258], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] },
-  { "country": "ZAF", "name": "Sudáfrica", "lat": -30.56, "lng": 22.93, "co2_total_mt": 435, "co2_per_capita": 7.17, "sector": { "energy": 60, "industry": 18, "transport": 11, "buildings": 6, "other": 5 }, "trend": [450, 448, 445, 442, 440, 438, 410, 420, 430, 435], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] }
-]
+{
+ "_meta": {
+  "fuente": "Banco Mundial — World Bank Open Data",
+  "url": "https://api.worldbank.org/v2",
+  "indicadores": [
+   "EN.GHG.CO2.MT.CE.AR5",
+   "EN.GHG.CO2.PC.CE.AR5",
+   "EN.GHG.CO2.PI.MT.CE.AR5",
+   "EN.GHG.CO2.IC.MT.CE.AR5",
+   "EN.GHG.CO2.IP.MT.CE.AR5",
+   "EN.GHG.CO2.TR.MT.CE.AR5",
+   "EN.GHG.CO2.BU.MT.CE.AR5",
+   "EN.GHG.CO2.FE.MT.CE.AR5",
+   "EN.GHG.CO2.AG.MT.CE.AR5",
+   "EN.GHG.CO2.WA.MT.CE.AR5"
+  ],
+  "actualizado_por_el_banco_mundial": "2026-07-13",
+  "descargado": "2026-07-26",
+  "generado_por": "npm run data:refresh (scripts/fetch-data.mjs)",
+  "nota_sectores": "Porcentajes sobre la suma de los sectores reportados. energy=Power Industry · industry=Industrial Combustion+Processes · other=Fugitive+Agriculture+Waste.",
+  "nota_coordenadas": "Centroide del polígono más grande de cada país, calculado desde countries.geojson."
+ },
+ "data": [
+  {
+   "country": "CHN",
+   "name": "China",
+   "lat": 36.62,
+   "lng": 103.81,
+   "year": 2023,
+   "co2_total_mt": 13021.2,
+   "co2_per_capita": 9.23,
+   "sector": {
+    "energy": 49.8,
+    "industry": 32.2,
+    "transport": 7.2,
+    "buildings": 4.4,
+    "other": 6.3
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    10881.1,
+    10749.9,
+    10773.7,
+    10999.4,
+    11527.5,
+    11813.1,
+    11964.1,
+    12551.9,
+    12518.7,
+    13021.2
+   ]
+  },
+  {
+   "country": "USA",
+   "name": "Estados Unidos",
+   "lat": 39.53,
+   "lng": -99.15,
+   "year": 2023,
+   "co2_total_mt": 4618.3,
+   "co2_per_capita": 13.71,
+   "sector": {
+    "energy": 32.3,
+    "industry": 13,
+    "transport": 36.3,
+    "buildings": 11.9,
+    "other": 6.6
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    5243.8,
+    5133,
+    5029,
+    4959.5,
+    5118.4,
+    4967.9,
+    4466.9,
+    4754.4,
+    4815.8,
+    4618.3
+   ]
+  },
+  {
+   "country": "IND",
+   "name": "India",
+   "lat": 22.91,
+   "lng": 79.58,
+   "year": 2023,
+   "co2_total_mt": 3014.5,
+   "co2_per_capita": 2.1,
+   "sector": {
+    "energy": 47.5,
+    "industry": 30.1,
+    "transport": 11,
+    "buildings": 6.7,
+    "other": 4.7
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    2237.7,
+    2278.2,
+    2312,
+    2441.2,
+    2556.7,
+    2551.5,
+    2357,
+    2597.9,
+    2807.1,
+    3014.5
+   ]
+  },
+  {
+   "country": "RUS",
+   "name": "Rusia",
+   "lat": 61.66,
+   "lng": 99.07,
+   "year": 2023,
+   "co2_total_mt": 1948.3,
+   "co2_per_capita": 13.55,
+   "sector": {
+    "energy": 42.4,
+    "industry": 20.3,
+    "transport": 14.3,
+    "buildings": 12.3,
+    "other": 10.8
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    1750.2,
+    1757.1,
+    1734.6,
+    1763.2,
+    1831.1,
+    1858,
+    1784.2,
+    1938.5,
+    1895.5,
+    1948.3
+   ]
+  },
+  {
+   "country": "JPN",
+   "name": "Japón",
+   "lat": 36.65,
+   "lng": 137.98,
+   "year": 2023,
+   "co2_total_mt": 1002.4,
+   "co2_per_capita": 8.05,
+   "sector": {
+    "energy": 44,
+    "industry": 21.9,
+    "transport": 18.6,
+    "buildings": 10.7,
+    "other": 4.8
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    1273.6,
+    1232.6,
+    1228.7,
+    1212.9,
+    1163.1,
+    1123.8,
+    1060.2,
+    1080.2,
+    1050.5,
+    1002.4
+   ]
+  },
+  {
+   "country": "IRN",
+   "name": "Irán",
+   "lat": 32.57,
+   "lng": 54.28,
+   "year": 2023,
+   "co2_total_mt": 816.1,
+   "co2_per_capita": 9.01,
+   "sector": {
+    "energy": 24.2,
+    "industry": 24.4,
+    "transport": 17.7,
+    "buildings": 21.6,
+    "other": 12
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    636.5,
+    629.5,
+    642.3,
+    666.4,
+    661.4,
+    712.6,
+    735.9,
+    784.3,
+    792.1,
+    816.1
+   ]
+  },
+  {
+   "country": "IDN",
+   "name": "Indonesia",
+   "lat": -0.19,
+   "lng": 114.02,
+   "year": 2023,
+   "co2_total_mt": 772.6,
+   "co2_per_capita": 2.75,
+   "sector": {
+    "energy": 42.9,
+    "industry": 29.9,
+    "transport": 19,
+    "buildings": 3.9,
+    "other": 4.2
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    505.1,
+    512.4,
+    507.1,
+    535.7,
+    596.5,
+    637.6,
+    596.3,
+    622.7,
+    722.7,
+    772.6
+   ]
+  },
+  {
+   "country": "SAU",
+   "name": "Arabia Saudí",
+   "lat": 24.12,
+   "lng": 44.54,
+   "year": 2023,
+   "co2_total_mt": 635.4,
+   "co2_per_capita": 18.85,
+   "sector": {
+    "energy": 42.3,
+    "industry": 29.1,
+    "transport": 22.1,
+    "buildings": 0.8,
+    "other": 5.7
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    585.9,
+    611.4,
+    609.5,
+    603.3,
+    580,
+    579.8,
+    577.1,
+    590.3,
+    620.4,
+    635.4
+   ]
+  },
+  {
+   "country": "KOR",
+   "name": "Corea del Sur",
+   "lat": 36.46,
+   "lng": 127.87,
+   "year": 2023,
+   "co2_total_mt": 590.4,
+   "co2_per_capita": 11.42,
+   "sector": {
+    "energy": 46.1,
+    "industry": 19.4,
+    "transport": 17.8,
+    "buildings": 8,
+    "other": 8.7
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    630.6,
+    643.8,
+    648.8,
+    665.3,
+    680.5,
+    655,
+    617.3,
+    638.8,
+    613.5,
+    590.4
+   ]
+  },
+  {
+   "country": "DEU",
+   "name": "Alemania",
+   "lat": 51.08,
+   "lng": 10.37,
+   "year": 2023,
+   "co2_total_mt": 589.7,
+   "co2_per_capita": 7.08,
+   "sector": {
+    "energy": 32.3,
+    "industry": 20.8,
+    "transport": 23.2,
+    "buildings": 19.2,
+    "other": 4.6
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    778.8,
+    784.9,
+    789.2,
+    774.5,
+    746.7,
+    696.5,
+    642.1,
+    670.7,
+    658.1,
+    589.7
+   ]
+  },
+  {
+   "country": "CAN",
+   "name": "Canadá",
+   "lat": 57.94,
+   "lng": -102.36,
+   "year": 2023,
+   "co2_total_mt": 567.1,
+   "co2_per_capita": 14.16,
+   "sector": {
+    "energy": 13.2,
+    "industry": 17.2,
+    "transport": 29,
+    "buildings": 15.3,
+    "other": 25.3
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    580.3,
+    574.4,
+    574.1,
+    591.9,
+    612.6,
+    609.1,
+    548.4,
+    561.7,
+    575.8,
+    567.1
+   ]
+  },
+  {
+   "country": "BRA",
+   "name": "Brasil",
+   "lat": -10.84,
+   "lng": -53.11,
+   "year": 2023,
+   "co2_total_mt": 480.2,
+   "co2_per_capita": 2.27,
+   "sector": {
+    "energy": 9.6,
+    "industry": 27.7,
+    "transport": 45.4,
+    "buildings": 8.8,
+    "other": 8.5
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    546.4,
+    517.9,
+    482.7,
+    494.8,
+    471.1,
+    468.6,
+    447.9,
+    506.2,
+    479.3,
+    480.2
+   ]
+  },
+  {
+   "country": "MEX",
+   "name": "México",
+   "lat": 23.94,
+   "lng": -102.51,
+   "year": 2023,
+   "co2_total_mt": 475.6,
+   "co2_per_capita": 3.67,
+   "sector": {
+    "energy": 33.1,
+    "industry": 21.1,
+    "transport": 26.6,
+    "buildings": 6.6,
+    "other": 12.6
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    480.9,
+    490.4,
+    496.5,
+    500.7,
+    478.2,
+    493.7,
+    439,
+    452.7,
+    453,
+    475.6
+   ]
+  },
+  {
+   "country": "TUR",
+   "name": "Turquía",
+   "lat": 38.99,
+   "lng": 35.42,
+   "year": 2023,
+   "co2_total_mt": 446.4,
+   "co2_per_capita": 5.23,
+   "sector": {
+    "energy": 31.1,
+    "industry": 27.8,
+    "transport": 21.8,
+    "buildings": 15.4,
+    "other": 3.9
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    355.4,
+    367.8,
+    391.3,
+    433.2,
+    429.3,
+    414.5,
+    423.1,
+    460.7,
+    444.4,
+    446.4
+   ]
+  },
+  {
+   "country": "ZAF",
+   "name": "Sudáfrica",
+   "lat": -29.01,
+   "lng": 25.16,
+   "year": 2023,
+   "co2_total_mt": 427.3,
+   "co2_per_capita": 6.76,
+   "sector": {
+    "energy": 51.1,
+    "industry": 15.5,
+    "transport": 11.2,
+    "buildings": 5.4,
+    "other": 16.8
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    486.6,
+    462.3,
+    460.2,
+    469.6,
+    473.4,
+    477.5,
+    450.9,
+    448.6,
+    429.3,
+    427.3
+   ]
+  },
+  {
+   "country": "VNM",
+   "name": "Vietnam",
+   "lat": 16.65,
+   "lng": 106.31,
+   "year": 2023,
+   "co2_total_mt": 390.7,
+   "co2_per_capita": 3.89,
+   "sector": {
+    "energy": 43.7,
+    "industry": 39.1,
+    "transport": 12.2,
+    "buildings": 4,
+    "other": 1.1
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    178.9,
+    200.8,
+    223.8,
+    229.3,
+    282.1,
+    336.5,
+    348.3,
+    336.2,
+    344,
+    390.7
+   ]
+  },
+  {
+   "country": "AUS",
+   "name": "Australia",
+   "lat": -25.58,
+   "lng": 134.36,
+   "year": 2023,
+   "co2_total_mt": 377.5,
+   "co2_per_capita": 14.16,
+   "sector": {
+    "energy": 42.3,
+    "industry": 14.1,
+    "transport": 25.6,
+    "buildings": 7.9,
+    "other": 10.1
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    396.4,
+    400.6,
+    408.6,
+    411.2,
+    409.2,
+    407.9,
+    392.5,
+    384.7,
+    378.1,
+    377.5
+   ]
+  },
+  {
+   "country": "GBR",
+   "name": "Reino Unido",
+   "lat": 53.94,
+   "lng": -2.51,
+   "year": 2023,
+   "co2_total_mt": 304.8,
+   "co2_per_capita": 4.45,
+   "sector": {
+    "energy": 17.7,
+    "industry": 13.8,
+    "transport": 34.9,
+    "buildings": 25,
+    "other": 8.6
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    430.7,
+    415.9,
+    391.9,
+    380.7,
+    373.9,
+    359,
+    319.7,
+    337.9,
+    325,
+    304.8
+   ]
+  },
+  {
+   "country": "ITA",
+   "name": "Italia",
+   "lat": 43.52,
+   "lng": 12.16,
+   "year": 2023,
+   "co2_total_mt": 304.3,
+   "co2_per_capita": 5.16,
+   "sector": {
+    "energy": 23.8,
+    "industry": 18.2,
+    "transport": 34.4,
+    "buildings": 18.6,
+    "other": 4.9
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    343,
+    353.7,
+    349.2,
+    345.7,
+    340.4,
+    332.6,
+    295.2,
+    330.3,
+    331,
+    304.3
+   ]
+  },
+  {
+   "country": "FRA",
+   "name": "Francia",
+   "lat": 46.61,
+   "lng": 2.45,
+   "year": 2023,
+   "co2_total_mt": 284.2,
+   "co2_per_capita": 4.16,
+   "sector": {
+    "energy": 9.9,
+    "industry": 20.3,
+    "transport": 42,
+    "buildings": 20.5,
+    "other": 7.3
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    327,
+    332.2,
+    334.8,
+    338.7,
+    328.6,
+    322.9,
+    287.1,
+    316.7,
+    307.7,
+    284.2
+   ]
+  },
+  {
+   "country": "MYS",
+   "name": "Malasia",
+   "lat": 3.62,
+   "lng": 114.72,
+   "year": 2023,
+   "co2_total_mt": 282.4,
+   "co2_per_capita": 8.04,
+   "sector": {
+    "energy": 43.2,
+    "industry": 18.8,
+    "transport": 20.8,
+    "buildings": 2.9,
+    "other": 14.3
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    251.4,
+    252.9,
+    247.5,
+    237.8,
+    254.3,
+    255.2,
+    253.1,
+    257.9,
+    277,
+    282.4
+   ]
+  },
+  {
+   "country": "POL",
+   "name": "Polonia",
+   "lat": 52.12,
+   "lng": 19.4,
+   "year": 2023,
+   "co2_total_mt": 280.7,
+   "co2_per_capita": 7.65,
+   "sector": {
+    "energy": 41.7,
+    "industry": 15.1,
+    "transport": 24.1,
+    "buildings": 14.8,
+    "other": 4.4
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    302.6,
+    305.8,
+    316.7,
+    330.2,
+    329.6,
+    312.1,
+    296.9,
+    324,
+    308,
+    280.7
+   ]
+  },
+  {
+   "country": "EGY",
+   "name": "Egipto",
+   "lat": 26.49,
+   "lng": 29.86,
+   "year": 2023,
+   "co2_total_mt": 275.8,
+   "co2_per_capita": 2.41,
+   "sector": {
+    "energy": 32.3,
+    "industry": 28.6,
+    "transport": 21.2,
+    "buildings": 6.1,
+    "other": 11.7
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    233.1,
+    239.4,
+    250.1,
+    261.7,
+    256.2,
+    237,
+    246.2,
+    261.6,
+    259,
+    275.8
+   ]
+  },
+  {
+   "country": "THA",
+   "name": "Tailandia",
+   "lat": 15.13,
+   "lng": 101.01,
+   "year": 2023,
+   "co2_total_mt": 275,
+   "co2_per_capita": 3.84,
+   "sector": {
+    "energy": 30.7,
+    "industry": 28.4,
+    "transport": 29.2,
+    "buildings": 4.9,
+    "other": 6.8
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    272.5,
+    281.5,
+    277.8,
+    281.1,
+    276.7,
+    286.5,
+    275.6,
+    268.6,
+    284.3,
+    275
+   ]
+  },
+  {
+   "country": "KAZ",
+   "name": "Kazajistán",
+   "lat": 48.15,
+   "lng": 67.29,
+   "year": 2023,
+   "co2_total_mt": 255.4,
+   "co2_per_capita": 12.56,
+   "sector": {
+    "energy": 50.2,
+    "industry": 15.6,
+    "transport": 11.6,
+    "buildings": 14.8,
+    "other": 7.8
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    233,
+    202.8,
+    216.1,
+    226.5,
+    229.4,
+    218.8,
+    225.5,
+    241.9,
+    246.5,
+    255.4
+   ]
+  },
+  {
+   "country": "IRQ",
+   "name": "Irak",
+   "lat": 33.05,
+   "lng": 43.74,
+   "year": 2023,
+   "co2_total_mt": 233,
+   "co2_per_capita": 5.17,
+   "sector": {
+    "energy": 41.2,
+    "industry": 13,
+    "transport": 18.7,
+    "buildings": 4.3,
+    "other": 22.7
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    138.3,
+    137.9,
+    155,
+    167.3,
+    180.9,
+    193.6,
+    183.9,
+    199.7,
+    222.3,
+    233
+   ]
+  },
+  {
+   "country": "ESP",
+   "name": "España",
+   "lat": 40.39,
+   "lng": -3.56,
+   "year": 2023,
+   "co2_total_mt": 221,
+   "co2_per_capita": 4.57,
+   "sector": {
+    "energy": 16.8,
+    "industry": 20.7,
+    "transport": 40.8,
+    "buildings": 12.7,
+    "other": 9
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    255.2,
+    271.5,
+    263,
+    278.4,
+    271.8,
+    254.4,
+    214.5,
+    233.2,
+    238.7,
+    221
+   ]
+  },
+  {
+   "country": "PAK",
+   "name": "Pakistán",
+   "lat": 29.94,
+   "lng": 69.33,
+   "year": 2023,
+   "co2_total_mt": 208.9,
+   "co2_per_capita": 0.84,
+   "sector": {
+    "energy": 28.3,
+    "industry": 34.6,
+    "transport": 22.1,
+    "buildings": 10.1,
+    "other": 4.8
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    169.2,
+    178.3,
+    196.8,
+    213.3,
+    202.3,
+    198.8,
+    222.6,
+    229.1,
+    235.4,
+    208.9
+   ]
+  },
+  {
+   "country": "ARE",
+   "name": "Emiratos Árabes Unidos",
+   "lat": 23.91,
+   "lng": 54.31,
+   "year": 2023,
+   "co2_total_mt": 192.7,
+   "co2_per_capita": 18.38,
+   "sector": {
+    "energy": 31.4,
+    "industry": 46.6,
+    "transport": 19.1,
+    "buildings": 0.3,
+    "other": 2.5
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    198.1,
+    206.9,
+    212.4,
+    204.4,
+    187.3,
+    197.8,
+    195.7,
+    199.4,
+    195.2,
+    192.7
+   ]
+  },
+  {
+   "country": "DZA",
+   "name": "Argelia",
+   "lat": 28.15,
+   "lng": 2.65,
+   "year": 2023,
+   "co2_total_mt": 190.6,
+   "co2_per_capita": 4.13,
+   "sector": {
+    "energy": 25.1,
+    "industry": 17.5,
+    "transport": 24.3,
+    "buildings": 16.3,
+    "other": 16.8
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    155,
+    164.6,
+    160.7,
+    166.3,
+    174.8,
+    181.7,
+    172,
+    181.3,
+    189.2,
+    190.6
+   ]
+  },
+  {
+   "country": "ARG",
+   "name": "Argentina",
+   "lat": -35.18,
+   "lng": -65.15,
+   "year": 2023,
+   "co2_total_mt": 189.9,
+   "co2_per_capita": 4.17,
+   "sector": {
+    "energy": 21.6,
+    "industry": 17.7,
+    "transport": 27.1,
+    "buildings": 21.3,
+    "other": 12.2
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    190,
+    196.2,
+    194.1,
+    191.4,
+    189.8,
+    183.3,
+    168.1,
+    185.7,
+    195,
+    189.9
+   ]
+  },
+  {
+   "country": "PHL",
+   "name": "Filipinas",
+   "lat": 15.95,
+   "lng": 121.42,
+   "year": 2023,
+   "co2_total_mt": 162.5,
+   "co2_per_capita": 1.41,
+   "sector": {
+    "energy": 52.8,
+    "industry": 16.4,
+    "transport": 22.6,
+    "buildings": 6.3,
+    "other": 1.9
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    104,
+    113.2,
+    121.3,
+    135.6,
+    141.3,
+    147.9,
+    136.4,
+    145.6,
+    151.7,
+    162.5
+   ]
+  },
+  {
+   "country": "UZB",
+   "name": "Uzbekistán",
+   "lat": 41.76,
+   "lng": 63.13,
+   "year": 2023,
+   "co2_total_mt": 132.6,
+   "co2_per_capita": 3.72,
+   "sector": {
+    "energy": 36,
+    "industry": 18.8,
+    "transport": 13.3,
+    "buildings": 24.2,
+    "other": 7.8
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    113.2,
+    107.6,
+    114,
+    118.3,
+    112.8,
+    115.1,
+    123.9,
+    134.4,
+    128.9,
+    132.6
+   ]
+  },
+  {
+   "country": "QAT",
+   "name": "Catar",
+   "lat": 25.32,
+   "lng": 51.19,
+   "year": 2023,
+   "co2_total_mt": 129.2,
+   "co2_per_capita": 48.64,
+   "sector": {
+    "energy": 21.9,
+    "industry": 30,
+    "transport": 9.7,
+    "buildings": 0.4,
+    "other": 38.1
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    110.8,
+    114.1,
+    114.1,
+    114.1,
+    114.9,
+    117.7,
+    115.3,
+    118.4,
+    120.1,
+    129.2
+   ]
+  },
+  {
+   "country": "NGA",
+   "name": "Nigeria",
+   "lat": 9.6,
+   "lng": 8.09,
+   "year": 2023,
+   "co2_total_mt": 125.9,
+   "co2_per_capita": 0.55,
+   "sector": {
+    "energy": 11.8,
+    "industry": 21.2,
+    "transport": 46.2,
+    "buildings": 3.4,
+    "other": 17.4
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    122.7,
+    118.5,
+    123.5,
+    116,
+    121.4,
+    126.1,
+    118.9,
+    130.9,
+    129,
+    125.9
+   ]
+  },
+  {
+   "country": "NLD",
+   "name": "Países Bajos",
+   "lat": 52.29,
+   "lng": 5.65,
+   "year": 2023,
+   "co2_total_mt": 122.9,
+   "co2_per_capita": 6.88,
+   "sector": {
+    "energy": 26.5,
+    "industry": 24.9,
+    "transport": 21.2,
+    "buildings": 18.4,
+    "other": 9
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    161.8,
+    169.4,
+    170.8,
+    168.2,
+    163.1,
+    158,
+    142.2,
+    145.9,
+    133.1,
+    122.9
+   ]
+  },
+  {
+   "country": "UKR",
+   "name": "Ucrania",
+   "lat": 49.16,
+   "lng": 31.26,
+   "year": 2023,
+   "co2_total_mt": 121.7,
+   "co2_per_capita": 3.23,
+   "sector": {
+    "energy": 41.3,
+    "industry": 20.4,
+    "transport": 18.3,
+    "buildings": 14.3,
+    "other": 5.7
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    269.3,
+    226.1,
+    227.2,
+    205.6,
+    218.3,
+    207.9,
+    198.9,
+    194.1,
+    119.3,
+    121.7
+   ]
+  },
+  {
+   "country": "BGD",
+   "name": "Bangladés",
+   "lat": 23.89,
+   "lng": 90.22,
+   "year": 2023,
+   "co2_total_mt": 119,
+   "co2_per_capita": 0.69,
+   "sector": {
+    "energy": 49.3,
+    "industry": 28.2,
+    "transport": 10,
+    "buildings": 9.3,
+    "other": 3.2
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    76.7,
+    85.4,
+    94,
+    101,
+    105.2,
+    109.3,
+    104.1,
+    117.8,
+    120.9,
+    119
+   ]
+  },
+  {
+   "country": "KWT",
+   "name": "Kuwait",
+   "lat": 29.31,
+   "lng": 47.57,
+   "year": 2023,
+   "co2_total_mt": 110.2,
+   "co2_per_capita": 22.7,
+   "sector": {
+    "energy": 44.1,
+    "industry": 21.2,
+    "transport": 16.2,
+    "buildings": 1,
+    "other": 17.4
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    92.3,
+    95.6,
+    98.4,
+    97.5,
+    99.1,
+    96.8,
+    92.9,
+    99.9,
+    102.6,
+    110.2
+   ]
+  },
+  {
+   "country": "VEN",
+   "name": "Venezuela",
+   "lat": 7.12,
+   "lng": -66.19,
+   "year": 2023,
+   "co2_total_mt": 96.4,
+   "co2_per_capita": 3.41,
+   "sector": {
+    "energy": 14.8,
+    "industry": 21.8,
+    "transport": 18.4,
+    "buildings": 3.8,
+    "other": 41.2
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    191.9,
+    175.9,
+    162.9,
+    152,
+    137.8,
+    120.4,
+    76.7,
+    75.9,
+    92,
+    96.4
+   ]
+  },
+  {
+   "country": "OMN",
+   "name": "Omán",
+   "lat": 20.57,
+   "lng": 56.09,
+   "year": 2023,
+   "co2_total_mt": 95.7,
+   "co2_per_capita": 18.96,
+   "sector": {
+    "energy": 17.1,
+    "industry": 29.7,
+    "transport": 13.9,
+    "buildings": 22.3,
+    "other": 16.9
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    75,
+    79.3,
+    80.6,
+    81.4,
+    84.4,
+    85.4,
+    82.2,
+    87.7,
+    93.1,
+    95.7
+   ]
+  },
+  {
+   "country": "TKM",
+   "name": "Turkmenistán",
+   "lat": 39.11,
+   "lng": 59.38,
+   "year": 2023,
+   "co2_total_mt": 94.7,
+   "co2_per_capita": 12.86,
+   "sector": {
+    "energy": 25.6,
+    "industry": 17.6,
+    "transport": 10.6,
+    "buildings": 36.1,
+    "other": 10.1
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    63.2,
+    67.9,
+    67.3,
+    72.2,
+    74.2,
+    73.3,
+    76.8,
+    95.4,
+    101.3,
+    94.7
+   ]
+  },
+  {
+   "country": "COL",
+   "name": "Colombia",
+   "lat": 3.92,
+   "lng": -73.09,
+   "year": 2023,
+   "co2_total_mt": 92.8,
+   "co2_per_capita": 1.77,
+   "sector": {
+    "energy": 20.2,
+    "industry": 19.8,
+    "transport": 40.3,
+    "buildings": 8.6,
+    "other": 11.1
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    84.9,
+    86.2,
+    88.5,
+    81,
+    85.4,
+    86.1,
+    84.3,
+    92.2,
+    88.3,
+    92.8
+   ]
+  },
+  {
+   "country": "BEL",
+   "name": "Bélgica",
+   "lat": 50.63,
+   "lng": 4.65,
+   "year": 2023,
+   "co2_total_mt": 85.7,
+   "co2_per_capita": 7.28,
+   "sector": {
+    "energy": 14.5,
+    "industry": 27.6,
+    "transport": 27.4,
+    "buildings": 23.6,
+    "other": 6.9
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    97.8,
+    102.4,
+    101.4,
+    99.8,
+    100.5,
+    100.3,
+    91.9,
+    96,
+    89.7,
+    85.7
+   ]
+  },
+  {
+   "country": "CZE",
+   "name": "Chequia",
+   "lat": 49.73,
+   "lng": 15.3,
+   "year": 2023,
+   "co2_total_mt": 85.6,
+   "co2_per_capita": 7.88,
+   "sector": {
+    "energy": 44.3,
+    "industry": 17.6,
+    "transport": 23,
+    "buildings": 10.2,
+    "other": 4.8
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    107.2,
+    108.3,
+    109.8,
+    110.4,
+    109.3,
+    103.8,
+    94.9,
+    99.5,
+    97.7,
+    85.6
+   ]
+  },
+  {
+   "country": "CHL",
+   "name": "Chile",
+   "lat": -35.37,
+   "lng": -71.23,
+   "year": 2023,
+   "co2_total_mt": 77,
+   "co2_per_capita": 3.92,
+   "sector": {
+    "energy": 25.9,
+    "industry": 23.5,
+    "transport": 36.9,
+    "buildings": 10.3,
+    "other": 3.4
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    78.7,
+    84.4,
+    88.9,
+    89.8,
+    89.8,
+    95.2,
+    87.5,
+    89.1,
+    90.4,
+    77
+   ]
+  },
+  {
+   "country": "ROU",
+   "name": "Rumanía",
+   "lat": 45.85,
+   "lng": 24.98,
+   "year": 2023,
+   "co2_total_mt": 70.3,
+   "co2_per_capita": 3.69,
+   "sector": {
+    "energy": 22.9,
+    "industry": 24.2,
+    "transport": 30.9,
+    "buildings": 17.1,
+    "other": 4.8
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    79,
+    80.3,
+    78.7,
+    81.8,
+    83,
+    81.2,
+    75.7,
+    80.7,
+    75.7,
+    70.3
+   ]
+  },
+  {
+   "country": "MAR",
+   "name": "Marruecos",
+   "lat": 29.84,
+   "lng": -8.4,
+   "year": 2023,
+   "co2_total_mt": 70,
+   "co2_per_capita": 1.86,
+   "sector": {
+    "energy": 41.3,
+    "industry": 15.8,
+    "transport": 26.1,
+    "buildings": 16.2,
+    "other": 0.5
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    59.5,
+    61.1,
+    61,
+    63.9,
+    65.2,
+    71.9,
+    67.6,
+    73.1,
+    72.3,
+    70
+   ]
+  },
+  {
+   "country": "PRK",
+   "name": "Corea del Norte",
+   "lat": 40.15,
+   "lng": 127.19,
+   "year": 2023,
+   "co2_total_mt": 65.7,
+   "co2_per_capita": 2.49,
+   "sector": {
+    "energy": 20.3,
+    "industry": 54.1,
+    "transport": 7.5,
+    "buildings": 17.6,
+    "other": 0.4
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    41.6,
+    32.7,
+    36,
+    73.5,
+    66.4,
+    73.4,
+    69,
+    57.3,
+    59.8,
+    65.7
+   ]
+  },
+  {
+   "country": "PER",
+   "name": "Perú",
+   "lat": -9.16,
+   "lng": -74.38,
+   "year": 2023,
+   "co2_total_mt": 65.1,
+   "co2_per_capita": 1.92,
+   "sector": {
+    "energy": 19.8,
+    "industry": 24.4,
+    "transport": 42.5,
+    "buildings": 7.2,
+    "other": 6.1
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    53.3,
+    54.9,
+    57.5,
+    55.2,
+    55.3,
+    58.2,
+    47.5,
+    59.6,
+    63.7,
+    65.1
+   ]
+  },
+  {
+   "country": "LBY",
+   "name": "Libia",
+   "lat": 27.03,
+   "lng": 18.01,
+   "year": 2023,
+   "co2_total_mt": 63.2,
+   "co2_per_capita": 8.65,
+   "sector": {
+    "energy": 35.7,
+    "industry": 8.3,
+    "transport": 30,
+    "buildings": 1.8,
+    "other": 24.2
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    61.8,
+    54.5,
+    51.2,
+    55.4,
+    57.3,
+    57.5,
+    45.7,
+    58.4,
+    58.2,
+    63.2
+   ]
+  },
+  {
+   "country": "ISR",
+   "name": "Israel",
+   "lat": 31.45,
+   "lng": 34.99,
+   "year": 2023,
+   "co2_total_mt": 60.5,
+   "co2_per_capita": 6.14,
+   "sector": {
+    "energy": 50.3,
+    "industry": 11.9,
+    "transport": 30.4,
+    "buildings": 4.3,
+    "other": 3.1
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    65.9,
+    68,
+    67.6,
+    67.8,
+    63.5,
+    65.3,
+    61.4,
+    61,
+    63.6,
+    60.5
+   ]
+  },
+  {
+   "country": "AUT",
+   "name": "Austria",
+   "lat": 47.58,
+   "lng": 14.12,
+   "year": 2023,
+   "co2_total_mt": 58.5,
+   "co2_per_capita": 6.4,
+   "sector": {
+    "energy": 17.1,
+    "industry": 25.1,
+    "transport": 34.8,
+    "buildings": 11.6,
+    "other": 11.5
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    65.9,
+    67.4,
+    67.8,
+    70.1,
+    67.3,
+    68.8,
+    62.9,
+    66.2,
+    62.6,
+    58.5
+   ]
+  },
+  {
+   "country": "BLR",
+   "name": "Bielorrusia",
+   "lat": 53.53,
+   "lng": 28.03,
+   "year": 2023,
+   "co2_total_mt": 53.8,
+   "co2_per_capita": 5.86,
+   "sector": {
+    "energy": 44.5,
+    "industry": 16.8,
+    "transport": 18.4,
+    "buildings": 13.3,
+    "other": 7
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    64,
+    59.2,
+    59.1,
+    60.2,
+    63.4,
+    61.2,
+    58.2,
+    58.6,
+    55.9,
+    53.8
+   ]
+  },
+  {
+   "country": "GRC",
+   "name": "Grecia",
+   "lat": 39.47,
+   "lng": 22.59,
+   "year": 2023,
+   "co2_total_mt": 51.2,
+   "co2_per_capita": 4.92,
+   "sector": {
+    "energy": 29,
+    "industry": 16,
+    "transport": 35.9,
+    "buildings": 10.1,
+    "other": 9
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    71,
+    69.5,
+    68.2,
+    68.4,
+    66.5,
+    61.5,
+    52.4,
+    53.7,
+    55.1,
+    51.2
+   ]
+  },
+  {
+   "country": "ECU",
+   "name": "Ecuador",
+   "lat": -1.45,
+   "lng": -78.39,
+   "year": 2023,
+   "co2_total_mt": 46.8,
+   "co2_per_capita": 2.6,
+   "sector": {
+    "energy": 12.3,
+    "industry": 14.2,
+    "transport": 46.5,
+    "buildings": 14.3,
+    "other": 12.7
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    43.5,
+    43.3,
+    42.1,
+    41.1,
+    42.2,
+    41.9,
+    36.6,
+    41.2,
+    44.2,
+    46.8
+   ]
+  },
+  {
+   "country": "HUN",
+   "name": "Hungría",
+   "lat": 47.16,
+   "lng": 19.4,
+   "year": 2023,
+   "co2_total_mt": 43,
+   "co2_per_capita": 4.48,
+   "sector": {
+    "energy": 18.2,
+    "industry": 22.6,
+    "transport": 31.7,
+    "buildings": 21.7,
+    "other": 5.8
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    44.8,
+    47.5,
+    48.3,
+    51.1,
+    51.3,
+    51.5,
+    49.7,
+    51,
+    47.6,
+    43
+   ]
+  },
+  {
+   "country": "AZE",
+   "name": "Azerbaiyán",
+   "lat": 40.35,
+   "lng": 47.66,
+   "year": 2023,
+   "co2_total_mt": 41.7,
+   "co2_per_capita": 4.11,
+   "sector": {
+    "energy": 31.7,
+    "industry": 10.6,
+    "transport": 23.6,
+    "buildings": 26.6,
+    "other": 7.5
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    34.7,
+    34.5,
+    34.4,
+    34.2,
+    34.8,
+    37,
+    35.4,
+    37.4,
+    39.7,
+    41.7
+   ]
+  },
+  {
+   "country": "NOR",
+   "name": "Noruega",
+   "lat": 64.23,
+   "lng": 14.03,
+   "year": 2023,
+   "co2_total_mt": 41.6,
+   "co2_per_capita": 7.54,
+   "sector": {
+    "energy": 4,
+    "industry": 31,
+    "transport": 30.8,
+    "buildings": 6.2,
+    "other": 27.9
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    47,
+    48,
+    47.4,
+    47.4,
+    46.6,
+    45.3,
+    43.7,
+    44.4,
+    43.5,
+    41.6
+   ]
+  },
+  {
+   "country": "PRT",
+   "name": "Portugal",
+   "lat": 39.68,
+   "lng": -7.98,
+   "year": 2023,
+   "co2_total_mt": 37.4,
+   "co2_per_capita": 3.54,
+   "sector": {
+    "energy": 14.5,
+    "industry": 23.9,
+    "transport": 46.7,
+    "buildings": 9.9,
+    "other": 5
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    47.7,
+    51.7,
+    50.5,
+    55.1,
+    51.1,
+    46.4,
+    40.6,
+    39,
+    39.7,
+    37.4
+   ]
+  },
+  {
+   "country": "BGR",
+   "name": "Bulgaria",
+   "lat": 42.77,
+   "lng": 25.21,
+   "year": 2023,
+   "co2_total_mt": 37,
+   "co2_per_capita": 5.73,
+   "sector": {
+    "energy": 40.7,
+    "industry": 21.4,
+    "transport": 26.6,
+    "buildings": 2.9,
+    "other": 8.4
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    47.3,
+    49.9,
+    47.1,
+    49.3,
+    46.3,
+    44.6,
+    39.4,
+    45.9,
+    49.4,
+    37
+   ]
+  },
+  {
+   "country": "SWE",
+   "name": "Suecia",
+   "lat": 62.83,
+   "lng": 16.74,
+   "year": 2023,
+   "co2_total_mt": 36.7,
+   "co2_per_capita": 3.48,
+   "sector": {
+    "energy": 15.7,
+    "industry": 30.5,
+    "transport": 37.5,
+    "buildings": 5.1,
+    "other": 11.1
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    42.8,
+    42.9,
+    42.5,
+    41.8,
+    39.6,
+    39.5,
+    38,
+    40.5,
+    37.8,
+    36.7
+   ]
+  },
+  {
+   "country": "HKG",
+   "name": "RAE de Hong Kong (China)",
+   "lat": 22.41,
+   "lng": 114.18,
+   "year": 2023,
+   "co2_total_mt": 34.1,
+   "co2_per_capita": 4.53,
+   "sector": {
+    "energy": 69.1,
+    "industry": 3.3,
+    "transport": 21.7,
+    "buildings": 4.8,
+    "other": 1
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    47.6,
+    44.2,
+    45.1,
+    44.1,
+    44.1,
+    43.5,
+    34.1,
+    34.5,
+    32.1,
+    34.1
+   ]
+  },
+  {
+   "country": "CHE",
+   "name": "Suiza",
+   "lat": 46.8,
+   "lng": 8.21,
+   "year": 2023,
+   "co2_total_mt": 33.7,
+   "co2_per_capita": 3.79,
+   "sector": {
+    "energy": 7.7,
+    "industry": 19.5,
+    "transport": 43,
+    "buildings": 28.6,
+    "other": 1.2
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    40.9,
+    40.2,
+    40.8,
+    39.8,
+    38.5,
+    38.4,
+    35.9,
+    37.6,
+    34.5,
+    33.7
+   ]
+  },
+  {
+   "country": "FIN",
+   "name": "Finlandia",
+   "lat": 64.51,
+   "lng": 26.3,
+   "year": 2023,
+   "co2_total_mt": 32.9,
+   "co2_per_capita": 5.89,
+   "sector": {
+    "energy": 26.7,
+    "industry": 25.4,
+    "transport": 28.3,
+    "buildings": 9.3,
+    "other": 10.4
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    49.4,
+    46,
+    48.8,
+    46.1,
+    47.4,
+    44.1,
+    39.5,
+    39.3,
+    37.1,
+    32.9
+   ]
+  },
+  {
+   "country": "IRL",
+   "name": "Irlanda",
+   "lat": 53.17,
+   "lng": -8.13,
+   "year": 2023,
+   "co2_total_mt": 32.9,
+   "co2_per_capita": 6.19,
+   "sector": {
+    "energy": 23.1,
+    "industry": 18.1,
+    "transport": 34.4,
+    "buildings": 22.5,
+    "other": 1.8
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    36.1,
+    37.6,
+    39.5,
+    38.3,
+    38,
+    36.4,
+    34.3,
+    36.4,
+    35.7,
+    32.9
+   ]
+  },
+  {
+   "country": "DOM",
+   "name": "República Dominicana",
+   "lat": 18.9,
+   "lng": -70.51,
+   "year": 2023,
+   "co2_total_mt": 32.8,
+   "co2_per_capita": 2.89,
+   "sector": {
+    "energy": 42.9,
+    "industry": 23,
+    "transport": 26.5,
+    "buildings": 5.5,
+    "other": 2
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    21.7,
+    23.9,
+    24.9,
+    23.8,
+    25.6,
+    28.5,
+    26.9,
+    29.7,
+    32.1,
+    32.8
+   ]
+  },
+  {
+   "country": "NZL",
+   "name": "Nueva Zelanda",
+   "lat": -43.98,
+   "lng": 170.53,
+   "year": 2023,
+   "co2_total_mt": 31.8,
+   "co2_per_capita": 6.11,
+   "sector": {
+    "energy": 12.6,
+    "industry": 26,
+    "transport": 46.5,
+    "buildings": 10.6,
+    "other": 4.2
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    35.3,
+    35.4,
+    34.7,
+    36.3,
+    35.6,
+    37.2,
+    34.7,
+    34.7,
+    32.1,
+    31.8
+   ]
+  },
+  {
+   "country": "SYR",
+   "name": "Siria",
+   "lat": 35.02,
+   "lng": 38.5,
+   "year": 2023,
+   "co2_total_mt": 31.4,
+   "co2_per_capita": 1.33,
+   "sector": {
+    "energy": 53.4,
+    "industry": 12.5,
+    "transport": 16.1,
+    "buildings": 9.4,
+    "other": 8.6
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    31,
+    28.1,
+    25.9,
+    31.1,
+    34,
+    33.3,
+    31.7,
+    32,
+    31.2,
+    31.4
+   ]
+  },
+  {
+   "country": "MMR",
+   "name": "Myanmar (Birmania)",
+   "lat": 21.22,
+   "lng": 96.49,
+   "year": 2023,
+   "co2_total_mt": 31.2,
+   "co2_per_capita": 0.58,
+   "sector": {
+    "energy": 22.2,
+    "industry": 22.3,
+    "transport": 41.5,
+    "buildings": 5.9,
+    "other": 8
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    17.7,
+    19.7,
+    23,
+    33.8,
+    33.5,
+    34.4,
+    34.7,
+    31.8,
+    31,
+    31.2
+   ]
+  },
+  {
+   "country": "TUN",
+   "name": "Túnez",
+   "lat": 34.13,
+   "lng": 9.55,
+   "year": 2023,
+   "co2_total_mt": 31.2,
+   "co2_per_capita": 2.56,
+   "sector": {
+    "energy": 27.7,
+    "industry": 26,
+    "transport": 27.9,
+    "buildings": 14.5,
+    "other": 3.9
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    30.2,
+    30.7,
+    29.9,
+    30.3,
+    30.2,
+    30.2,
+    28.7,
+    31,
+    30.4,
+    31.2
+   ]
+  },
+  {
+   "country": "SVK",
+   "name": "Eslovaquia",
+   "lat": 48.71,
+   "lng": 19.48,
+   "year": 2023,
+   "co2_total_mt": 31.1,
+   "co2_per_capita": 5.74,
+   "sector": {
+    "energy": 13.5,
+    "industry": 35.3,
+    "transport": 23.6,
+    "buildings": 13.1,
+    "other": 14.5
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    34,
+    34.5,
+    35.4,
+    37.7,
+    37.2,
+    34.8,
+    32.6,
+    36.6,
+    33.2,
+    31.1
+   ]
+  },
+  {
+   "country": "AGO",
+   "name": "Angola",
+   "lat": -12.34,
+   "lng": 17.56,
+   "year": 2023,
+   "co2_total_mt": 27.3,
+   "co2_per_capita": 0.74,
+   "sector": {
+    "energy": 13.6,
+    "industry": 12.6,
+    "transport": 31.3,
+    "buildings": 26.2,
+    "other": 16.3
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    30.9,
+    33.1,
+    31.3,
+    28,
+    25.8,
+    27,
+    20.5,
+    25.6,
+    26.7,
+    27.3
+   ]
+  },
+  {
+   "country": "MNG",
+   "name": "Mongolia",
+   "lat": 46.83,
+   "lng": 103.06,
+   "year": 2023,
+   "co2_total_mt": 27.2,
+   "co2_per_capita": 7.8,
+   "sector": {
+    "energy": 62.7,
+    "industry": 10.4,
+    "transport": 11.1,
+    "buildings": 12.1,
+    "other": 3.7
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    19.5,
+    18,
+    19.1,
+    21.1,
+    23,
+    25.3,
+    22.5,
+    24.9,
+    25,
+    27.2
+   ]
+  },
+  {
+   "country": "TTO",
+   "name": "Trinidad y Tobago",
+   "lat": 10.43,
+   "lng": -61.28,
+   "year": 2023,
+   "co2_total_mt": 26.9,
+   "co2_per_capita": 19.71,
+   "sector": {
+    "energy": 18.6,
+    "industry": 50.4,
+    "transport": 9.7,
+    "buildings": 1.5,
+    "other": 19.8
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    37.2,
+    36.8,
+    33.7,
+    32.5,
+    32.6,
+    33.2,
+    29.8,
+    28.7,
+    28.5,
+    26.9
+   ]
+  },
+  {
+   "country": "DNK",
+   "name": "Dinamarca",
+   "lat": 56.23,
+   "lng": 9.39,
+   "year": 2023,
+   "co2_total_mt": 26.2,
+   "co2_per_capita": 4.41,
+   "sector": {
+    "energy": 18.7,
+    "industry": 18.7,
+    "transport": 42.3,
+    "buildings": 14,
+    "other": 6.4
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    36.2,
+    34.1,
+    35.7,
+    33.5,
+    33.5,
+    30.1,
+    27.8,
+    29.6,
+    28.5,
+    26.2
+   ]
+  },
+  {
+   "country": "LAO",
+   "name": "Laos",
+   "lat": 18.51,
+   "lng": 103.74,
+   "year": 2023,
+   "co2_total_mt": 25.7,
+   "co2_per_capita": 3.36,
+   "sector": {
+    "energy": 63.5,
+    "industry": 26.2,
+    "transport": 9.9,
+    "buildings": 0.3,
+    "other": 0.1
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    4.4,
+    8.9,
+    15.9,
+    19.2,
+    19.9,
+    19.4,
+    19.4,
+    23.8,
+    24,
+    25.7
+   ]
+  },
+  {
+   "country": "BOL",
+   "name": "Bolivia",
+   "lat": -16.7,
+   "lng": -64.68,
+   "year": 2023,
+   "co2_total_mt": 24.4,
+   "co2_per_capita": 1.99,
+   "sector": {
+    "energy": 15.1,
+    "industry": 16.1,
+    "transport": 52,
+    "buildings": 12.4,
+    "other": 4.5
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    19.5,
+    20,
+    21.4,
+    21.8,
+    22,
+    22,
+    18.6,
+    21.9,
+    23.4,
+    24.4
+   ]
+  },
+  {
+   "country": "JOR",
+   "name": "Jordania",
+   "lat": 31.25,
+   "lng": 36.78,
+   "year": 2023,
+   "co2_total_mt": 24,
+   "co2_per_capita": 2.1,
+   "sector": {
+    "energy": 35.1,
+    "industry": 18.8,
+    "transport": 33,
+    "buildings": 12.3,
+    "other": 0.8
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    25.8,
+    25.6,
+    25.2,
+    26.6,
+    25.2,
+    23.3,
+    20.9,
+    21.7,
+    23.3,
+    24
+   ]
+  },
+  {
+   "country": "GHA",
+   "name": "Ghana",
+   "lat": 7.95,
+   "lng": -1.21,
+   "year": 2023,
+   "co2_total_mt": 23.2,
+   "co2_per_capita": 0.69,
+   "sector": {
+    "energy": 29.9,
+    "industry": 21,
+    "transport": 40.8,
+    "buildings": 3.1,
+    "other": 5.2
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    14.8,
+    15.6,
+    16,
+    17.4,
+    19.1,
+    20.3,
+    22.9,
+    24.5,
+    23.8,
+    23.2
+   ]
+  },
+  {
+   "country": "SDN",
+   "name": "Sudán",
+   "lat": 15.98,
+   "lng": 29.94,
+   "year": 2023,
+   "co2_total_mt": 21.7,
+   "co2_per_capita": 0.43,
+   "sector": {
+    "energy": 18.1,
+    "industry": 10.6,
+    "transport": 61.2,
+    "buildings": 6.2,
+    "other": 4
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    18.5,
+    21.6,
+    23.9,
+    23.7,
+    23.6,
+    23.5,
+    21.7,
+    23.6,
+    21.4,
+    21.7
+   ]
+  },
+  {
+   "country": "LKA",
+   "name": "Sri Lanka",
+   "lat": 7.62,
+   "lng": 80.7,
+   "year": 2023,
+   "co2_total_mt": 21.6,
+   "co2_per_capita": 0.98,
+   "sector": {
+    "energy": 33.6,
+    "industry": 14,
+    "transport": 45.4,
+    "buildings": 5.4,
+    "other": 1.6
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    17.9,
+    19.7,
+    23.5,
+    23.4,
+    22,
+    24,
+    22.6,
+    22.8,
+    20.8,
+    21.6
+   ]
+  },
+  {
+   "country": "TZA",
+   "name": "Tanzania",
+   "lat": -6.27,
+   "lng": 34.8,
+   "year": 2023,
+   "co2_total_mt": 21.6,
+   "co2_per_capita": 0.32,
+   "sector": {
+    "energy": 16.2,
+    "industry": 31.1,
+    "transport": 47.2,
+    "buildings": 4.2,
+    "other": 1.3
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    11.3,
+    13.2,
+    14.1,
+    14.2,
+    14.9,
+    17,
+    16.7,
+    18.9,
+    20.9,
+    21.6
+   ]
+  },
+  {
+   "country": "KEN",
+   "name": "Kenia",
+   "lat": 0.55,
+   "lng": 37.82,
+   "year": 2023,
+   "co2_total_mt": 21.3,
+   "co2_per_capita": 0.38,
+   "sector": {
+    "energy": 5.8,
+    "industry": 36,
+    "transport": 47.9,
+    "buildings": 9.6,
+    "other": 0.8
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    15.7,
+    17,
+    18.5,
+    19.2,
+    19.1,
+    19.5,
+    19.2,
+    21.5,
+    22,
+    21.3
+   ]
+  },
+  {
+   "country": "BIH",
+   "name": "Bosnia y Herzegovina",
+   "lat": 44.18,
+   "lng": 17.77,
+   "year": 2023,
+   "co2_total_mt": 20.8,
+   "co2_per_capita": 6.54,
+   "sector": {
+    "energy": 58.2,
+    "industry": 12.5,
+    "transport": 19.7,
+    "buildings": 3.9,
+    "other": 5.7
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    20.8,
+    20.8,
+    23.5,
+    24,
+    24.1,
+    22.6,
+    22.5,
+    23,
+    22.4,
+    20.8
+   ]
+  },
+  {
+   "country": "GTM",
+   "name": "Guatemala",
+   "lat": 15.69,
+   "lng": -90.36,
+   "year": 2023,
+   "co2_total_mt": 20.1,
+   "co2_per_capita": 1.11,
+   "sector": {
+    "energy": 10.8,
+    "industry": 26.4,
+    "transport": 52.8,
+    "buildings": 6.6,
+    "other": 3.3
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    14.5,
+    17,
+    18,
+    17.1,
+    18.7,
+    19.7,
+    17.6,
+    20.2,
+    19,
+    20.1
+   ]
+  },
+  {
+   "country": "CUB",
+   "name": "Cuba",
+   "lat": 21.62,
+   "lng": -78.96,
+   "year": 2023,
+   "co2_total_mt": 20,
+   "co2_per_capita": 1.82,
+   "sector": {
+    "energy": 51.9,
+    "industry": 29,
+    "transport": 5.9,
+    "buildings": 9.9,
+    "other": 3.3
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    26.9,
+    29.4,
+    27.3,
+    26.5,
+    26.8,
+    22.3,
+    18.5,
+    21.8,
+    19.8,
+    20
+   ]
+  },
+  {
+   "country": "ETH",
+   "name": "Etiopía",
+   "lat": 8.62,
+   "lng": 39.6,
+   "year": 2023,
+   "co2_total_mt": 19,
+   "co2_per_capita": 0.15,
+   "sector": {
+    "energy": 0,
+    "industry": 50.8,
+    "transport": 39,
+    "buildings": 7.6,
+    "other": 2.5
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    12.4,
+    13.5,
+    16,
+    15.9,
+    17.5,
+    18.5,
+    18,
+    19.1,
+    18.3,
+    19
+   ]
+  },
+  {
+   "country": "KHM",
+   "name": "Camboya",
+   "lat": 12.72,
+   "lng": 104.9,
+   "year": 2023,
+   "co2_total_mt": 18.9,
+   "co2_per_capita": 1.09,
+   "sector": {
+    "energy": 20.6,
+    "industry": 35.1,
+    "transport": 35.8,
+    "buildings": 8.4,
+    "other": 0.1
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    7,
+    8.5,
+    10.6,
+    11.8,
+    12.3,
+    15.7,
+    18.6,
+    18.5,
+    18.4,
+    18.9
+   ]
+  },
+  {
+   "country": "HRV",
+   "name": "Croacia",
+   "lat": 45.16,
+   "lng": 16.41,
+   "year": 2023,
+   "co2_total_mt": 18.7,
+   "co2_per_capita": 4.84,
+   "sector": {
+    "energy": 17.3,
+    "industry": 23.8,
+    "transport": 40.1,
+    "buildings": 13.9,
+    "other": 4.9
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    17.7,
+    18,
+    18.3,
+    18.8,
+    17.8,
+    18,
+    17.2,
+    17.5,
+    17.6,
+    18.7
+   ]
+  },
+  {
+   "country": "CIV",
+   "name": "Côte d’Ivoire",
+   "lat": 7.63,
+   "lng": -5.57,
+   "year": 2023,
+   "co2_total_mt": 17.9,
+   "co2_per_capita": 0.58,
+   "sector": {
+    "energy": 23.6,
+    "industry": 22.6,
+    "transport": 39.6,
+    "buildings": 11,
+    "other": 3.3
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    10.5,
+    11.3,
+    11.4,
+    12.3,
+    12.3,
+    13.2,
+    13.3,
+    17.2,
+    18.4,
+    17.9
+   ]
+  },
+  {
+   "country": "NPL",
+   "name": "Nepal",
+   "lat": 28.25,
+   "lng": 83.91,
+   "year": 2023,
+   "co2_total_mt": 15.4,
+   "co2_per_capita": 0.52,
+   "sector": {
+    "energy": 0,
+    "industry": 55,
+    "transport": 31.2,
+    "buildings": 13.2,
+    "other": 0.6
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    7.4,
+    7.3,
+    10.8,
+    13.2,
+    14.9,
+    13.5,
+    16.5,
+    17.4,
+    15,
+    15.4
+   ]
+  },
+  {
+   "country": "PRI",
+   "name": "Puerto Rico",
+   "lat": 18.23,
+   "lng": -66.48,
+   "year": 2023,
+   "co2_total_mt": 14.6,
+   "co2_per_capita": 4.57,
+   "sector": {
+    "energy": 79,
+    "industry": 1.6,
+    "transport": 14.6,
+    "buildings": 4.7,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    11.5,
+    12.1,
+    11.3,
+    11.6,
+    13.7,
+    12.6,
+    12.5,
+    12.7,
+    13.9,
+    14.6
+   ]
+  },
+  {
+   "country": "SEN",
+   "name": "Senegal",
+   "lat": 14.37,
+   "lng": -14.47,
+   "year": 2023,
+   "co2_total_mt": 13.7,
+   "co2_per_capita": 0.76,
+   "sector": {
+    "energy": 28.1,
+    "industry": 27.4,
+    "transport": 38.9,
+    "buildings": 4.6,
+    "other": 0.9
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    8.4,
+    9.2,
+    10.3,
+    10.2,
+    10.7,
+    11,
+    10.8,
+    13.1,
+    14.5,
+    13.7
+   ]
+  },
+  {
+   "country": "GEO",
+   "name": "Georgia",
+   "lat": 42.17,
+   "lng": 43.49,
+   "year": 2023,
+   "co2_total_mt": 13.6,
+   "co2_per_capita": 3.65,
+   "sector": {
+    "energy": 11.2,
+    "industry": 28.2,
+    "transport": 34.6,
+    "buildings": 23.9,
+    "other": 2.1
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    9.8,
+    10.6,
+    11,
+    11.2,
+    11.1,
+    11.9,
+    11.5,
+    12.3,
+    13.5,
+    13.6
+   ]
+  },
+  {
+   "country": "LTU",
+   "name": "Lituania",
+   "lat": 55.32,
+   "lng": 23.9,
+   "year": 2023,
+   "co2_total_mt": 13,
+   "co2_per_capita": 4.52,
+   "sector": {
+    "energy": 7.6,
+    "industry": 21.7,
+    "transport": 47,
+    "buildings": 10.1,
+    "other": 13.6
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    13.2,
+    13.7,
+    13.5,
+    14,
+    14,
+    14.3,
+    14.3,
+    14.3,
+    13.2,
+    13
+   ]
+  },
+  {
+   "country": "PAN",
+   "name": "Panamá",
+   "lat": 8.53,
+   "lng": -80.1,
+   "year": 2023,
+   "co2_total_mt": 12.7,
+   "co2_per_capita": 2.86,
+   "sector": {
+    "energy": 32.7,
+    "industry": 17,
+    "transport": 46.2,
+    "buildings": 4.1,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    10.8,
+    10.6,
+    10.7,
+    10.1,
+    9.9,
+    13.2,
+    9.7,
+    10.8,
+    11.4,
+    12.7
+   ]
+  },
+  {
+   "country": "SVN",
+   "name": "Eslovenia",
+   "lat": 46.12,
+   "lng": 14.81,
+   "year": 2023,
+   "co2_total_mt": 12.6,
+   "co2_per_capita": 5.95,
+   "sector": {
+    "energy": 25.8,
+    "industry": 23.6,
+    "transport": 41.8,
+    "buildings": 8.5,
+    "other": 0.3
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    14.1,
+    14.3,
+    15,
+    15.3,
+    15.4,
+    14.8,
+    13.5,
+    13.9,
+    13.4,
+    12.6
+   ]
+  },
+  {
+   "country": "ZWE",
+   "name": "Zimbabue",
+   "lat": -19.01,
+   "lng": 29.85,
+   "year": 2023,
+   "co2_total_mt": 12.6,
+   "co2_per_capita": 0.77,
+   "sector": {
+    "energy": 38,
+    "industry": 25.2,
+    "transport": 18.3,
+    "buildings": 13,
+    "other": 5.5
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    12.6,
+    12.7,
+    11.3,
+    10.6,
+    12.3,
+    11.2,
+    9.1,
+    10.9,
+    11.6,
+    12.6
+   ]
+  },
+  {
+   "country": "HND",
+   "name": "Honduras",
+   "lat": 14.82,
+   "lng": -86.63,
+   "year": 2023,
+   "co2_total_mt": 11.8,
+   "co2_per_capita": 1.11,
+   "sector": {
+    "energy": 33.5,
+    "industry": 17.4,
+    "transport": 43.4,
+    "buildings": 5.2,
+    "other": 0.5
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    9.9,
+    10.8,
+    9.7,
+    9.3,
+    9,
+    10.2,
+    9.2,
+    10.4,
+    10.6,
+    11.8
+   ]
+  },
+  {
+   "country": "AFG",
+   "name": "Afganistán",
+   "lat": 33.84,
+   "lng": 66.02,
+   "year": 2023,
+   "co2_total_mt": 11.6,
+   "co2_per_capita": 0.28,
+   "sector": {
+    "energy": 24.2,
+    "industry": 30.5,
+    "transport": 35.1,
+    "buildings": 9.4,
+    "other": 0.8
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    8,
+    8.4,
+    7.6,
+    10.4,
+    11.8,
+    12.1,
+    12.1,
+    12.5,
+    11.3,
+    11.6
+   ]
+  },
+  {
+   "country": "EST",
+   "name": "Estonia",
+   "lat": 58.68,
+   "lng": 25.82,
+   "year": 2023,
+   "co2_total_mt": 11.5,
+   "co2_per_capita": 8.37,
+   "sector": {
+    "energy": 27.9,
+    "industry": 3.3,
+    "transport": 21.5,
+    "buildings": 4.7,
+    "other": 42.6
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    22.8,
+    21,
+    20.6,
+    22,
+    23.6,
+    15.5,
+    12.1,
+    12.9,
+    15,
+    11.5
+   ]
+  },
+  {
+   "country": "ZMB",
+   "name": "Zambia",
+   "lat": -13.46,
+   "lng": 27.78,
+   "year": 2023,
+   "co2_total_mt": 11.4,
+   "co2_per_capita": 0.55,
+   "sector": {
+    "energy": 31.8,
+    "industry": 39.5,
+    "transport": 22.4,
+    "buildings": 4.1,
+    "other": 2.2
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    5.5,
+    5.8,
+    6.3,
+    8,
+    9.1,
+    9,
+    9.5,
+    9.7,
+    10.6,
+    11.4
+   ]
+  },
+  {
+   "country": "LBN",
+   "name": "Líbano",
+   "lat": 33.92,
+   "lng": 35.87,
+   "year": 2023,
+   "co2_total_mt": 10.8,
+   "co2_per_capita": 1.87,
+   "sector": {
+    "energy": 18.3,
+    "industry": 17.9,
+    "transport": 59.7,
+    "buildings": 4,
+    "other": 0.2
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    25,
+    26.9,
+    27.9,
+    29.3,
+    27.5,
+    27,
+    21.8,
+    16.7,
+    10.4,
+    10.8
+   ]
+  },
+  {
+   "country": "MOZ",
+   "name": "Mozambique",
+   "lat": -17.26,
+   "lng": 35.54,
+   "year": 2023,
+   "co2_total_mt": 10.7,
+   "co2_per_capita": 0.32,
+   "sector": {
+    "energy": 16.2,
+    "industry": 29.6,
+    "transport": 41.3,
+    "buildings": 2.7,
+    "other": 10.3
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    5.8,
+    6.5,
+    8.3,
+    8.3,
+    8.1,
+    8.6,
+    8,
+    9.1,
+    10.9,
+    10.7
+   ]
+  },
+  {
+   "country": "YEM",
+   "name": "Yemen",
+   "lat": 15.93,
+   "lng": 47.54,
+   "year": 2023,
+   "co2_total_mt": 10.6,
+   "co2_per_capita": 0.27,
+   "sector": {
+    "energy": 15.5,
+    "industry": 23.9,
+    "transport": 25.7,
+    "buildings": 23.8,
+    "other": 11
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    28.4,
+    14.3,
+    10.6,
+    9.8,
+    12,
+    12.3,
+    11.3,
+    11.2,
+    11,
+    10.6
+   ]
+  },
+  {
+   "country": "CMR",
+   "name": "Camerún",
+   "lat": 5.7,
+   "lng": 12.74,
+   "year": 2023,
+   "co2_total_mt": 10.3,
+   "co2_per_capita": 0.36,
+   "sector": {
+    "energy": 19,
+    "industry": 23.3,
+    "transport": 36.8,
+    "buildings": 7.2,
+    "other": 13.7
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    8.9,
+    9.2,
+    9.7,
+    9.9,
+    10.5,
+    10.3,
+    10.4,
+    10.3,
+    10.4,
+    10.3
+   ]
+  },
+  {
+   "country": "KGZ",
+   "name": "Kirguistán",
+   "lat": 41.46,
+   "lng": 74.52,
+   "year": 2023,
+   "co2_total_mt": 10.2,
+   "co2_per_capita": 1.44,
+   "sector": {
+    "energy": 24.1,
+    "industry": 16.6,
+    "transport": 14.6,
+    "buildings": 43,
+    "other": 1.6
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    9.9,
+    10.3,
+    9.7,
+    9.6,
+    11.5,
+    10.2,
+    9.3,
+    10.5,
+    10.5,
+    10.2
+   ]
+  },
+  {
+   "country": "BRN",
+   "name": "Brunéi",
+   "lat": 4.48,
+   "lng": 114.58,
+   "year": 2023,
+   "co2_total_mt": 9.7,
+   "co2_per_capita": 21.14,
+   "sector": {
+    "energy": 45.7,
+    "industry": 7,
+    "transport": 12.4,
+    "buildings": 0.8,
+    "other": 34
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    8.1,
+    7.4,
+    7.9,
+    7.9,
+    8,
+    7.6,
+    10.1,
+    10,
+    9.5,
+    9.7
+   ]
+  },
+  {
+   "country": "TJK",
+   "name": "Tayikistán",
+   "lat": 38.52,
+   "lng": 71.01,
+   "year": 2023,
+   "co2_total_mt": 9.3,
+   "co2_per_capita": 0.9,
+   "sector": {
+    "energy": 17.8,
+    "industry": 33.6,
+    "transport": 24.4,
+    "buildings": 23.4,
+    "other": 0.9
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    4.8,
+    5.1,
+    5.7,
+    6.9,
+    8.2,
+    9,
+    9.4,
+    9.4,
+    9.6,
+    9.3
+   ]
+  },
+  {
+   "country": "SLV",
+   "name": "El Salvador",
+   "lat": 13.74,
+   "lng": -88.88,
+   "year": 2023,
+   "co2_total_mt": 9.2,
+   "co2_per_capita": 1.46,
+   "sector": {
+    "energy": 12.8,
+    "industry": 29.6,
+    "transport": 47.5,
+    "buildings": 8.1,
+    "other": 2
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    6.8,
+    7.3,
+    7.3,
+    6.6,
+    7.1,
+    8.1,
+    6.7,
+    7.5,
+    8.5,
+    9.2
+   ]
+  },
+  {
+   "country": "MDA",
+   "name": "Moldavia",
+   "lat": 47.19,
+   "lng": 28.45,
+   "year": 2023,
+   "co2_total_mt": 8.2,
+   "co2_per_capita": 3.34,
+   "sector": {
+    "energy": 44.4,
+    "industry": 10.9,
+    "transport": 26.7,
+    "buildings": 16.6,
+    "other": 1.4
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    8,
+    8.3,
+    8.4,
+    8.3,
+    8.9,
+    9.1,
+    8.8,
+    9.7,
+    8.3,
+    8.2
+   ]
+  },
+  {
+   "country": "URY",
+   "name": "Uruguay",
+   "lat": -32.81,
+   "lng": -56.02,
+   "year": 2023,
+   "co2_total_mt": 8.2,
+   "co2_per_capita": 2.42,
+   "sector": {
+    "energy": 9.9,
+    "industry": 16.8,
+    "transport": 51.2,
+    "buildings": 11.3,
+    "other": 10.8
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    6.7,
+    6.9,
+    6.8,
+    6.4,
+    6.9,
+    7.2,
+    6.9,
+    8.6,
+    8.1,
+    8.2
+   ]
+  },
+  {
+   "country": "CRI",
+   "name": "Costa Rica",
+   "lat": 9.98,
+   "lng": -84.19,
+   "year": 2023,
+   "co2_total_mt": 8.1,
+   "co2_per_capita": 1.59,
+   "sector": {
+    "energy": 0,
+    "industry": 17.9,
+    "transport": 74.2,
+    "buildings": 6.2,
+    "other": 1.6
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    8,
+    7.8,
+    8.2,
+    8.4,
+    8.4,
+    8.2,
+    7.2,
+    8.1,
+    8.2,
+    8.1
+   ]
+  },
+  {
+   "country": "UGA",
+   "name": "Uganda",
+   "lat": 1.27,
+   "lng": 32.37,
+   "year": 2023,
+   "co2_total_mt": 8.1,
+   "co2_per_capita": 0.17,
+   "sector": {
+    "energy": 1.5,
+    "industry": 43.8,
+    "transport": 46.5,
+    "buildings": 8.2,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    4.9,
+    5.6,
+    6,
+    6.3,
+    6.9,
+    7.1,
+    7.1,
+    8.1,
+    8,
+    8.1
+   ]
+  },
+  {
+   "country": "MKD",
+   "name": "Macedonia del Norte",
+   "lat": 41.6,
+   "lng": 21.68,
+   "year": 2023,
+   "co2_total_mt": 8,
+   "co2_per_capita": 4.39,
+   "sector": {
+    "energy": 52,
+    "industry": 15,
+    "transport": 30.2,
+    "buildings": 2.3,
+    "other": 0.6
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    8.4,
+    7.9,
+    7.6,
+    8,
+    7.5,
+    8.7,
+    7.6,
+    7.6,
+    8.2,
+    8
+   ]
+  },
+  {
+   "country": "COG",
+   "name": "Congo",
+   "lat": -0.84,
+   "lng": 15.22,
+   "year": 2023,
+   "co2_total_mt": 7.9,
+   "co2_per_capita": 1.27,
+   "sector": {
+    "energy": 34.5,
+    "industry": 6,
+    "transport": 16.5,
+    "buildings": 1,
+    "other": 42
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    5.3,
+    5.8,
+    5.6,
+    5.5,
+    6.4,
+    7.2,
+    7.4,
+    7.1,
+    8.4,
+    7.9
+   ]
+  },
+  {
+   "country": "JAM",
+   "name": "Jamaica",
+   "lat": 18.16,
+   "lng": -77.3,
+   "year": 2023,
+   "co2_total_mt": 7.7,
+   "co2_per_capita": 2.71,
+   "sector": {
+    "energy": 32.1,
+    "industry": 24.7,
+    "transport": 33.7,
+    "buildings": 9.1,
+    "other": 0.4
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    7.2,
+    7.1,
+    7.6,
+    7.3,
+    8.7,
+    8.4,
+    5.9,
+    6.5,
+    7.5,
+    7.7
+   ]
+  },
+  {
+   "country": "PRY",
+   "name": "Paraguay",
+   "lat": -23.23,
+   "lng": -58.4,
+   "year": 2023,
+   "co2_total_mt": 7.7,
+   "co2_per_capita": 1.13,
+   "sector": {
+    "energy": 0,
+    "industry": 13.6,
+    "transport": 83.5,
+    "buildings": 2.5,
+    "other": 0.4
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    5.9,
+    6.7,
+    7.5,
+    8.5,
+    8.7,
+    8.5,
+    7.9,
+    8,
+    8,
+    7.7
+   ]
+  },
+  {
+   "country": "ARM",
+   "name": "Armenia",
+   "lat": 40.29,
+   "lng": 44.93,
+   "year": 2023,
+   "co2_total_mt": 7.5,
+   "co2_per_capita": 2.53,
+   "sector": {
+    "energy": 21,
+    "industry": 14,
+    "transport": 30.8,
+    "buildings": 30.5,
+    "other": 3.6
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    5.8,
+    5.6,
+    5.4,
+    5.7,
+    6,
+    6.4,
+    6.9,
+    7.5,
+    7.8,
+    7.5
+   ]
+  },
+  {
+   "country": "CYP",
+   "name": "Chipre",
+   "lat": 34.91,
+   "lng": 32.97,
+   "year": 2023,
+   "co2_total_mt": 7.2,
+   "co2_per_capita": 5.36,
+   "sector": {
+    "energy": 42.3,
+    "industry": 23.7,
+    "transport": 27.4,
+    "buildings": 6.5,
+    "other": 0.1
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    6.8,
+    6.9,
+    7.2,
+    7.4,
+    7.2,
+    7.2,
+    6.8,
+    6.9,
+    7.2,
+    7.2
+   ]
+  },
+  {
+   "country": "MLI",
+   "name": "Mali",
+   "lat": 17.34,
+   "lng": -3.54,
+   "year": 2023,
+   "co2_total_mt": 7.2,
+   "co2_per_capita": 0.3,
+   "sector": {
+    "energy": 16.5,
+    "industry": 20.3,
+    "transport": 51.7,
+    "buildings": 9.1,
+    "other": 2.5
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    2.9,
+    3.5,
+    4.6,
+    5.2,
+    5.8,
+    6.1,
+    6.8,
+    7.3,
+    7.5,
+    7.2
+   ]
+  },
+  {
+   "country": "BEN",
+   "name": "Benín",
+   "lat": 9.63,
+   "lng": 2.33,
+   "year": 2023,
+   "co2_total_mt": 6.9,
+   "co2_per_capita": 0.49,
+   "sector": {
+    "energy": 7.2,
+    "industry": 28,
+    "transport": 61.5,
+    "buildings": 3.2,
+    "other": 0.1
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    5.5,
+    5.8,
+    7.1,
+    7.2,
+    8.3,
+    8.1,
+    8.7,
+    6.7,
+    7.1,
+    6.9
+   ]
+  },
+  {
+   "country": "LVA",
+   "name": "Letonia",
+   "lat": 56.86,
+   "lng": 24.89,
+   "year": 2023,
+   "co2_total_mt": 6.9,
+   "co2_per_capita": 3.66,
+   "sector": {
+    "energy": 14.5,
+    "industry": 19.3,
+    "transport": 44.4,
+    "buildings": 18.6,
+    "other": 3.3
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    7.6,
+    7.6,
+    7.5,
+    7.4,
+    8.1,
+    7.9,
+    7.3,
+    7.5,
+    6.9,
+    6.9
+   ]
+  },
+  {
+   "country": "LUX",
+   "name": "Luxemburgo",
+   "lat": 49.76,
+   "lng": 6.09,
+   "year": 2023,
+   "co2_total_mt": 6.9,
+   "co2_per_capita": 10.42,
+   "sector": {
+    "energy": 2.2,
+    "industry": 16.9,
+    "transport": 60.3,
+    "buildings": 20.6,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    9.8,
+    9.3,
+    9,
+    9.2,
+    9.5,
+    9.7,
+    8,
+    8.4,
+    7.3,
+    6.9
+   ]
+  },
+  {
+   "country": "BWA",
+   "name": "Botsuana",
+   "lat": -22.19,
+   "lng": 23.8,
+   "year": 2023,
+   "co2_total_mt": 6.7,
+   "co2_per_capita": 2.71,
+   "sector": {
+    "energy": 49.1,
+    "industry": 14.4,
+    "transport": 34.2,
+    "buildings": 2,
+    "other": 0.3
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    7.1,
+    7.1,
+    6.8,
+    7.4,
+    8.2,
+    7.3,
+    6.1,
+    6.5,
+    6.8,
+    6.7
+   ]
+  },
+  {
+   "country": "BFA",
+   "name": "Burkina Faso",
+   "lat": 12.26,
+   "lng": -1.75,
+   "year": 2023,
+   "co2_total_mt": 6.3,
+   "co2_per_capita": 0.27,
+   "sector": {
+    "energy": 15,
+    "industry": 29.9,
+    "transport": 46.9,
+    "buildings": 8.2,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    2.8,
+    3.9,
+    3.9,
+    4.5,
+    5.4,
+    5.7,
+    5.7,
+    6.4,
+    6.5,
+    6.3
+   ]
+  },
+  {
+   "country": "COD",
+   "name": "República Democrática del Congo",
+   "lat": -2.88,
+   "lng": 23.65,
+   "year": 2023,
+   "co2_total_mt": 6.1,
+   "co2_per_capita": 0.06,
+   "sector": {
+    "energy": 0.1,
+    "industry": 16.6,
+    "transport": 78.7,
+    "buildings": 1,
+    "other": 3.6
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    3.7,
+    3.6,
+    3,
+    3.3,
+    4.2,
+    4.4,
+    4.6,
+    4.6,
+    6.2,
+    6.1
+   ]
+  },
+  {
+   "country": "NIC",
+   "name": "Nicaragua",
+   "lat": 12.84,
+   "lng": -85.03,
+   "year": 2023,
+   "co2_total_mt": 5.5,
+   "co2_per_capita": 0.81,
+   "sector": {
+    "energy": 20.1,
+    "industry": 15.8,
+    "transport": 46.3,
+    "buildings": 14.2,
+    "other": 3.7
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    4.9,
+    5.5,
+    5.7,
+    5.7,
+    5.2,
+    5.3,
+    4.7,
+    5.2,
+    5.3,
+    5.5
+   ]
+  },
+  {
+   "country": "PNG",
+   "name": "Papúa Nueva Guinea",
+   "lat": -6.61,
+   "lng": 144.25,
+   "year": 2023,
+   "co2_total_mt": 5.5,
+   "co2_per_capita": 0.53,
+   "sector": {
+    "energy": 25.2,
+    "industry": 14.1,
+    "transport": 38.3,
+    "buildings": 10.6,
+    "other": 11.9
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    5.5,
+    6,
+    6.6,
+    5.8,
+    4.9,
+    5,
+    5.5,
+    5.4,
+    5.5,
+    5.5
+   ]
+  },
+  {
+   "country": "GAB",
+   "name": "Gabón",
+   "lat": -0.6,
+   "lng": 11.79,
+   "year": 2023,
+   "co2_total_mt": 5.1,
+   "co2_per_capita": 2.06,
+   "sector": {
+    "energy": 27.7,
+    "industry": 13.9,
+    "transport": 3.8,
+    "buildings": 3.1,
+    "other": 51.5
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    6.3,
+    6.4,
+    6.6,
+    5.7,
+    5.4,
+    5.7,
+    5.5,
+    5.4,
+    5.6,
+    5.1
+   ]
+  },
+  {
+   "country": "GIN",
+   "name": "Guinea",
+   "lat": 10.44,
+   "lng": -10.94,
+   "year": 2023,
+   "co2_total_mt": 5,
+   "co2_per_capita": 0.35,
+   "sector": {
+    "energy": 16.2,
+    "industry": 24.3,
+    "transport": 50.6,
+    "buildings": 8.9,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    2.4,
+    2.9,
+    3.2,
+    3.3,
+    3.7,
+    4.8,
+    5.4,
+    5.1,
+    5.2,
+    5
+   ]
+  },
+  {
+   "country": "NCL",
+   "name": "Nueva Caledonia",
+   "lat": -21.32,
+   "lng": 165.48,
+   "year": 2023,
+   "co2_total_mt": 4.9,
+   "co2_per_capita": 16.78,
+   "sector": {
+    "energy": 25.5,
+    "industry": 43.9,
+    "transport": 24.1,
+    "buildings": 6.4,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    4.8,
+    4.6,
+    4.9,
+    4.4,
+    6,
+    5.8,
+    5.6,
+    4.7,
+    4.6,
+    4.9
+   ]
+  },
+  {
+   "country": "GNQ",
+   "name": "Guinea Ecuatorial",
+   "lat": 1.56,
+   "lng": 10.47,
+   "year": 2023,
+   "co2_total_mt": 4.8,
+   "co2_per_capita": 2.58,
+   "sector": {
+    "energy": 12,
+    "industry": 37.4,
+    "transport": 9.3,
+    "buildings": 2.6,
+    "other": 38.8
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    5.7,
+    5.4,
+    5.4,
+    4.9,
+    5.3,
+    5.1,
+    4.9,
+    5,
+    5.1,
+    4.8
+   ]
+  },
+  {
+   "country": "MRT",
+   "name": "Mauritania",
+   "lat": 20.26,
+   "lng": -10.35,
+   "year": 2023,
+   "co2_total_mt": 4.8,
+   "co2_per_capita": 0.96,
+   "sector": {
+    "energy": 17.2,
+    "industry": 19.6,
+    "transport": 53.8,
+    "buildings": 9.4,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    2.7,
+    2.8,
+    2.6,
+    3.8,
+    4.4,
+    4.5,
+    4.6,
+    4.4,
+    5,
+    4.8
+   ]
+  },
+  {
+   "country": "MWI",
+   "name": "Malaui",
+   "lat": -13.22,
+   "lng": 34.29,
+   "year": 2023,
+   "co2_total_mt": 4.7,
+   "co2_per_capita": 0.22,
+   "sector": {
+    "energy": 10.5,
+    "industry": 55.8,
+    "transport": 28,
+    "buildings": 5.6,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    5,
+    4.9,
+    4.9,
+    5.4,
+    5.5,
+    5.6,
+    5.2,
+    6.1,
+    5.6,
+    4.7
+   ]
+  },
+  {
+   "country": "MDG",
+   "name": "Madagascar",
+   "lat": -19.38,
+   "lng": 46.71,
+   "year": 2023,
+   "co2_total_mt": 4.6,
+   "co2_per_capita": 0.15,
+   "sector": {
+    "energy": 39.9,
+    "industry": 17.2,
+    "transport": 33.6,
+    "buildings": 9.3,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    3.1,
+    3.4,
+    3.3,
+    3.6,
+    3.3,
+    4,
+    3.1,
+    4.1,
+    4.4,
+    4.6
+   ]
+  },
+  {
+   "country": "MUS",
+   "name": "Mauricio",
+   "lat": -20.28,
+   "lng": 57.56,
+   "year": 2023,
+   "co2_total_mt": 4.3,
+   "co2_per_capita": 3.46,
+   "sector": {
+    "energy": 57.9,
+    "industry": 8.4,
+    "transport": 27.9,
+    "buildings": 5.5,
+    "other": 0.3
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    4,
+    4,
+    4.1,
+    4.2,
+    4.2,
+    4.2,
+    3.7,
+    4,
+    4,
+    4.3
+   ]
+  },
+  {
+   "country": "ALB",
+   "name": "Albania",
+   "lat": 41.13,
+   "lng": 20.05,
+   "year": 2023,
+   "co2_total_mt": 4.2,
+   "co2_per_capita": 1.75,
+   "sector": {
+    "energy": 0,
+    "industry": 41.6,
+    "transport": 36.2,
+    "buildings": 17.6,
+    "other": 4.5
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    5.1,
+    4.9,
+    4.5,
+    5.4,
+    5.3,
+    5,
+    4.6,
+    5.1,
+    4.5,
+    4.2
+   ]
+  },
+  {
+   "country": "GUY",
+   "name": "Guyana",
+   "lat": 4.79,
+   "lng": -58.98,
+   "year": 2023,
+   "co2_total_mt": 3.7,
+   "co2_per_capita": 4.53,
+   "sector": {
+    "energy": 30.6,
+    "industry": 26.3,
+    "transport": 29.1,
+    "buildings": 5.8,
+    "other": 8.3
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    2.1,
+    2.1,
+    2.5,
+    2.5,
+    2.6,
+    2.8,
+    3.3,
+    3.3,
+    3.7,
+    3.7
+   ]
+  },
+  {
+   "country": "NAM",
+   "name": "Namibia",
+   "lat": -22.14,
+   "lng": 17.21,
+   "year": 2023,
+   "co2_total_mt": 3.6,
+   "co2_per_capita": 1.22,
+   "sector": {
+    "energy": 0.9,
+    "industry": 16.5,
+    "transport": 54.6,
+    "buildings": 28,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    3.2,
+    3.6,
+    3.9,
+    3.8,
+    3.8,
+    3.9,
+    3.5,
+    3.7,
+    3.6,
+    3.6
+   ]
+  },
+  {
+   "country": "HTI",
+   "name": "Haití",
+   "lat": 18.93,
+   "lng": -72.68,
+   "year": 2023,
+   "co2_total_mt": 3.4,
+   "co2_per_capita": 0.29,
+   "sector": {
+    "energy": 24.4,
+    "industry": 26,
+    "transport": 40.4,
+    "buildings": 7.7,
+    "other": 1.5
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    3.2,
+    3.5,
+    3.6,
+    3.6,
+    3.6,
+    3.6,
+    3.4,
+    3.4,
+    3.4,
+    3.4
+   ]
+  },
+  {
+   "country": "ISL",
+   "name": "Islandia",
+   "lat": 64.99,
+   "lng": -18.59,
+   "year": 2023,
+   "co2_total_mt": 3.2,
+   "co2_per_capita": 8.35,
+   "sector": {
+    "energy": 0.2,
+    "industry": 53.9,
+    "transport": 29.1,
+    "buildings": 16.8,
+    "other": 0.1
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    3.5,
+    3.6,
+    3.2,
+    3.3,
+    3.3,
+    3.2,
+    3.1,
+    3.2,
+    3.2,
+    3.2
+   ]
+  },
+  {
+   "country": "NER",
+   "name": "Níger",
+   "lat": 17.42,
+   "lng": 9.38,
+   "year": 2023,
+   "co2_total_mt": 3.2,
+   "co2_per_capita": 0.12,
+   "sector": {
+    "energy": 23.9,
+    "industry": 16.8,
+    "transport": 46.9,
+    "buildings": 6.9,
+    "other": 5.5
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    2.2,
+    2.2,
+    2.2,
+    2,
+    2,
+    2.4,
+    2.4,
+    2.9,
+    3.2,
+    3.2
+   ]
+  },
+  {
+   "country": "TCD",
+   "name": "Chad",
+   "lat": 15.33,
+   "lng": 18.64,
+   "year": 2023,
+   "co2_total_mt": 2.9,
+   "co2_per_capita": 0.15,
+   "sector": {
+    "energy": 13.9,
+    "industry": 18.7,
+    "transport": 43.3,
+    "buildings": 7.6,
+    "other": 16.5
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    1.4,
+    1.6,
+    1.7,
+    2.2,
+    2.4,
+    2.4,
+    2.4,
+    2.7,
+    2.9,
+    2.9
+   ]
+  },
+  {
+   "country": "SUR",
+   "name": "Surinam",
+   "lat": 4.14,
+   "lng": -55.91,
+   "year": 2023,
+   "co2_total_mt": 2.5,
+   "co2_per_capita": 3.97,
+   "sector": {
+    "energy": 33,
+    "industry": 5.1,
+    "transport": 37.7,
+    "buildings": 22.8,
+    "other": 1.4
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    2.6,
+    2.7,
+    3,
+    2.5,
+    2.2,
+    2.7,
+    2.6,
+    2.7,
+    2.9,
+    2.5
+   ]
+  },
+  {
+   "country": "TGO",
+   "name": "Togo",
+   "lat": 8.52,
+   "lng": 0.97,
+   "year": 2023,
+   "co2_total_mt": 2.5,
+   "co2_per_capita": 0.31,
+   "sector": {
+    "energy": 13.5,
+    "industry": 33.7,
+    "transport": 46.6,
+    "buildings": 6.1,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    1.7,
+    1.5,
+    2.1,
+    1.7,
+    1.9,
+    2.1,
+    2.4,
+    2.5,
+    2.6,
+    2.5
+   ]
+  },
+  {
+   "country": "RWA",
+   "name": "Ruanda",
+   "lat": -1.99,
+   "lng": 29.92,
+   "year": 2023,
+   "co2_total_mt": 2.3,
+   "co2_per_capita": 0.16,
+   "sector": {
+    "energy": 22,
+    "industry": 34.4,
+    "transport": 34.9,
+    "buildings": 7.8,
+    "other": 1
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    1,
+    1.1,
+    1.2,
+    1.3,
+    1.5,
+    1.5,
+    1.5,
+    1.7,
+    2.2,
+    2.3
+   ]
+  },
+  {
+   "country": "BTN",
+   "name": "Bután",
+   "lat": 27.42,
+   "lng": 90.41,
+   "year": 2023,
+   "co2_total_mt": 1.6,
+   "co2_per_capita": 1.98,
+   "sector": {
+    "energy": 15.4,
+    "industry": 64,
+    "transport": 16.3,
+    "buildings": 4.3,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    1.1,
+    1.3,
+    1.4,
+    1.5,
+    1.8,
+    1.8,
+    1.4,
+    1.5,
+    1.5,
+    1.6
+   ]
+  },
+  {
+   "country": "BHS",
+   "name": "Bahamas",
+   "lat": 24.71,
+   "lng": -78.03,
+   "year": 2023,
+   "co2_total_mt": 1.4,
+   "co2_per_capita": 3.53,
+   "sector": {
+    "energy": 50.4,
+    "industry": 7.1,
+    "transport": 34.4,
+    "buildings": 8,
+    "other": 0.1
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    1.1,
+    1.1,
+    1.2,
+    1.4,
+    1.2,
+    1.5,
+    1.2,
+    1.4,
+    1.4,
+    1.4
+   ]
+  },
+  {
+   "country": "FJI",
+   "name": "Fiyi",
+   "lat": -17.82,
+   "lng": 177.98,
+   "year": 2023,
+   "co2_total_mt": 1.4,
+   "co2_per_capita": 1.56,
+   "sector": {
+    "energy": 22.3,
+    "industry": 15.4,
+    "transport": 49.2,
+    "buildings": 13.1,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    1.6,
+    1.6,
+    1.6,
+    1.5,
+    1.7,
+    1.6,
+    1.1,
+    1.3,
+    1.4,
+    1.4
+   ]
+  },
+  {
+   "country": "SLE",
+   "name": "Sierra Leona",
+   "lat": 8.57,
+   "lng": -11.78,
+   "year": 2023,
+   "co2_total_mt": 1.4,
+   "co2_per_capita": 0.17,
+   "sector": {
+    "energy": 16.7,
+    "industry": 21.7,
+    "transport": 52.4,
+    "buildings": 9.2,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    1.2,
+    1,
+    1.1,
+    1,
+    1.2,
+    1.2,
+    1.2,
+    1.5,
+    1.5,
+    1.4
+   ]
+  },
+  {
+   "country": "SWZ",
+   "name": "Esuatini",
+   "lat": -26.56,
+   "lng": 31.48,
+   "year": 2023,
+   "co2_total_mt": 1.1,
+   "co2_per_capita": 0.88,
+   "sector": {
+    "energy": 3.9,
+    "industry": 13.1,
+    "transport": 80.3,
+    "buildings": 2.4,
+    "other": 0.2
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    1,
+    1,
+    1,
+    1.1,
+    1.1,
+    1.1,
+    1,
+    1,
+    1.1,
+    1.1
+   ]
+  },
+  {
+   "country": "LSO",
+   "name": "Lesoto",
+   "lat": -29.57,
+   "lng": 28.24,
+   "year": 2023,
+   "co2_total_mt": 1,
+   "co2_per_capita": 0.43,
+   "sector": {
+    "energy": 18.7,
+    "industry": 12.7,
+    "transport": 58.4,
+    "buildings": 10.2,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    0.6,
+    0.6,
+    0.7,
+    0.7,
+    0.8,
+    0.8,
+    0.7,
+    0.8,
+    1,
+    1
+   ]
+  },
+  {
+   "country": "BDI",
+   "name": "Burundi",
+   "lat": -3.36,
+   "lng": 29.88,
+   "year": 2023,
+   "co2_total_mt": 0.9,
+   "co2_per_capita": 0.07,
+   "sector": {
+    "energy": 16.1,
+    "industry": 24.6,
+    "transport": 50.4,
+    "buildings": 8.8,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    0.4,
+    0.4,
+    0.5,
+    0.5,
+    0.8,
+    0.8,
+    0.9,
+    0.9,
+    0.9,
+    0.9
+   ]
+  },
+  {
+   "country": "DJI",
+   "name": "Yibuti",
+   "lat": 11.75,
+   "lng": 42.56,
+   "year": 2023,
+   "co2_total_mt": 0.9,
+   "co2_per_capita": 0.76,
+   "sector": {
+    "energy": 14.7,
+    "industry": 31.1,
+    "transport": 46,
+    "buildings": 8.1,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    0.9,
+    0.8,
+    0.7,
+    0.7,
+    0.7,
+    0.8,
+    0.7,
+    0.8,
+    0.9,
+    0.9
+   ]
+  },
+  {
+   "country": "PYF",
+   "name": "Polinesia Francesa",
+   "lat": -17.66,
+   "lng": -149.43,
+   "year": 2023,
+   "co2_total_mt": 0.9,
+   "co2_per_capita": 3.3,
+   "sector": {
+    "energy": 23.1,
+    "industry": 12.5,
+    "transport": 50.9,
+    "buildings": 13.6,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    1,
+    1,
+    1,
+    0.9,
+    0.8,
+    0.8,
+    0.7,
+    0.6,
+    0.9,
+    0.9
+   ]
+  },
+  {
+   "country": "ERI",
+   "name": "Eritrea",
+   "lat": 15.35,
+   "lng": 38.84,
+   "year": 2023,
+   "co2_total_mt": 0.8,
+   "co2_per_capita": 0.22,
+   "sector": {
+    "energy": 46.9,
+    "industry": 13.9,
+    "transport": 32.3,
+    "buildings": 7,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    0.7,
+    0.7,
+    0.7,
+    0.7,
+    0.7,
+    0.8
+   ]
+  },
+  {
+   "country": "LBR",
+   "name": "Liberia",
+   "lat": 6.45,
+   "lng": -9.32,
+   "year": 2023,
+   "co2_total_mt": 0.8,
+   "co2_per_capita": 0.15,
+   "sector": {
+    "energy": 14.4,
+    "industry": 32.7,
+    "transport": 45,
+    "buildings": 7.9,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    1.2,
+    1.2,
+    1.4,
+    1.2,
+    0.6,
+    1,
+    0.8,
+    0.8,
+    0.9,
+    0.8
+   ]
+  },
+  {
+   "country": "SOM",
+   "name": "Somalia",
+   "lat": 4.75,
+   "lng": 45.71,
+   "year": 2023,
+   "co2_total_mt": 0.8,
+   "co2_per_capita": 0.05,
+   "sector": {
+    "energy": 18.1,
+    "industry": 15.4,
+    "transport": 56.6,
+    "buildings": 9.9,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    0.8,
+    0.8,
+    0.8,
+    0.8,
+    0.9,
+    0.8,
+    0.8,
+    0.8,
+    0.8,
+    0.8
+   ]
+  },
+  {
+   "country": "CPV",
+   "name": "Cabo Verde",
+   "lat": 15.1,
+   "lng": -23.65,
+   "year": 2023,
+   "co2_total_mt": 0.7,
+   "co2_per_capita": 1.25,
+   "sector": {
+    "energy": 18.7,
+    "industry": 12.4,
+    "transport": 58.6,
+    "buildings": 10.3,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    0.8,
+    0.8,
+    0.8,
+    0.9,
+    0.8,
+    0.8,
+    0.6,
+    0.6,
+    0.7,
+    0.7
+   ]
+  },
+  {
+   "country": "TLS",
+   "name": "Timor-Leste",
+   "lat": -8.8,
+   "lng": 125.94,
+   "year": 2023,
+   "co2_total_mt": 0.7,
+   "co2_per_capita": 0.48,
+   "sector": {
+    "energy": 21.8,
+    "industry": 12.1,
+    "transport": 48.2,
+    "buildings": 12.9,
+    "other": 5
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    0.7,
+    0.7,
+    0.7,
+    0.6,
+    0.7,
+    0.7,
+    0.7,
+    0.7,
+    0.7,
+    0.7
+   ]
+  },
+  {
+   "country": "GRL",
+   "name": "Groenlandia",
+   "lat": 74.76,
+   "lng": -41.42,
+   "year": 2023,
+   "co2_total_mt": 0.6,
+   "co2_per_capita": 10.29,
+   "sector": {
+    "energy": 14.6,
+    "industry": 8.7,
+    "transport": 17.4,
+    "buildings": 57.5,
+    "other": 1.8
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.6,
+    0.6
+   ]
+  },
+  {
+   "country": "GMB",
+   "name": "Gambia",
+   "lat": 13.45,
+   "lng": -15.43,
+   "year": 2023,
+   "co2_total_mt": 0.5,
+   "co2_per_capita": 0.18,
+   "sector": {
+    "energy": 18.6,
+    "industry": 13,
+    "transport": 58.2,
+    "buildings": 10.2,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.4,
+    0.5,
+    0.5,
+    0.5
+   ]
+  },
+  {
+   "country": "BLZ",
+   "name": "Belice",
+   "lat": 17.2,
+   "lng": -88.71,
+   "year": 2023,
+   "co2_total_mt": 0.4,
+   "co2_per_capita": 0.91,
+   "sector": {
+    "energy": 49.6,
+    "industry": 7.6,
+    "transport": 33.6,
+    "buildings": 7.9,
+    "other": 1.4
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    0.2,
+    0.2,
+    0.3,
+    0.3,
+    0.3,
+    0.4,
+    0.3,
+    0.3,
+    0.4,
+    0.4
+   ]
+  },
+  {
+   "country": "COM",
+   "name": "Comoras",
+   "lat": -11.66,
+   "lng": 43.34,
+   "year": 2023,
+   "co2_total_mt": 0.4,
+   "co2_per_capita": 0.52,
+   "sector": {
+    "energy": 18.7,
+    "industry": 12.6,
+    "transport": 58.4,
+    "buildings": 10.3,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    0.2,
+    0.2,
+    0.2,
+    0.3,
+    0.2,
+    0.2,
+    0.3,
+    0.4,
+    0.4,
+    0.4
+   ]
+  },
+  {
+   "country": "CAF",
+   "name": "República Centroafricana",
+   "lat": 6.57,
+   "lng": 20.47,
+   "year": 2023,
+   "co2_total_mt": 0.3,
+   "co2_per_capita": 0.06,
+   "sector": {
+    "energy": 18.2,
+    "industry": 15.1,
+    "transport": 56.8,
+    "buildings": 10,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    0.2,
+    0.2,
+    0.3,
+    0.3,
+    0.3,
+    0.3,
+    0.3,
+    0.3,
+    0.3,
+    0.3
+   ]
+  },
+  {
+   "country": "GNB",
+   "name": "Guinea-Bisáu",
+   "lat": 12.07,
+   "lng": -14.93,
+   "year": 2023,
+   "co2_total_mt": 0.3,
+   "co2_per_capita": 0.15,
+   "sector": {
+    "energy": 18.6,
+    "industry": 13.3,
+    "transport": 58,
+    "buildings": 10.2,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    0.3,
+    0.4,
+    0.4,
+    0.3,
+    0.4,
+    0.4,
+    0.3,
+    0.3,
+    0.3,
+    0.3
+   ]
+  },
+  {
+   "country": "WSM",
+   "name": "Samoa",
+   "lat": -13.63,
+   "lng": -172.44,
+   "year": 2023,
+   "co2_total_mt": 0.3,
+   "co2_per_capita": 1.54,
+   "sector": {
+    "energy": 23,
+    "industry": 12.6,
+    "transport": 50.8,
+    "buildings": 13.6,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    0.3,
+    0.3,
+    0.4,
+    0.3,
+    0.3,
+    0.4,
+    0.3,
+    0.3,
+    0.3,
+    0.3
+   ]
+  },
+  {
+   "country": "SLB",
+   "name": "Islas Salomón",
+   "lat": -9.62,
+   "lng": 160.17,
+   "year": 2023,
+   "co2_total_mt": 0.3,
+   "co2_per_capita": 0.37,
+   "sector": {
+    "energy": 23,
+    "industry": 12.8,
+    "transport": 50.7,
+    "buildings": 13.5,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    0.4,
+    0.3,
+    0.3,
+    0.3,
+    0.3,
+    0.3,
+    0.3,
+    0.3,
+    0.3,
+    0.3
+   ]
+  },
+  {
+   "country": "VUT",
+   "name": "Vanuatu",
+   "lat": -15.24,
+   "lng": 166.86,
+   "year": 2023,
+   "co2_total_mt": 0.3,
+   "co2_per_capita": 0.85,
+   "sector": {
+    "energy": 23,
+    "industry": 12.6,
+    "transport": 50.8,
+    "buildings": 13.6,
+    "other": 0
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    0.2,
+    0.2,
+    0.2,
+    0.2,
+    0.2,
+    0.2,
+    0.3,
+    0.3,
+    0.3,
+    0.3
+   ]
+  },
+  {
+   "country": "FRO",
+   "name": "Islas Feroe",
+   "lat": 62.14,
+   "lng": -7,
+   "year": 2023,
+   "co2_total_mt": 0,
+   "co2_per_capita": 0.04,
+   "sector": {
+    "energy": 0,
+    "industry": 4.8,
+    "transport": 0,
+    "buildings": 0,
+    "other": 95.2
+   },
+   "years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "trend": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  }
+ ]
+}
