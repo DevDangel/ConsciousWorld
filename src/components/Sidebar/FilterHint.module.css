@@ -96,30 +96,35 @@
   .hintGlass {
     left: 260px;
     top: 185px;
-    padding: 7px 12px 7px 22px;
+    padding: 6px 10px 6px 20px;
+    max-width: calc(100vw - 272px);
+    white-space: normal;
+    min-height: 36px;
   }
 
   .hintText {
-    font-size: 10px;
-    letter-spacing: 0.8px;
+    font-size: 9px;
+    letter-spacing: 0.4px;
+    line-height: 1.25;
   }
 }
 
-@media (max-width: 580px) {
+@media (max-width: 480px) {
   .hintGlass {
-    position: relative;
-    top: auto;
-    left: auto;
-    margin-bottom: 12px;
-    width: 100%;
-    justify-content: center;
-    clip-path: none;
-    padding: 10px 16px;
-    border: 1px solid rgba(255, 45, 85, 0.65);
-    border-radius: 4px;
+    padding: 5px 8px 5px 16px;
+    min-height: 32px;
+    max-width: calc(100vw - 268px);
   }
 
-  .borderSvg {
-    display: none;
+  .hintText {
+    font-size: 8.5px;
+    letter-spacing: 0.3px;
+    line-height: 1.2;
+  }
+
+  .beaconDot {
+    width: 4.5px;
+    height: 4.5px;
   }
 }
+
