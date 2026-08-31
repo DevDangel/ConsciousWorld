@@ -122,6 +122,7 @@ export default function App() {
         mode={mode}
         activeLayers={activeLayers}
         onToggleLayer={handleToggleLayer}
+        introAccepted={introAccepted}
       />
 
       {/* Right Stats Panel */}

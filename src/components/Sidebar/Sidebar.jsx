@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   MODES,
@@ -12,13 +12,27 @@ import {
 } from '../../data/constants';
 import AnimatedCounter from '../UI/AnimatedCounter';
 import Icon from '../UI/Icons';
+import FilterHint from './FilterHint';
 import styles from './Sidebar.module.css';
 
-export default function Sidebar({ mode, activeLayers, onToggleLayer }) {
+export default function Sidebar({ mode, activeLayers, onToggleLayer, introAccepted = true }) {
   const [isOpen, setIsOpen] = useState(true);
+  const [interactedModes, setInteractedModes] = useState({
+    [MODES.CONTAMINATION]: false,
+    [MODES.LIFE]: false,
+  });
+
   const isContamination = mode === MODES.CONTAMINATION;
   const layers = isContamination ? CONTAMINATION_LAYER_CONFIG : LIFE_LAYER_CONFIG;
   const stats = isContamination ? GLOBAL_STATS.contamination : GLOBAL_STATS.life;
+
+  const handleToggle = useCallback((layerId) => {
+    setInteractedModes(prev => ({ ...prev, [mode]: true }));
+    onToggleLayer(layerId);
+  }, [mode, onToggleLayer]);
+
+  const showHint = introAccepted && isOpen && !interactedModes[mode] && activeLayers.length === 0;
+
   // The legend follows whichever surface layer is actually painted, not the
   // mode — otherwise it explains a choropleth the user has switched off.
   const choroplethOn = activeLayers.includes(
@@ -38,6 +52,13 @@ export default function Sidebar({ mode, activeLayers, onToggleLayer }) {
       >
         <Icon name={isOpen ? 'chevronLeft' : 'chevronRight'} size={14} />
       </button>
+
+      {/* Persistent blinking filter hint */}
+      <AnimatePresence>
+        {showHint && (
+          <FilterHint mode={mode} />
+        )}
+      </AnimatePresence>
 
       {/* Sidebar */}
       <AnimatePresence>
@@ -76,7 +97,7 @@ export default function Sidebar({ mode, activeLayers, onToggleLayer }) {
                       // Staggered so the toggles breathe in sequence instead of
                       // flashing in unison.
                       style={isActive ? undefined : { animationDelay: `${i * 320}ms` }}
-                      onClick={() => onToggleLayer(layer.id)}
+                      onClick={() => handleToggle(layer.id)}
                     >
                       <span className={styles.layerIcon}><Icon name={layer.icon} size={20} /></span>
                       <div className={styles.layerInfo}>

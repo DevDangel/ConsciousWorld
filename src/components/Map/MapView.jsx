@@ -31,9 +31,9 @@ const DARK_STYLE = {
     'carto-dark': {
       type: 'raster',
       tiles: [
-        'https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png',
-        'https://b.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png',
-        'https://c.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png',
+        'https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png?key=cb1_2nzw_1_dc6faee3f8d3740b180a82ce',
+        'https://b.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png?key=cb1_2nzw_1_dc6faee3f8d3740b180a82ce',
+        'https://c.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png?key=cb1_2nzw_1_dc6faee3f8d3740b180a82ce',
       ],
       tileSize: 256,
       attribution: '© <a href="https://carto.com/attributions">CARTO</a> · © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',

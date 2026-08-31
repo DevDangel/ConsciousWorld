@@ -1,0 +1,125 @@
+/* ===================================================
+   FilterHint — Pure Frosted Red Glass Comic Bubble (Static)
+   =================================================== */
+
+.hintGlass {
+  position: absolute;
+  top: 180px; /* Alineado con "Emisiones de CO₂" */
+  left: 280px; /* La punta < inicia en 280px */
+  z-index: var(--z-tooltip);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 18px 12px 28px; /* 12px para el pico + 16px padding interno */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  cursor: default;
+  pointer-events: none;
+  user-select: none;
+  font-family: var(--font-mono);
+  white-space: nowrap;
+  box-sizing: border-box;
+
+  /* Polígono de cristal unificado: cuerpo + pico < sin cortes */
+  clip-path: polygon(
+    0px 0px,
+    100% 0px,
+    100% 100%,
+    12px 100%,
+    12px 16px,
+    0px 0px
+  );
+}
+
+/* Red Contamination Glass Theme */
+.hintGlassRed {
+  composes: hintGlass;
+  background: linear-gradient(135deg, rgba(255, 45, 85, 0.22) 0%, rgba(255, 45, 85, 0.10) 100%);
+  filter: drop-shadow(0 4px 16px rgba(255, 45, 85, 0.30));
+}
+
+/* Cyan Life Glass Theme */
+.hintGlassCyan {
+  composes: hintGlass;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.22) 0%, rgba(0, 212, 255, 0.10) 100%);
+  filter: drop-shadow(0 4px 16px rgba(0, 212, 255, 0.30));
+}
+
+/* Border SVG Overlay */
+.borderSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.borderStrokeRed {
+  stroke: rgba(255, 45, 85, 0.65);
+}
+
+.borderStrokeCyan {
+  stroke: rgba(0, 212, 255, 0.65);
+}
+
+/* Inner Layout */
+.innerContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.beaconDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  display: inline-block;
+  opacity: 0.85;
+}
+
+.hintText {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive adjustment for tablet/mobile */
+@media (max-width: 768px) {
+  .hintGlass {
+    left: 260px;
+    top: 185px;
+    padding: 7px 12px 7px 22px;
+  }
+
+  .hintText {
+    font-size: 10px;
+    letter-spacing: 0.8px;
+  }
+}
+
+@media (max-width: 580px) {
+  .hintGlass {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin-bottom: 12px;
+    width: 100%;
+    justify-content: center;
+    clip-path: none;
+    padding: 10px 16px;
+    border: 1px solid rgba(255, 45, 85, 0.65);
+    border-radius: 4px;
+  }
+
+  .borderSvg {
+    display: none;
+  }
+}
