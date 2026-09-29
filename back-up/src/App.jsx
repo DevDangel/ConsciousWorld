@@ -1,19 +1,19 @@
 import { useState, useCallback, useRef } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { MODES, CONTAMINATION_LAYERS } from './data/constants';
+import { MODES } from './data/constants';
 import { useMapData } from './hooks/useMapData';
 import TopBar from './components/TopBar/TopBar';
 import Sidebar from './components/Sidebar/Sidebar';
 import MapView from './components/Map/MapView';
 import StatsPanel from './components/Stats/StatsPanel';
+import IntroModal from './components/Intro/IntroModal';
 import Icon from './components/UI/Icons';
 import styles from './App.module.css';
 
-// Contamination opens with the air already moving: it is the first thing
-// anyone should see. Life still opens bare, and its idle toggles pulse to say
-// they are waiting.
+// Every mode opens on a bare black planet. Nothing is drawn until the user
+// switches a layer on; the idle toggles pulse to say they are waiting.
 const DEFAULT_LAYERS = {
-  [MODES.CONTAMINATION]: [CONTAMINATION_LAYERS.AIR_QUALITY],
+  [MODES.CONTAMINATION]: [],
   [MODES.LIFE]: [],
 };
 
@@ -94,7 +94,10 @@ export default function App() {
 
   return (
     <div className={styles.app}>
-
+      {/* Manifesto — sits between the loading screen and the map */}
+      <AnimatePresence>
+        {!introAccepted && <IntroModal onAccept={() => setIntroAccepted(true)} />}
+      </AnimatePresence>
 
       {/* Map (fullscreen base) */}
       <MapView
@@ -120,7 +123,7 @@ export default function App() {
         activeLayers={activeLayers}
         onToggleLayer={handleToggleLayer}
         introAccepted={introAccepted}
-        airFlow={data.airFlow}
+        sources={data?.sources}
       />
 
       {/* Right Stats Panel */}

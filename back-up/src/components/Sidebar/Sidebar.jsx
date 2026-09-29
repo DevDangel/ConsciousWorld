@@ -9,74 +9,14 @@ import {
   NO_DATA_COLOR,
   CONTAMINATION_LAYERS,
   LIFE_LAYERS,
-  AIR_FLOW,
+  FOG,
 } from '../../data/constants';
 import AnimatedCounter from '../UI/AnimatedCounter';
 import Icon from '../UI/Icons';
 import FilterHint from './FilterHint';
 import styles from './Sidebar.module.css';
 
-/** "31 ene 2014, 03:00 UTC" — wind grids are stamped in UTC. */
-function formatUtc(iso) {
-  const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return null;
-  return `${d.toLocaleString('es-ES', {
-    day: 'numeric', month: 'short', year: 'numeric',
-    hour: '2-digit', minute: '2-digit', timeZone: 'UTC',
-  })} UTC`;
-}
-
-/**
- * Legend for "Aire en movimiento". It says plainly where each half comes
- * from: the wind is a real forecast grid, and the colour is either a real
- * PM2.5 grid or, without one, an illustrative spread of the 67 readings.
- */
-function AirFlowLegend({ airFlow }) {
-  const meta = airFlow?.meta ?? {};
-  const when = formatUtc(meta.validTime);
-  const wind = meta.kind === 'sample'
-    ? `muestra histórica GFS${when ? ` · ${when}` : ''}`
-    : `${meta.sourceShort ?? 'datos en cuadrícula'}${when ? ` · ${when}` : ''}`;
-  const pm = airFlow?.pollution.source === 'grid'
-    ? (meta.pmSource ?? 'PM2.5 modelado en cuadrícula')
-    : 'PM2.5 de 67 mediciones, dispersado por el viento (ilustrativo)';
-  const { buckets } = AIR_FLOW;
-
-  return (
-    <div>
-      <span className={styles.legendTitle}>Calidad del aire en movimiento</span>
-      <div className={styles.airSwatches}>
-        {buckets.map((b, i) => (
-          <span key={i} className={styles.airSwatch} style={{ background: b.solid }} />
-        ))}
-      </div>
-      {/* One label per swatch, in µg/m³ (kept out of the uppercase title,
-          where "µg" would turn into "MG"). */}
-      <div className={styles.airSwatchLabels}>
-        {buckets.map((b, i) => {
-          const lo = i ? buckets[i - 1].max : 0;
-          const fmt = n => n.toLocaleString('es-ES');
-          const text = i === 0 ? `<${fmt(b.max)}` : b.max === Infinity ? `>${fmt(lo)}` : `${fmt(lo)}`;
-          return <span key={i}>{text}</span>;
-        })}
-      </div>
-      <div className={styles.legendLabels}>
-        <span>Limpio</span>
-        <span>PM2.5 µg/m³</span>
-        <span>Irrespirable</span>
-      </div>
-      <p className={styles.legendNote}>
-        <b>Viento:</b> {wind}
-        <br />
-        <b>Color:</b> {pm}
-        <br />
-        <b>Puntos:</b> las 67 mediciones; haz clic en uno para ver su detalle
-      </p>
-    </div>
-  );
-}
-
-export default function Sidebar({ mode, activeLayers, onToggleLayer, introAccepted = true, airFlow = null }) {
+export default function Sidebar({ mode, activeLayers, onToggleLayer, introAccepted = true, sources = null }) {
   const [isOpen, setIsOpen] = useState(true);
   const [interactedModes, setInteractedModes] = useState({
     [MODES.CONTAMINATION]: false,
@@ -102,8 +42,20 @@ export default function Sidebar({ mode, activeLayers, onToggleLayer, introAccept
   const scale = choroplethOn
     ? (isContamination ? CHOROPLETH.co2 : CHOROPLETH.coverage)
     : null;
-  const airFlowOn = isContamination && !!airFlow
-    && activeLayers.includes(CONTAMINATION_LAYERS.AIR_QUALITY);
+
+  const airFlowOn = isContamination && activeLayers.includes(CONTAMINATION_LAYERS.AIR_FLOW);
+  const airQualityOn = isContamination && activeLayers.includes(CONTAMINATION_LAYERS.AIR_QUALITY);
+  const showAirLegend = airFlowOn || airQualityOn;
+
+  const airFieldMeta = sources?.airField;
+  const airDate = airFieldMeta?.fecha_descarga
+    ? new Date(airFieldMeta.fecha_descarga).toLocaleString('es-ES', {
+        day: 'numeric',
+        month: 'short',
+        hour: '2-digit',
+        minute: '2-digit',
+      })
+    : null;
 
   return (
     <>
@@ -214,7 +166,6 @@ export default function Sidebar({ mode, activeLayers, onToggleLayer, introAccept
                 scale is logarithmic, so a linear gradient would squash every
                 colour but the last into the leftmost pixels. */}
             <div className={styles.legend}>
-              {airFlowOn && <AirFlowLegend airFlow={airFlow} />}
               {scale && (
                 <div>
                   <span className={styles.legendTitle}>{scale.unit}</span>
@@ -237,6 +188,32 @@ export default function Sidebar({ mode, activeLayers, onToggleLayer, introAccept
                   </div>
                 </div>
               )}
+
+              {showAirLegend && (
+                <div style={{ marginTop: scale ? '12px' : '0' }}>
+                  <span className={styles.legendTitle}>
+                    {airFlowOn ? 'PM2.5 — Transporte atmosférico (µg/m³)' : FOG.air.unit}
+                  </span>
+                  <div
+                    className={styles.legendScale}
+                    style={{
+                      background: `linear-gradient(90deg, ${FOG.air.legend.join(', ')})`,
+                    }}
+                  />
+                  <div className={styles.legendLabels}>
+                    <span>0 (Limpio)</span>
+                    <span>15</span>
+                    <span>35</span>
+                    <span>55</span>
+                    <span>75+ (Insalubre)</span>
+                  </div>
+                  {airDate && (
+                    <div className={styles.legendDate}>
+                      Viento y PM2.5: {airDate}
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
 
             {/* Footer */}
@@ -245,8 +222,6 @@ export default function Sidebar({ mode, activeLayers, onToggleLayer, introAccept
                 CO₂ y territorio protegido: Banco Mundial (API abierta)
                 <br />
                 PM2.5 en vivo: Open-Meteo · Ríos y áreas: UNEP
-                <br />
-                Viento y PM2.5 global: NASA GEOS-CF
               </p>
 
               <div className={styles.creditDivider} />

@@ -215,84 +215,26 @@ export function fogWeight({ weight, weightMax }) {
   return ['interpolate', ['linear'], ['get', weight], 0, 0, weightMax, 1];
 }
 
-// ——— Air quality in motion (wind particles + PM2.5) ———
-// Particles are drawn in a handful of colour buckets rather than one colour
-// each: a canvas stroke per bucket is ~100× cheaper than a stroke per
-// particle. Thresholds follow the WHO 24 h guideline (15 µg/m³) up to the
-// "very unhealthy" line (75 µg/m³).
-//
-// The palette is deliberately muted — sand, amber, coral, rose — and partly
-// transparent: the particles should read as air drifting over the planet, not
-// paint on top of it. Clean air is a faint grey-blue whisper. `solid` is the
-// same hue at full strength, for the measurement dots and the legend.
-export const AIR_FLOW = {
-  buckets: [
-    { max: 15, color: 'rgba(214, 226, 245, 0.36)', solid: '#b8c6dc', label: 'Limpio' },
-    { max: 25, color: 'rgba(245, 222, 160, 0.70)', solid: '#f0d9a0' },
-    { max: 37.5, color: 'rgba(242, 190, 120, 0.76)', solid: '#eebb78' },
-    { max: 50, color: 'rgba(238, 155, 110, 0.82)', solid: '#ec9a6c' },
-    { max: 75, color: 'rgba(232, 118, 112, 0.88)', solid: '#e57670' },
-    { max: Infinity, color: 'rgba(222, 92, 128, 0.92)', solid: '#dc5c80', label: 'Irrespirable' },
-  ],
-  // Haze painted on the globe under the particles, by PM2.5 (µg/m³). A thin
-  // smoky tint that never exceeds ~25 % opacity; below the first stop it is
-  // fully transparent, so clean air adds nothing.
-  overlay: [
-    [12, [240, 200, 140, 0]],
-    [22, [240, 195, 135, 0.06]],
-    [35, [236, 160, 110, 0.12]],
-    [55, [228, 118, 105, 0.19]],
-    [85, [215, 90, 120, 0.25]],
-  ],
-  // Screen speed: CSS pixels per frame for each m/s of wind. 10 m/s ≈ 0,5 px,
-  // about 30 px per second — a drift you can follow with the eye.
-  speed: 0.05,
-  // Tail: the last `trailPoints` positions, one kept every `trailEvery`
-  // frames — about 70 frames of history, ~35 px at 10 m/s. The canvas is
-  // cleared every frame, so tails end cleanly instead of leaving ghosts.
-  trailPoints: 14,
-  trailEvery: 5,
-  // Opacity of the tail from its end (left) to the head (right).
-  trailAlpha: [0.1, 0.28, 0.55, 0.95],
-  // Below this wind (m/s) particles are not drawn: still air looks still.
-  calmSpeed: 0.6,
-  // Passes of a light blur on the wind grid. The 1° grid is a subsample of
-  // a 0,25° model field and carries small eddies that read as noise; one
-  // pass keeps the large-scale flow and irons those out.
-  smoothPasses: 1,
-  lineWidth: 1,
-  // One particle per this many CSS px² of planet on screen, capped.
-  density: 1 / 200,
-  maxParticles: 8000,
-  // Lifetime in frames, randomised so particles do not all respawn at once.
-  // Longer than before so slow particles still travel far enough to show a
-  // direction.
-  minAge: 80,
-  maxAge: 180,
-};
-
-/** Which colour bucket a PM2.5 value falls in. */
-export function airFlowBucket(pm) {
-  const { buckets } = AIR_FLOW;
-  for (let b = 0; b < buckets.length; b++) if (pm < buckets[b].max) return b;
-  return buckets.length - 1;
-}
-
 // ——— Contamination Layer IDs ———
 export const CONTAMINATION_LAYERS = {
   AIR_QUALITY: 'air-quality',
+  AIR_FLOW: 'air-flow',
   CO2_EMISSIONS: 'co2-emissions',
   OCEAN_PLASTIC: 'ocean-plastic',
 };
 
 export const CONTAMINATION_LAYER_CONFIG = [
   {
-    // One layer for the whole story: the wind that moves the air and the
-    // PM2.5 it carries, plus the measurement points you can click.
+    id: CONTAMINATION_LAYERS.AIR_FLOW,
+    label: 'Aire en movimiento',
+    icon: 'wind',
+    description: 'Partículas en movimiento con el viento y PM2.5 real',
+  },
+  {
     id: CONTAMINATION_LAYERS.AIR_QUALITY,
     label: 'Calidad del Aire (PM2.5)',
     icon: 'wind',
-    description: 'Viento real y cómo arrastra el PM2.5 entre países',
+    description: 'Puntos de medición PM2.5 por país y ciudad',
   },
   {
     id: CONTAMINATION_LAYERS.CO2_EMISSIONS,

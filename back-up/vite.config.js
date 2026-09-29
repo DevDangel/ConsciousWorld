@@ -50,33 +50,9 @@ function maplibreWorkerAsset() {
   }
 }
 
-/**
- * Serve /api/air-field in `npm run dev` too, with the very same handler Vercel
- * deploys, so the NASA wind shows up locally without the Vercel CLI. The
- * module is loaded through Vite on each request, so edits to it apply without
- * restarting the dev server.
- */
-function vercelApiInDev() {
-  return {
-    name: 'vercel-api-in-dev',
-    apply: 'serve',
-    configureServer(server) {
-      server.middlewares.use('/api/air-field', async (req, res) => {
-        try {
-          const { default: handler } = await server.ssrLoadModule('/api/air-field.js');
-          await handler(req, res);
-        } catch (err) {
-          res.statusCode = 500;
-          res.end(JSON.stringify({ error: err.message }));
-        }
-      });
-    },
-  };
-}
-
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), maplibreWorkerAsset(), vercelApiInDev()],
+  plugins: [react(), maplibreWorkerAsset()],
   // Same worker problem in dev: pre-bundling flattens maplibre-gl into
   // .vite/deps/ where the sibling worker file does not exist.
   optimizeDeps: {

@@ -1,0 +1,105 @@
+.app {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Loading Screen */
+.loading {
+  width: 100vw;
+  height: 100vh;
+  background: var(--bg-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loadingContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.loadingGlobe {
+  font-size: 64px;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3));
+}
+
+.loadingTitle {
+  font-size: 32px;
+  font-weight: 800;
+  background: linear-gradient(90deg, #ff2d55, #00d4ff, #00ff87);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% auto;
+  animation: gradientFlow 3s ease infinite;
+}
+
+.loadingBar {
+  width: 200px;
+  height: 3px;
+  background: var(--bg-surface);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.loadingBarFill {
+  height: 100%;
+  width: 40%;
+  background: linear-gradient(90deg, #ff2d55, #00d4ff);
+  border-radius: var(--radius-full);
+  animation: shimmer 1.5s ease infinite;
+  background-size: 200% 100%;
+}
+
+.loadingText {
+  font-size: 13px;
+  color: var(--text-secondary);
+  letter-spacing: 0.3px;
+}
+
+/* Error Screen */
+.errorIcon {
+  color: var(--red-primary);
+  filter: drop-shadow(0 0 20px var(--red-glow));
+}
+
+.errorTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.errorMessage {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+  max-width: 460px;
+  text-align: center;
+  line-height: 1.6;
+  padding: var(--space-md);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  word-break: break-word;
+}
+
+.retryBtn {
+  padding: 10px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--red-gradient);
+  border-radius: var(--radius-full);
+  transition: transform var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.retryBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-glow-red);
+}

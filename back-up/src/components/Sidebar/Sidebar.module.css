@@ -327,6 +327,13 @@
   color: var(--text-tertiary);
 }
 
+.legendDate {
+  font-size: 9px;
+  color: var(--text-tertiary);
+  margin-top: 6px;
+  font-family: var(--font-mono);
+}
+
 .legendNoData {
   display: flex;
   align-items: center;
@@ -334,40 +341,6 @@
   margin-top: var(--space-sm);
   font-size: 10px;
   color: var(--text-tertiary);
-}
-
-.airSwatches {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 3px;
-}
-
-.airSwatch {
-  height: 8px;
-  border-radius: 2px;
-}
-
-.airSwatchLabels {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 3px;
-  font-size: 9px;
-  font-family: var(--font-mono);
-  color: var(--text-tertiary);
-  text-align: center;
-  margin-bottom: 2px;
-}
-
-.legendNote {
-  margin-top: var(--space-sm);
-  font-size: 10px;
-  line-height: 1.5;
-  color: var(--text-tertiary);
-}
-
-.legendNote b {
-  color: var(--text-secondary);
-  font-weight: 600;
 }
 
 .legendNoDataSwatch {

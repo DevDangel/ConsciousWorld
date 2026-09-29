@@ -1,16 +1,14 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { createField, buildPollution } from '../utils/airField';
-import { AIR_FLOW } from '../data/constants';
 
 const EMPTY = {
   co2: null,
   airQuality: null,
+  airField: null,
   oceanPlastic: null,
   rivers: null,
   riverCourses: null,
   protectedAreas: null,
   countries: null,
-  airFlow: null,
   sources: null,
 };
 
@@ -98,33 +96,6 @@ async function withLiveAirQuality(base) {
 }
 
 /**
- * The wind grid, best source first:
- *  1. /api/air-field — today's wind and PM2.5 from NASA GEOS-CF, served by the
- *     Vercel function (and by the Vite dev server locally);
- *  2. /data/air-field.json — the bundled file (historical GFS sample, or
- *     whatever `npm run data:air` last wrote).
- * It is optional: if neither loads, the planet still loads and the air
- * quality layer falls back to its static fog.
- */
-async function loadAirField() {
-  const sources = [
-    // Generous but bounded: a cold cache means one round trip to NASA (~2 s).
-    { url: '/api/air-field', timeoutMs: 15000 },
-    { url: '/data/air-field.json', timeoutMs: 15000 },
-  ];
-  for (const { url, timeoutMs } of sources) {
-    try {
-      const res = await fetch(url, { signal: AbortSignal.timeout(timeoutMs) });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return createField(await res.json(), { smoothPasses: AIR_FLOW.smoothPasses });
-    } catch (e) {
-      console.warn(`Viento: ${url} no disponible (${e.message})`);
-    }
-  }
-  return null;
-}
-
-/**
  * Loads every dataset the map needs. Returns a `live` flag so the UI can say
  * whether PM2.5 is real-time or the bundled 2023 baseline.
  */
@@ -154,7 +125,7 @@ export function useMapData() {
       setLoading(true);
       setError(null);
       try {
-        const [co2, airBase, oceanPlastic, rivers, riverCourses, protectedAreas, countries, coverage, field] =
+        const [co2, airBase, oceanPlastic, rivers, riverCourses, protectedAreas, countries, coverage] =
           await Promise.all([
             fetchJSON('/data/contamination/co2-emissions.json'),
             fetchJSON('/data/contamination/air-quality.json'),
@@ -164,7 +135,6 @@ export function useMapData() {
             fetchJSON('/data/life/protected-areas.json'),
             fetchJSON('/data/countries.geojson'),
             fetchJSON('/data/life/protected-coverage.json'),
-            loadAirField(),
           ]);
 
         const co2Rows = rows(co2, 'co2-emissions.json');
@@ -182,22 +152,28 @@ export function useMapData() {
           console.warn('PM2.5 en vivo no disponible, se usa la línea base:', e.message);
         }
 
-        // Built after the live PM2.5 so the plumes start from today's readings.
-        const airFlow = field
-          ? { field, pollution: buildPollution(field, airQuality), meta: field.meta }
-          : null;
+        let airField = null;
+        try {
+          airField = await fetchJSON('/data/air-field.json');
+        } catch (e) {
+          console.warn('Campo de aire (/data/air-field.json) no disponible, capa inactiva:', e.message);
+        }
 
         if (cancelled) return;
         setData({
           co2: co2Rows,
           airQuality,
+          airField,
           oceanPlastic,
           rivers,
           riverCourses,
           protectedAreas,
           countries: joinCountries(countries, co2Rows, coverageRows),
-          airFlow,
-          sources: { co2: co2?._meta ?? null, coverage: coverage?._meta ?? null },
+          sources: {
+            co2: co2?._meta ?? null,
+            coverage: coverage?._meta ?? null,
+            airField: airField?._meta ?? null,
+          },
         });
         setLive(isLive);
         setLoading(false);

@@ -17,29 +17,18 @@ import {
   choroplethExpression,
   NO_DATA_COLOR,
   FOG,
-  AIR_FLOW,
   fogColor,
   fogRadius,
   fogWeight,
 } from '../../data/constants';
 import AirFlowLayer from './AirFlowLayer';
-import { renderPollutionOverlay, OVERLAY_COORDINATES } from './airOverlay';
 import styles from './MapView.module.css';
 
 // CyberDark Map Style
 const DARK_STYLE = {
   version: 8,
   name: 'CyberDark',
-  // A planet, not a flat sheet: the wind has to be seen wrapping around it.
   projection: { type: 'globe' },
-  // Thin atmosphere halo around the globe; it fades out as you zoom in so it
-  // does not wash over the ground at street level.
-  sky: {
-    'sky-color': '#0b1a33',
-    'horizon-color': '#1c3a66',
-    'fog-color': '#0f172a',
-    'atmosphere-blend': ['interpolate', ['linear'], ['zoom'], 0, 1, 5, 1, 7, 0],
-  },
   sources: {
     'carto-dark': {
       type: 'raster',
@@ -72,21 +61,9 @@ const DARK_STYLE = {
   ],
 };
 
-/**
- * Zoom at which the whole globe fits the viewport with some air around it.
- * On a globe the radius in pixels is ~81·2^zoom, so the zoom follows from
- * the smaller screen side: a phone and a 4K monitor both open on a planet
- * that fills ~85 % of the height.
- */
-function fitGlobeZoom(el) {
-  const side = Math.min(el.clientWidth, el.clientHeight) || 800;
-  return Math.max(0.6, Math.min(3, Math.log2((side * 0.43) / 72)));
-}
-
 const INITIAL_VIEW = {
-  // Opens over the Atlantic with the Americas, Europe and Africa in view.
-  center: [-30, 12],
-  zoom: 1.6,
+  center: [0, 20],
+  zoom: 1.8,
   maxZoom: 10,
   minZoom: 1,
 };
@@ -95,8 +72,6 @@ const INITIAL_VIEW = {
 // the choropleth can never end up on top of the markers, whatever order the
 // layers happen to be toggled in.
 const LAYER_ORDER = [
-  'air-flow-overlay',
-  'air-flow-outline',
   'countries-nodata',
   'countries-fill',
   'countries-line',
@@ -106,7 +81,6 @@ const LAYER_ORDER = [
   'lake-fog',
   'river-glow',
   'river-line',
-  'air-dot',
   'air-core',
   'plastic-core',
   'river-core',
@@ -211,9 +185,6 @@ function MapView({ mode, activeLayers, data, onItemClick }, ref) {
   const mapRef = useRef(null);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [hovered, setHovered] = useState(null);
-  // The map instance as state (not only a ref) so children that attach their
-  // own listeners, like the particle layer, re-render when it appears.
-  const [mapInstance, setMapInstance] = useState(null);
   const sourceData = useRef(new Map());
 
   const isContamination = mode === MODES.CONTAMINATION;
@@ -224,6 +195,9 @@ function MapView({ mode, activeLayers, data, onItemClick }, ref) {
     flyTo(lng, lat, zoom = 5) {
       mapRef.current?.flyTo({ center: [lng, lat], zoom, duration: 1500 });
     },
+    getMap() {
+      return mapRef.current;
+    },
   }), []);
 
   // ——— Initialize MapLibre ———
@@ -233,7 +207,7 @@ function MapView({ mode, activeLayers, data, onItemClick }, ref) {
       container: mapContainer.current,
       style: DARK_STYLE,
       ...INITIAL_VIEW,
-      zoom: fitGlobeZoom(mapContainer.current),
+      projection: { type: 'globe' },
       attributionControl: { compact: true },
     });
 
@@ -246,7 +220,6 @@ function MapView({ mode, activeLayers, data, onItemClick }, ref) {
       // __map.getStyle(). Dev only, never shipped.
       if (import.meta.env.DEV) window.__map = map;
       setMapLoaded(true);
-      setMapInstance(map);
     };
     map.on('load', handleLoad);
 
@@ -255,7 +228,6 @@ function MapView({ mode, activeLayers, data, onItemClick }, ref) {
       // without this, a StrictMode remount leaves mapLoaded stuck at true
       // while mapRef points at a fresh, empty map.
       setMapLoaded(false);
-      setMapInstance(null);
       mapRef.current = null;
       sources.clear();
       map.remove();
@@ -385,25 +357,6 @@ function MapView({ mode, activeLayers, data, onItemClick }, ref) {
   });
 
   /**
-   * Measurement point: a small dot in the particle palette with a dark rim,
-   * so it stands out from the moving air without shouting over it.
-   */
-  const airDotLayer = (id, source) => ({
-    id, type: 'circle', source,
-    paint: {
-      'circle-radius': ['interpolate', ['linear'], ['zoom'], 1, 2.2, 4, 3.5, 8, 6],
-      'circle-color': [
-        'step', ['get', 'pm25'],
-        AIR_FLOW.buckets[0].solid,
-        ...AIR_FLOW.buckets.slice(0, -1).flatMap((b, i) => [b.max, AIR_FLOW.buckets[i + 1].solid]),
-      ],
-      'circle-opacity': 0.9,
-      'circle-stroke-color': 'rgba(10, 14, 26, 0.85)',
-      'circle-stroke-width': 1,
-    },
-  });
-
-  /**
    * Invisible click target under the cursor. A heatmap layer cannot be
    * queried, so each point still needs a circle to hit — but it is fully
    * transparent: the cloud is the only thing anyone sees.
@@ -438,54 +391,6 @@ function MapView({ mode, activeLayers, data, onItemClick }, ref) {
       },
     },
   ];
-
-  // ——— Air quality in motion ———
-  // The PM2.5 layer and the wind are one layer: when the wind grid loaded,
-  // switching "Calidad del Aire" on shows the moving air; if it did not, the
-  // same toggle falls back to the static fog below.
-  const airOn = isContamination && activeLayers.includes(CONTAMINATION_LAYERS.AIR_QUALITY);
-  const airFlowVisible = airOn && !!data?.airFlow;
-
-  // The PM2.5 haze under the particles. Rendered once per dataset (~30 ms)
-  // and handed to MapLibre as an image, so it turns with the globe for free.
-  const airOverlayUrl = useMemo(() => {
-    if (!data?.airFlow) return null;
-    return renderPollutionOverlay(data.airFlow.field, data.airFlow.pollution.values);
-  }, [data?.airFlow]);
-
-  useEffect(() => {
-    const map = mapRef.current;
-    if (!mapLoaded || !map) return;
-    const SRC = 'air-flow-overlay-source';
-    const LAYER = 'air-flow-overlay';
-    const OUTLINE_SRC = 'air-flow-outline-source';
-    const OUTLINE = 'air-flow-outline';
-    if (!airFlowVisible || !airOverlayUrl) {
-      [LAYER, OUTLINE].forEach(id => { if (map.getLayer(id)) map.removeLayer(id); });
-      [SRC, OUTLINE_SRC].forEach(id => { if (map.getSource(id)) map.removeSource(id); });
-      return;
-    }
-    // Faint coastlines so the eye can tell where it is under the wind; the
-    // raster basemap alone disappears beneath thousands of particles.
-    if (data?.countries && !map.getSource(OUTLINE_SRC)) {
-      map.addSource(OUTLINE_SRC, { type: 'geojson', data: data.countries });
-    }
-    if (map.getSource(OUTLINE_SRC) && !map.getLayer(OUTLINE)) {
-      addLayerOrdered(map, {
-        id: OUTLINE, type: 'line', source: OUTLINE_SRC,
-        paint: { 'line-color': '#9fb4d9', 'line-opacity': 0.35, 'line-width': 0.7 },
-      });
-    }
-    if (!map.getSource(SRC)) {
-      map.addSource(SRC, { type: 'image', url: airOverlayUrl, coordinates: OVERLAY_COORDINATES });
-    }
-    if (!map.getLayer(LAYER)) {
-      addLayerOrdered(map, {
-        id: LAYER, type: 'raster', source: SRC,
-        paint: { 'raster-opacity': 1, 'raster-fade-duration': 0, 'raster-resampling': 'linear' },
-      });
-    }
-  }, [mapLoaded, airFlowVisible, airOverlayUrl, data?.countries]);
 
   // ——— Layer sync ———
   useEffect(() => {
@@ -525,14 +430,15 @@ function MapView({ mode, activeLayers, data, onItemClick }, ref) {
       },
     ]);
 
-    // AIR — with the wind grid, the particles and their haze already show
-    // the pollution, so the 67 measurements become small dots you can click,
-    // tinted with the same palette. Without it, the warm fog stands in.
+    // AIR — warm haze. Cyan read as "cool and clean", the opposite of what a
+    // PM2.5 reading means.
     syncLayers(
-      'air-source', airQualityGeoJSON, airOn,
-      data?.airFlow
-        ? [airDotLayer('air-dot', 'air-source'), hitLayer('air-core', 'air-source')]
-        : [fogLayer('air-fog', 'air-source', FOG.air), hitLayer('air-core', 'air-source')]
+      'air-source', airQualityGeoJSON,
+      isContamination && activeLayers.includes(CONTAMINATION_LAYERS.AIR_QUALITY),
+      [
+        fogLayer('air-fog', 'air-source', FOG.air),
+        hitLayer('air-core', 'air-source'),
+      ]
     );
 
     // PLASTIC — violet haze, kept distinct from the air fog because it is a
@@ -568,7 +474,7 @@ function MapView({ mode, activeLayers, data, onItemClick }, ref) {
       ]
     );
   }, [
-    mapLoaded, activeLayers, isContamination, data?.countries, data?.airFlow, airOn,
+    mapLoaded, activeLayers, isContamination, data?.countries,
     airQualityGeoJSON, oceanPlasticGeoJSON, lakesGeoJSON, protectedAreasGeoJSON,
     data?.riverCourses,
     syncLayers,
@@ -634,7 +540,11 @@ function MapView({ mode, activeLayers, data, onItemClick }, ref) {
   return (
     <div className={styles.mapContainer}>
       <div ref={mapContainer} style={{ width: '100%', height: '100%' }} />
-      <AirFlowLayer map={mapInstance} airFlow={data?.airFlow} visible={airFlowVisible} />
+      <AirFlowLayer
+        map={mapLoaded ? mapRef.current : null}
+        field={data?.airField}
+        visible={isContamination && activeLayers.includes(CONTAMINATION_LAYERS.AIR_FLOW)}
+      />
       <div
         className={styles.mapOverlay}
         style={{ boxShadow: 'inset 0 0 150px rgba(0, 0, 0, 0.9), inset 0 0 50px rgba(2, 6, 23, 0.8)' }}

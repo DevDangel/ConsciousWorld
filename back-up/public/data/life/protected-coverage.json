@@ -1,0 +1,1077 @@
+{
+ "_meta": {
+  "fuente": "Banco Mundial — World Bank Open Data",
+  "url": "https://api.worldbank.org/v2",
+  "indicadores": [
+   "ER.LND.PTLD.ZS"
+  ],
+  "actualizado_por_el_banco_mundial": "2026-07-13",
+  "descargado": "2026-07-26",
+  "generado_por": "npm run data:refresh (scripts/fetch-data.mjs)",
+  "indicador_nombre": "Terrestrial protected areas (% of total land area)"
+ },
+ "data": [
+  {
+   "country": "NCL",
+   "name": "Nueva Caledonia",
+   "year": 2023,
+   "protected_pct": 59.7
+  },
+  {
+   "country": "VEN",
+   "name": "Venezuela",
+   "year": 2023,
+   "protected_pct": 56.9
+  },
+  {
+   "country": "LUX",
+   "name": "Luxemburgo",
+   "year": 2023,
+   "protected_pct": 55.8
+  },
+  {
+   "country": "BTN",
+   "name": "Bután",
+   "year": 2023,
+   "protected_pct": 49.7
+  },
+  {
+   "country": "BRN",
+   "name": "Brunéi",
+   "year": 2023,
+   "protected_pct": 46.9
+  },
+  {
+   "country": "HKG",
+   "name": "RAE de Hong Kong (China)",
+   "year": 2023,
+   "protected_pct": 41.9
+  },
+  {
+   "country": "ZMB",
+   "name": "Zambia",
+   "year": 2023,
+   "protected_pct": 41.3
+  },
+  {
+   "country": "GRL",
+   "name": "Groenlandia",
+   "year": 2023,
+   "protected_pct": 41.1
+  },
+  {
+   "country": "BGR",
+   "name": "Bulgaria",
+   "year": 2023,
+   "protected_pct": 41
+  },
+  {
+   "country": "SVN",
+   "name": "Eslovenia",
+   "year": 2023,
+   "protected_pct": 40.4
+  },
+  {
+   "country": "NAM",
+   "name": "Namibia",
+   "year": 2023,
+   "protected_pct": 39.9
+  },
+  {
+   "country": "TZA",
+   "name": "Tanzania",
+   "year": 2023,
+   "protected_pct": 39.9
+  },
+  {
+   "country": "KHM",
+   "name": "Camboya",
+   "year": 2023,
+   "protected_pct": 39.7
+  },
+  {
+   "country": "POL",
+   "name": "Polonia",
+   "year": 2023,
+   "protected_pct": 39.6
+  },
+  {
+   "country": "CYP",
+   "name": "Chipre",
+   "year": 2023,
+   "protected_pct": 38.7
+  },
+  {
+   "country": "HRV",
+   "name": "Croacia",
+   "year": 2023,
+   "protected_pct": 38.5
+  },
+  {
+   "country": "DEU",
+   "name": "Alemania",
+   "year": 2023,
+   "protected_pct": 37.6
+  },
+  {
+   "country": "GIN",
+   "name": "Guinea",
+   "year": 2023,
+   "protected_pct": 37.6
+  },
+  {
+   "country": "SVK",
+   "name": "Eslovaquia",
+   "year": 2023,
+   "protected_pct": 37.6
+  },
+  {
+   "country": "BLZ",
+   "name": "Belice",
+   "year": 2023,
+   "protected_pct": 37.5
+  },
+  {
+   "country": "COG",
+   "name": "Congo",
+   "year": 2023,
+   "protected_pct": 36.8
+  },
+  {
+   "country": "BHS",
+   "name": "Bahamas",
+   "year": 2023,
+   "protected_pct": 36.6
+  },
+  {
+   "country": "GRC",
+   "name": "Grecia",
+   "year": 2023,
+   "protected_pct": 35.2
+  },
+  {
+   "country": "COM",
+   "name": "Comoras",
+   "year": 2023,
+   "protected_pct": 33.8
+  },
+  {
+   "country": "NZL",
+   "name": "Nueva Zelanda",
+   "year": 2023,
+   "protected_pct": 33.4
+  },
+  {
+   "country": "PAN",
+   "name": "Panamá",
+   "year": 2023,
+   "protected_pct": 31.4
+  },
+  {
+   "country": "BOL",
+   "name": "Bolivia",
+   "year": 2023,
+   "protected_pct": 30.9
+  },
+  {
+   "country": "BRA",
+   "name": "Brasil",
+   "year": 2023,
+   "protected_pct": 30.6
+  },
+  {
+   "country": "TTO",
+   "name": "Trinidad y Tobago",
+   "year": 2023,
+   "protected_pct": 30.6
+  },
+  {
+   "country": "LKA",
+   "name": "Sri Lanka",
+   "year": 2023,
+   "protected_pct": 29.9
+  },
+  {
+   "country": "JPN",
+   "name": "Japón",
+   "year": 2023,
+   "protected_pct": 29.7
+  },
+  {
+   "country": "BEN",
+   "name": "Benín",
+   "year": 2023,
+   "protected_pct": 29.6
+  },
+  {
+   "country": "AUT",
+   "name": "Austria",
+   "year": 2023,
+   "protected_pct": 29.5
+  },
+  {
+   "country": "MOZ",
+   "name": "Mozambique",
+   "year": 2023,
+   "protected_pct": 29.5
+  },
+  {
+   "country": "BWA",
+   "name": "Botsuana",
+   "year": 2023,
+   "protected_pct": 29.1
+  },
+  {
+   "country": "FRA",
+   "name": "Francia",
+   "year": 2023,
+   "protected_pct": 28.4
+  },
+  {
+   "country": "ZWE",
+   "name": "Zimbabue",
+   "year": 2023,
+   "protected_pct": 28.3
+  },
+  {
+   "country": "ESP",
+   "name": "España",
+   "year": 2023,
+   "protected_pct": 28.1
+  },
+  {
+   "country": "TGO",
+   "name": "Togo",
+   "year": 2023,
+   "protected_pct": 28
+  },
+  {
+   "country": "GBR",
+   "name": "Reino Unido",
+   "year": 2023,
+   "protected_pct": 27.8
+  },
+  {
+   "country": "GNB",
+   "name": "Guinea-Bisáu",
+   "year": 2023,
+   "protected_pct": 27.1
+  },
+  {
+   "country": "CRI",
+   "name": "Costa Rica",
+   "year": 2023,
+   "protected_pct": 26.6
+  },
+  {
+   "country": "DOM",
+   "name": "República Dominicana",
+   "year": 2023,
+   "protected_pct": 26.4
+  },
+  {
+   "country": "SEN",
+   "name": "Senegal",
+   "year": 2023,
+   "protected_pct": 26.4
+  },
+  {
+   "country": "ARM",
+   "name": "Armenia",
+   "year": 2023,
+   "protected_pct": 24.7
+  },
+  {
+   "country": "ISR",
+   "name": "Israel",
+   "year": 2023,
+   "protected_pct": 24.5
+  },
+  {
+   "country": "ROU",
+   "name": "Rumanía",
+   "year": 2023,
+   "protected_pct": 24.5
+  },
+  {
+   "country": "NPL",
+   "name": "Nepal",
+   "year": 2023,
+   "protected_pct": 23.6
+  },
+  {
+   "country": "ECU",
+   "name": "Ecuador",
+   "year": 2023,
+   "protected_pct": 23.5
+  },
+  {
+   "country": "HND",
+   "name": "Honduras",
+   "year": 2023,
+   "protected_pct": 23.5
+  },
+  {
+   "country": "CIV",
+   "name": "Côte d’Ivoire",
+   "year": 2023,
+   "protected_pct": 23
+  },
+  {
+   "country": "MWI",
+   "name": "Malaui",
+   "year": 2023,
+   "protected_pct": 22.9
+  },
+  {
+   "country": "PRT",
+   "name": "Portugal",
+   "year": 2023,
+   "protected_pct": 22.9
+  },
+  {
+   "country": "HUN",
+   "name": "Hungría",
+   "year": 2023,
+   "protected_pct": 22.6
+  },
+  {
+   "country": "NLD",
+   "name": "Países Bajos",
+   "year": 2023,
+   "protected_pct": 22.5
+  },
+  {
+   "country": "PER",
+   "name": "Perú",
+   "year": 2023,
+   "protected_pct": 22.5
+  },
+  {
+   "country": "GAB",
+   "name": "Gabón",
+   "year": 2023,
+   "protected_pct": 22.4
+  },
+  {
+   "country": "TJK",
+   "name": "Tayikistán",
+   "year": 2023,
+   "protected_pct": 22.3
+  },
+  {
+   "country": "CZE",
+   "name": "Chequia",
+   "year": 2023,
+   "protected_pct": 22.2
+  },
+  {
+   "country": "ITA",
+   "name": "Italia",
+   "year": 2023,
+   "protected_pct": 21.6
+  },
+  {
+   "country": "EST",
+   "name": "Estonia",
+   "year": 2023,
+   "protected_pct": 21.4
+  },
+  {
+   "country": "LSO",
+   "name": "Lesoto",
+   "year": 2023,
+   "protected_pct": 21.3
+  },
+  {
+   "country": "NIC",
+   "name": "Nicaragua",
+   "year": 2023,
+   "protected_pct": 21.3
+  },
+  {
+   "country": "TCD",
+   "name": "Chad",
+   "year": 2023,
+   "protected_pct": 21
+  },
+  {
+   "country": "CHL",
+   "name": "Chile",
+   "year": 2023,
+   "protected_pct": 21
+  },
+  {
+   "country": "ISL",
+   "name": "Islandia",
+   "year": 2023,
+   "protected_pct": 20.8
+  },
+  {
+   "country": "AUS",
+   "name": "Australia",
+   "year": 2023,
+   "protected_pct": 20.4
+  },
+  {
+   "country": "GTM",
+   "name": "Guatemala",
+   "year": 2023,
+   "protected_pct": 20.1
+  },
+  {
+   "country": "JAM",
+   "name": "Jamaica",
+   "year": 2023,
+   "protected_pct": 20
+  },
+  {
+   "country": "MNG",
+   "name": "Mongolia",
+   "year": 2023,
+   "protected_pct": 19.8
+  },
+  {
+   "country": "ARE",
+   "name": "Emiratos Árabes Unidos",
+   "year": 2023,
+   "protected_pct": 19.4
+  },
+  {
+   "country": "GNQ",
+   "name": "Guinea Ecuatorial",
+   "year": 2023,
+   "protected_pct": 19.3
+  },
+  {
+   "country": "LAO",
+   "name": "Laos",
+   "year": 2023,
+   "protected_pct": 19
+  },
+  {
+   "country": "ALB",
+   "name": "Albania",
+   "year": 2023,
+   "protected_pct": 18.6
+  },
+  {
+   "country": "THA",
+   "name": "Tailandia",
+   "year": 2023,
+   "protected_pct": 18.5
+  },
+  {
+   "country": "LVA",
+   "name": "Letonia",
+   "year": 2023,
+   "protected_pct": 18.2
+  },
+  {
+   "country": "NER",
+   "name": "Níger",
+   "year": 2023,
+   "protected_pct": 18.2
+  },
+  {
+   "country": "CAF",
+   "name": "República Centroafricana",
+   "year": 2023,
+   "protected_pct": 18.1
+  },
+  {
+   "country": "NOR",
+   "name": "Noruega",
+   "year": 2023,
+   "protected_pct": 17.7
+  },
+  {
+   "country": "LTU",
+   "name": "Lituania",
+   "year": 2023,
+   "protected_pct": 17.1
+  },
+  {
+   "country": "DNK",
+   "name": "Dinamarca",
+   "year": 2023,
+   "protected_pct": 17
+  },
+  {
+   "country": "ETH",
+   "name": "Etiopía",
+   "year": 2023,
+   "protected_pct": 17
+  },
+  {
+   "country": "KOR",
+   "name": "Corea del Sur",
+   "year": 2023,
+   "protected_pct": 17
+  },
+  {
+   "country": "KWT",
+   "name": "Kuwait",
+   "year": 2023,
+   "protected_pct": 17
+  },
+  {
+   "country": "BFA",
+   "name": "Burkina Faso",
+   "year": 2023,
+   "protected_pct": 16.4
+  },
+  {
+   "country": "COL",
+   "name": "Colombia",
+   "year": 2023,
+   "protected_pct": 16.4
+  },
+  {
+   "country": "CUB",
+   "name": "Cuba",
+   "year": 2023,
+   "protected_pct": 16.2
+  },
+  {
+   "country": "UGA",
+   "name": "Uganda",
+   "year": 2023,
+   "protected_pct": 16.1
+  },
+  {
+   "country": "TLS",
+   "name": "Timor-Leste",
+   "year": 2023,
+   "protected_pct": 16
+  },
+  {
+   "country": "PHL",
+   "name": "Filipinas",
+   "year": 2023,
+   "protected_pct": 15.9
+  },
+  {
+   "country": "QAT",
+   "name": "Catar",
+   "year": 2023,
+   "protected_pct": 15.8
+  },
+  {
+   "country": "BEL",
+   "name": "Bélgica",
+   "year": 2023,
+   "protected_pct": 15.6
+  },
+  {
+   "country": "CHN",
+   "name": "China",
+   "year": 2023,
+   "protected_pct": 15.6
+  },
+  {
+   "country": "SAU",
+   "name": "Arabia Saudí",
+   "year": 2023,
+   "protected_pct": 15.6
+  },
+  {
+   "country": "SSD",
+   "name": "Sudán del Sur",
+   "year": 2023,
+   "protected_pct": 15.5
+  },
+  {
+   "country": "MKD",
+   "name": "Macedonia del Norte",
+   "year": 2023,
+   "protected_pct": 15.4
+  },
+  {
+   "country": "SWE",
+   "name": "Suecia",
+   "year": 2023,
+   "protected_pct": 15.4
+  },
+  {
+   "country": "GHA",
+   "name": "Ghana",
+   "year": 2023,
+   "protected_pct": 14.8
+  },
+  {
+   "country": "MEX",
+   "name": "México",
+   "year": 2023,
+   "protected_pct": 14.6
+  },
+  {
+   "country": "SUR",
+   "name": "Surinam",
+   "year": 2023,
+   "protected_pct": 14.5
+  },
+  {
+   "country": "IRL",
+   "name": "Irlanda",
+   "year": 2023,
+   "protected_pct": 14.4
+  },
+  {
+   "country": "PRY",
+   "name": "Paraguay",
+   "year": 2023,
+   "protected_pct": 14.3
+  },
+  {
+   "country": "COD",
+   "name": "República Democrática del Congo",
+   "year": 2023,
+   "protected_pct": 13.9
+  },
+  {
+   "country": "MNE",
+   "name": "Montenegro",
+   "year": 2023,
+   "protected_pct": 13.9
+  },
+  {
+   "country": "NGA",
+   "name": "Nigeria",
+   "year": 2023,
+   "protected_pct": 13.9
+  },
+  {
+   "country": "BLR",
+   "name": "Bielorrusia",
+   "year": 2023,
+   "protected_pct": 13.8
+  },
+  {
+   "country": "FIN",
+   "name": "Finlandia",
+   "year": 2023,
+   "protected_pct": 13.4
+  },
+  {
+   "country": "MYS",
+   "name": "Malasia",
+   "year": 2023,
+   "protected_pct": 13.3
+  },
+  {
+   "country": "EGY",
+   "name": "Egipto",
+   "year": 2023,
+   "protected_pct": 13.1
+  },
+  {
+   "country": "UKR",
+   "name": "Ucrania",
+   "year": 2023,
+   "protected_pct": 13
+  },
+  {
+   "country": "USA",
+   "name": "Estados Unidos",
+   "year": 2023,
+   "protected_pct": 12.9
+  },
+  {
+   "country": "CAN",
+   "name": "Canadá",
+   "year": 2023,
+   "protected_pct": 12.8
+  },
+  {
+   "country": "SLE",
+   "name": "Sierra Leona",
+   "year": 2023,
+   "protected_pct": 12.7
+  },
+  {
+   "country": "PAK",
+   "name": "Pakistán",
+   "year": 2023,
+   "protected_pct": 12.3
+  },
+  {
+   "country": "IDN",
+   "name": "Indonesia",
+   "year": 2023,
+   "protected_pct": 12.2
+  },
+  {
+   "country": "KEN",
+   "name": "Kenia",
+   "year": 2023,
+   "protected_pct": 12.2
+  },
+  {
+   "country": "CHE",
+   "name": "Suiza",
+   "year": 2023,
+   "protected_pct": 12.1
+  },
+  {
+   "country": "MDA",
+   "name": "Moldavia",
+   "year": 2023,
+   "protected_pct": 11.4
+  },
+  {
+   "country": "RUS",
+   "name": "Rusia",
+   "year": 2023,
+   "protected_pct": 11.4
+  },
+  {
+   "country": "GEO",
+   "name": "Georgia",
+   "year": 2023,
+   "protected_pct": 11.1
+  },
+  {
+   "country": "CMR",
+   "name": "Camerún",
+   "year": 2023,
+   "protected_pct": 11
+  },
+  {
+   "country": "AGO",
+   "name": "Angola",
+   "year": 2023,
+   "protected_pct": 10.7
+  },
+  {
+   "country": "AZE",
+   "name": "Azerbaiyán",
+   "year": 2023,
+   "protected_pct": 10.2
+  },
+  {
+   "country": "KAZ",
+   "name": "Kazajistán",
+   "year": 2023,
+   "protected_pct": 10
+  },
+  {
+   "country": "PSE",
+   "name": "Territorios Palestinos",
+   "year": 2023,
+   "protected_pct": 10
+  },
+  {
+   "country": "UZB",
+   "name": "Uzbekistán",
+   "year": 2023,
+   "protected_pct": 9.5
+  },
+  {
+   "country": "ZAF",
+   "name": "Sudáfrica",
+   "year": 2023,
+   "protected_pct": 9.3
+  },
+  {
+   "country": "RWA",
+   "name": "Ruanda",
+   "year": 2023,
+   "protected_pct": 9.1
+  },
+  {
+   "country": "ARG",
+   "name": "Argentina",
+   "year": 2023,
+   "protected_pct": 8.7
+  },
+  {
+   "country": "SLV",
+   "name": "El Salvador",
+   "year": 2023,
+   "protected_pct": 8.6
+  },
+  {
+   "country": "HTI",
+   "name": "Haití",
+   "year": 2023,
+   "protected_pct": 8.6
+  },
+  {
+   "country": "IRN",
+   "name": "Irán",
+   "year": 2023,
+   "protected_pct": 8.6
+  },
+  {
+   "country": "GUY",
+   "name": "Guyana",
+   "year": 2023,
+   "protected_pct": 8.5
+  },
+  {
+   "country": "WSM",
+   "name": "Samoa",
+   "year": 2023,
+   "protected_pct": 8.2
+  },
+  {
+   "country": "SRB",
+   "name": "Serbia",
+   "year": 2023,
+   "protected_pct": 8.1
+  },
+  {
+   "country": "TUN",
+   "name": "Túnez",
+   "year": 2023,
+   "protected_pct": 7.9
+  },
+  {
+   "country": "GMB",
+   "name": "Gambia",
+   "year": 2023,
+   "protected_pct": 7.7
+  },
+  {
+   "country": "BDI",
+   "name": "Burundi",
+   "year": 2023,
+   "protected_pct": 7.6
+  },
+  {
+   "country": "VNM",
+   "name": "Vietnam",
+   "year": 2023,
+   "protected_pct": 7.6
+  },
+  {
+   "country": "IND",
+   "name": "India",
+   "year": 2023,
+   "protected_pct": 7.5
+  },
+  {
+   "country": "MDG",
+   "name": "Madagascar",
+   "year": 2023,
+   "protected_pct": 7.5
+  },
+  {
+   "country": "MLI",
+   "name": "Mali",
+   "year": 2023,
+   "protected_pct": 7.5
+  },
+  {
+   "country": "TUR",
+   "name": "Turquía",
+   "year": 2023,
+   "protected_pct": 7
+  },
+  {
+   "country": "KGZ",
+   "name": "Kirguistán",
+   "year": 2023,
+   "protected_pct": 6.7
+  },
+  {
+   "country": "PRI",
+   "name": "Puerto Rico",
+   "year": 2023,
+   "protected_pct": 6.7
+  },
+  {
+   "country": "MMR",
+   "name": "Myanmar (Birmania)",
+   "year": 2023,
+   "protected_pct": 6.6
+  },
+  {
+   "country": "IMN",
+   "name": "Isla de Man",
+   "year": 2023,
+   "protected_pct": 5.8
+  },
+  {
+   "country": "FJI",
+   "name": "Fiyi",
+   "year": 2023,
+   "protected_pct": 5.4
+  },
+  {
+   "country": "MUS",
+   "name": "Mauricio",
+   "year": 2023,
+   "protected_pct": 4.7
+  },
+  {
+   "country": "DZA",
+   "name": "Argelia",
+   "year": 2023,
+   "protected_pct": 4.6
+  },
+  {
+   "country": "BGD",
+   "name": "Bangladés",
+   "year": 2023,
+   "protected_pct": 4.6
+  },
+  {
+   "country": "JOR",
+   "name": "Jordania",
+   "year": 2023,
+   "protected_pct": 4.5
+  },
+  {
+   "country": "SWZ",
+   "name": "Esuatini",
+   "year": 2023,
+   "protected_pct": 4.3
+  },
+  {
+   "country": "VUT",
+   "name": "Vanuatu",
+   "year": 2023,
+   "protected_pct": 4.2
+  },
+  {
+   "country": "BIH",
+   "name": "Bosnia y Herzegovina",
+   "year": 2023,
+   "protected_pct": 4.1
+  },
+  {
+   "country": "LBR",
+   "name": "Liberia",
+   "year": 2023,
+   "protected_pct": 4.1
+  },
+  {
+   "country": "OMN",
+   "name": "Omán",
+   "year": 2023,
+   "protected_pct": 3.9
+  },
+  {
+   "country": "PNG",
+   "name": "Papúa Nueva Guinea",
+   "year": 2023,
+   "protected_pct": 3.7
+  },
+  {
+   "country": "URY",
+   "name": "Uruguay",
+   "year": 2023,
+   "protected_pct": 3.7
+  },
+  {
+   "country": "AFG",
+   "name": "Afganistán",
+   "year": 2023,
+   "protected_pct": 3.6
+  },
+  {
+   "country": "TKM",
+   "name": "Turkmenistán",
+   "year": 2023,
+   "protected_pct": 3.2
+  },
+  {
+   "country": "CPV",
+   "name": "Cabo Verde",
+   "year": 2023,
+   "protected_pct": 2.9
+  },
+  {
+   "country": "PRK",
+   "name": "Corea del Norte",
+   "year": 2023,
+   "protected_pct": 2.4
+  },
+  {
+   "country": "FRO",
+   "name": "Islas Feroe",
+   "year": 2023,
+   "protected_pct": 2.3
+  },
+  {
+   "country": "SDN",
+   "name": "Sudán",
+   "year": 2023,
+   "protected_pct": 2.3
+  },
+  {
+   "country": "MAR",
+   "name": "Marruecos",
+   "year": 2023,
+   "protected_pct": 2.2
+  },
+  {
+   "country": "PYF",
+   "name": "Polinesia Francesa",
+   "year": 2023,
+   "protected_pct": 2
+  },
+  {
+   "country": "SLB",
+   "name": "Islas Salomón",
+   "year": 2023,
+   "protected_pct": 2
+  },
+  {
+   "country": "LBN",
+   "name": "Líbano",
+   "year": 2023,
+   "protected_pct": 1.9
+  },
+  {
+   "country": "DJI",
+   "name": "Yibuti",
+   "year": 2023,
+   "protected_pct": 1.6
+  },
+  {
+   "country": "IRQ",
+   "name": "Irak",
+   "year": 2023,
+   "protected_pct": 1.5
+  },
+  {
+   "country": "YEM",
+   "name": "Yemen",
+   "year": 2023,
+   "protected_pct": 0.8
+  },
+  {
+   "country": "SYR",
+   "name": "Siria",
+   "year": 2023,
+   "protected_pct": 0.7
+  },
+  {
+   "country": "MRT",
+   "name": "Mauritania",
+   "year": 2023,
+   "protected_pct": 0.6
+  },
+  {
+   "country": "LBY",
+   "name": "Libia",
+   "year": 2023,
+   "protected_pct": 0.1
+  },
+  {
+   "country": "ERI",
+   "name": "Eritrea",
+   "year": 2023,
+   "protected_pct": 0
+  },
+  {
+   "country": "SOM",
+   "name": "Somalia",
+   "year": 2023,
+   "protected_pct": 0
+  }
+ ]
+}
