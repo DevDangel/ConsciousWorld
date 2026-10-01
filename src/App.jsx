@@ -13,7 +13,7 @@ import styles from './App.module.css';
 // anyone should see. Life still opens bare, and its idle toggles pulse to say
 // they are waiting.
 const DEFAULT_LAYERS = {
-  [MODES.CONTAMINATION]: [CONTAMINATION_LAYERS.AIR_QUALITY],
+  [MODES.CONTAMINATION]: [CONTAMINATION_LAYERS.AIR_QUALITY, CONTAMINATION_LAYERS.CO2_EMISSIONS],
   [MODES.LIFE]: [],
 };
 
