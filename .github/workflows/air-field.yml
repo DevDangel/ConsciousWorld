@@ -27,6 +27,7 @@ jobs:
 
       - name: Descargar datos de viento y PM2.5
         run: npm run data:air
+        continue-on-error: true
 
       - name: Hacer commit y push si hay cambios
         run: |
